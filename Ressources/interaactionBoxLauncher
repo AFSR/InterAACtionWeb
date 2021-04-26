@@ -1,0 +1,16 @@
+#!/bin/sh
+
+gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+
+fuser -k 8080/tcp
+fuser -k 8081/tcp
+rm -r ~/.cache/google-chrome/Default/*
+
+cd ~/dist/Augcom || exit
+python3 -m http.server 8080 > AugCom.log &
+
+cd ~/dist/VisualSceneDisplay || exit
+python3 -m http.server 8081 > VisualSceneDisplay.log &
+
+cd ~/interaactionBox_Interface-linux/bin || exit
+sh ./interaactionBoxOS-linux.sh

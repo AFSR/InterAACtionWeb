@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=~/Desktop/interaactionBoxLauncher
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[fr_FR]=interaactionBox
+Name=interaactionBox
+Comment[fr_FR]=Lanceur de l'Interface et des Modules de l'InteraactionBox
+Comment=Interface and Modules Launcher of the InteraactionBox
