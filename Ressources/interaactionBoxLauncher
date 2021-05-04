@@ -6,7 +6,7 @@ fuser -k 8080/tcp
 fuser -k 8081/tcp
 rm -r ~/.cache/google-chrome/Default/*
 
-cd ~/dist/Augcom || exit
+cd ~/dist/AugCom || exit
 python3 -m http.server 8080 > AugCom.log &
 
 cd ~/dist/VisualSceneDisplay || exit
