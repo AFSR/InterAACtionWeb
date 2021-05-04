@@ -56,7 +56,7 @@ apt install ./tobii_engine_linux-0.1.6.193_rc-Linux.deb ./tobiiusbservice_l64U14
 cd ../../lib/jre/bin/
 chmod +x java
 
-cd ../../bin
+cd ../../../bin
 dos2unix gazeplay-linux.sh
 
 
