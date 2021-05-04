@@ -85,8 +85,9 @@ chmod +x interaactionBoxLauncher
 cd /etc/skel/
 mkdir .config
 cd .config
+mkdir autostart
 
-cp ~/Ressources/interaactionBoxLauncher.desktop /etc/skel/.config/
+cp ~/Ressources/interaactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod +x interaactionBoxLauncher.desktop
 
 # /********************************************************************************************************/
