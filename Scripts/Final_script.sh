@@ -7,25 +7,28 @@
 # **/
 
 
-rm -r /etc/resolv.conf
-touch /etc/resolv.conf
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
+#rm -r /etc/resolv.conf
+#touch /etc/resolv.conf
+#echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 cd Libs/
 
 # apt install ./dos2unix_7.4.0-2_amd64.deb ./gconf2_3.2.6-6ubuntu1_amd64.deb ./gconf2-common_3.2.6-6ubuntu1_all.deb ./gconf-service_3.2.6-6ubuntu1_amd64.deb ./gconf-service-backend_3.2.6-6ubuntu1_amd64.deb ./libappindicator1_12.10.1+18.04.20180322.1-0ubuntu1_amd64.deb ./libdbusmenu-gtk4_16.04.1+18.04.20171206-0ubuntu1_amd64.deb ./libgconf-2-4_3.2.6-6ubuntu1_amd64.deb ./libindicator7_12.10.2+16.04.20151208-0ubuntu1_amd64.deb ./TobiiProEyeTrackerManager-2.1.2.deb ./multiarch-support_2.27-3ubuntu1_amd64.deb ./google-chrome-stable_current_amd64.deb ./xdotool_3.20160805.1-4_amd64.deb
 
-sudo echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse" /etc/apt/sources.list
+echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
+deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
+" > /etc/apt/sources.list
 apt-get update
 apt-get install build-essential
 apt-get install ./*.deb
 apt-get install google-chrome-stable
 apt-get install ffmpeg
-echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-proposed main" | tee /etc/apt/sources.list.d/proposed-repositories.list
-apt update
-apt -t $(lsb_release -cs)-proposed install zsys
-rm /etc/apt/sources.list.d/proposed-repositories.list
-apt update
+#echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-proposed main" | tee /etc/apt/#sources.list.d/proposed-repositories.list
+#apt update
+#apt -t $(lsb_release -cs)-proposed install zsys
+#rm /etc/apt/sources.list.d/proposed-repositories.list
+#apt update
 
 #add-apt-repository ppa:xalt7x/chromium-deb-vaapi
 #cat <<EOF | tee /etc/apt/preferences.d/pin-xalt7x-chromium-deb-vaapi
@@ -89,9 +92,9 @@ cp ~/Ressources/wallpaper_interaactionBox.png /usr/share/backgrounds/
 
 sed -i 's/\<filename\>.*\<\/filename\>/\<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>/' /usr/share/gnome-background-properties/ubuntu-wallpapers.xml
 
-sed -i 's/<\/wallpapers>/ \<wallpaper\>\n     \<name\>InteraactionBox wallpaper\<\/name\>\n     \<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>\n     \<options\>zoom\<\/options\>\n     \<pcolor\>#000000\<\/pcolor\>\n     \<scolor\>#000000\<\/scolor\>\n     \<shade_type\>solid\<\/shade_type\>\n \<\/wallpaper\>\n\<\/wallpapers\>/' focal-wallpapers.xml
+sed -i 's/<\/wallpapers>/ \<wallpaper\>\n     \<name\>InteraactionBox wallpaper\<\/name\>\n     \<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>\n     \<options\>zoom\<\/options\>\n     \<pcolor\>#000000\<\/pcolor\>\n     \<scolor\>#000000\<\/scolor\>\n     \<shade_type\>solid\<\/shade_type\>\n \<\/wallpaper\>\n\<\/wallpapers\>/' /usr/share/gnome-background-properties/focal-wallpapers.xml
 
-sed -i "s@picture-uri.*\'@picture-uri = \'file:///usr/share/backgrounds/wallpaper_interaactionBox.png\'@g" 10_ubuntu-settings.gschema.override
+sed -i "s@picture-uri.*\'@picture-uri = \'file:///usr/share/backgrounds/wallpaper_interaactionBox.png\'@g" /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
