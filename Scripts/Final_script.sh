@@ -63,9 +63,12 @@ dos2unix gazeplay-linux.sh
 cp -r ~/interaactionBox_Interface-linux /etc/skel/
 cd /etc/skel/interaactionBox_Interface-linux/lib/jre/bin/
 chmod +x java
+cp ~/Ressources/configuration.conf /etc/skel/interaactionBox_Interface-linux/bin/
 
 cd ../../../bin
 dos2unix interaactionBoxOS-linux.sh
+cd ./scripts/
+dos2unix ./*
 
 # /********************************************************************************************************/
 # /* Part3 : Create Desktop Shortcut */
