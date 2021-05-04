@@ -70,6 +70,8 @@ dos2unix interaactionBoxOS-linux.sh
 cd ./scripts/
 dos2unix ./*
 
+cp -r ~/dist /etc/skel
+
 # /********************************************************************************************************/
 # /* Part3 : Create Desktop Shortcut */
 
@@ -114,3 +116,6 @@ apt-get install spotify-client
 # /********************************************************************************************************/
 # /* Part6 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
+
+#adduser localuser
+#adduser localadmin --group sudo
