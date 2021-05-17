@@ -13,6 +13,10 @@ sudo apt install cubic
 ### ISO
 Download "ubuntu-20.04.2.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
+### Add resources to cubic
+After these 2 steps you then need to open the iso file with cubic, and you need to copy/past the folders of this repository at the root of the opened iso file system (cd ~ before copying if needed)
+You can then execute the script (for now line by line is safer) to install all the dependencies of the project.
+
 
 ## 1) Libs
 
