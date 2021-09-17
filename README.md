@@ -23,7 +23,7 @@ Download "ubuntu-20.04.2.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.
 
 
 #### Cubic
-In order to modify the previously download Ubuntu OS you need to install a software like Cubic
+In order to modify the previously downloaded Ubuntu OS you need to install a software like Cubic
 
 Copy/Past the following lines in order to download and install Cubic on your computer
 ```
@@ -34,9 +34,9 @@ sudo apt install cubic
 ```
 
 ### Update Ubuntu with our ressources
-After these 2 steps you then need start Cubic and open the Ubuntu 20.04 iso with it.
+After these 2 steps you then need to start Cubic and open the Ubuntu 20.04 iso with it.
 You now have to copy/paste the folders contained in this repo at the root of the opened iso file system (cd ~ before copying if needed).
-Execute the Script/Final_script.sh (for now line by line is safer) to install all the dependencies of the project.
+Execute the Script/Final_script.sh (for now line by line is safer as there are some non automatic requests) to install all the dependencies of the project.
 
 ### 2) Materials
 
