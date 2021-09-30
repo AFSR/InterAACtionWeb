@@ -4,13 +4,26 @@ gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
 fuser -k 8080/tcp
 fuser -k 8081/tcp
+fuser -k 8082/tcp
 rm -r ~/.cache/google-chrome/Default/*
 
-cd ~/dist/AugCom || exit
-python3 -m http.server 8080 > AugCom.log &
+AUGCOM_DIRECTORY=~/dist/AugCom
+if [ -d "$AUGCOM_DIRECTORY" ]; then
+    cd $AUGCOM_DIRECTORY || exit
+    python3 -m http.server 8080 > AugCom.log &
+fi
 
-cd ~/dist/VisualSceneDisplay || exit
-python3 -m http.server 8081 > VisualSceneDisplay.log &
+INTERAACTIONSCENE_DIRECTORY=~/dist/InterAACtionScene
+if [ -d "$INTERAACTIONSCENE_DIRECTORY" ]; then
+    cd $INTERAACTIONSCENE_DIRECTORY || exit
+    python3 -m http.server 8081 > InterAACtionScene.log &
+fi
+
+INTERAACTIONPLAYER_DIRECTORY=~/dist/InterAACtionPlayer
+if [ -d "$INTERAACTIONPLAYER_DIRECTORY" ]; then
+    cd $INTERAACTIONPLAYER_DIRECTORY || exit
+    python3 -m http.server 8082 > InterAACtionPlayer.log &
+fi
 
 cd ~/interaactionBox_Interface-linux/bin || exit
 sh ./interaactionBoxOS-linux.sh
