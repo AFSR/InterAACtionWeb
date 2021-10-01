@@ -18,8 +18,6 @@ tar -zxvf ${NEW_VERSION}
 
 echo "\n supression de l'ancienne version \n"
 
-#ls -1 | egrep -v "^(${NEW_VERSION_NO_EXT}|scripFile|download command)$" | xargs rm -r
-
 ls | grep "gazeplay-linux.*" | egrep -v "^(${NEW_VERSION_NO_EXT}$)" | xargs rm -r
 
 cd ../interaactionBox_Interface-linux/bin
