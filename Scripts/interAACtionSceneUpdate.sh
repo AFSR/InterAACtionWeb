@@ -4,7 +4,7 @@ NEW_VERSION=$( echo ${NEW_VERSION_LINK} | cut -d/ -f9)
 
 NEW_VERSION_NO_EXT=$( echo ${NEW_VERSION} | cut -d. -f1)
 
-cd ../dist
+cd ~/dist
 
 echo "\n téléchargement de la version ${NEW_VERSION_NO_EXT} en utilisant le lien ${NEW_VERSION_LINK} \n"
 
