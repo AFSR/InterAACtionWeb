@@ -1,10 +1,10 @@
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InteraactionScene-AFSR/releases/latest)
 
-NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InteraactionScene*" | cut -d: -f2,3 | tr -d \")
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionScene*" | cut -d: -f2,3 | tr -d \")
 
 NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
 
-NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InteraactionScene*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
+NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionScene*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
 
 cd ~/dist || exit
 
@@ -20,4 +20,4 @@ mv "${NEW_VERSION}" "${NEW_VERSION_NAME}"
 
 echo "supression de l'ancienne version"
 
-ls | grep "InterAACtion.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
+ls | grep "InterAACtionScene.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
