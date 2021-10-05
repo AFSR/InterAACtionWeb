@@ -8,7 +8,7 @@ NEW_VERSION_NO_EXT=$( echo ${NEW_VERSION} | cut -d. -f1)
 
 NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*AugCom*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
 
-cd ~/Musique/dist || exit
+cd ~/dist || exit
 
 echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
 
