@@ -7,22 +7,31 @@ fuser -k 8081/tcp
 fuser -k 8082/tcp
 rm -r ~/.cache/google-chrome/Default/*
 
-AUGCOM_DIRECTORY=~/dist/AugCom
-if [ -d "$AUGCOM_DIRECTORY" ]; then
-    cd $AUGCOM_DIRECTORY || exit
-    python3 -m http.server 8080 > AugCom.log &
+AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
+if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
+  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
+  if [ -d "$AUGCOM_PATH" ]; then
+    cd "$AUGCOM_PATH" || exit
+    python3 -m http.server 8080 >AugCom.log &
+  fi
 fi
 
-INTERAACTIONSCENE_DIRECTORY=~/dist/InterAACtionScene
-if [ -d "$INTERAACTIONSCENE_DIRECTORY" ]; then
-    cd $INTERAACTIONSCENE_DIRECTORY || exit
-    python3 -m http.server 8081 > InterAACtionScene.log &
+INTERAACTIONSCENE_DIRECTORY=$(ls ~/dist | grep "InterAACtionScene" | head -n 1)
+if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
+  INTERAACTIONSCENE_PATH="$HOME/dist/${INTERAACTIONSCENE_DIRECTORY}"
+  if [ -d "$INTERAACTIONSCENE_PATH" ]; then
+    cd "$INTERAACTIONSCENE_PATH" || exit
+    python3 -m http.server 8081 >InterAACtionScene.log &
+  fi
 fi
 
-INTERAACTIONPLAYER_DIRECTORY=~/dist/InterAACtionPlayer
-if [ -d "$INTERAACTIONPLAYER_DIRECTORY" ]; then
-    cd $INTERAACTIONPLAYER_DIRECTORY || exit
-    python3 -m http.server 8082 > InterAACtionPlayer.log &
+INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
+if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
+  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
+  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
+    cd "$INTERAACTIONPLAYER_PATH" || exit
+    python3 -m http.server 8082 >InterAACtionPlayer.log &
+  fi
 fi
 
 cd ~/interaactionBox_Interface-linux/bin || exit

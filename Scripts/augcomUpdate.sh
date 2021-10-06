@@ -1,19 +1,23 @@
-NEW_VERSION_LINK=$(curl -s https://api.github.com/repos/AFSR/AugCom-AFSR/releases/latest | grep "browser_download_url.*AugCom*" | cut -d: -f2,3 | tr -d \")
+LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/AugCom-AFSR/releases/latest)
 
-NEW_VERSION=$( echo ${NEW_VERSION_LINK} | cut -d/ -f9)
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*AugCom*" | cut -d: -f2,3 | tr -d \")
 
-NEW_VERSION_NO_EXT=$( echo ${NEW_VERSION} | cut -d. -f1)
+NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
 
-cd ../dist
+NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*AugCom*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
 
-echo "\n téléchargement de la version ${NEW_VERSION_NO_EXT} en utilisant le lien ${NEW_VERSION_LINK} \n"
+cd ~/dist || exit
 
-wget $NEW_VERSION_LINK
+echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
 
-echo "\n extraction de l'archive ${NEW_VERSION} \n"
+wget "$NEW_VERSION_LINK"
 
-tar -zxvf ${NEW_VERSION}
+echo "extraction de l'archive ${NEW_VERSION}"
 
-echo "\n supression de l'ancienne version \n"
+tar -zxvf "${NEW_VERSION}"
 
-ls | grep "AugCom.*" | egrep -v "^(${NEW_VERSION_NO_EXT}$)" | xargs rm -r
+mv "${NEW_VERSION}" "${NEW_VERSION_NAME}"
+
+echo "supression de l'ancienne version"
+
+ls | grep "AugCom.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
