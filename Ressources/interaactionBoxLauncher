@@ -5,7 +5,10 @@ gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 fuser -k 8080/tcp
 fuser -k 8081/tcp
 fuser -k 8082/tcp
-rm -r ~/.cache/google-chrome/Default/*
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
 
 AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
 if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
