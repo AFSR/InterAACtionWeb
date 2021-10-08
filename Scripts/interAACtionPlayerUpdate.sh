@@ -10,7 +10,7 @@ cd ~/dist || exit
 
 echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
 
-wget "$NEW_VERSION_LINK"
+wget $NEW_VERSION_LINK
 
 echo "extraction de l'archive ${NEW_VERSION}"
 
