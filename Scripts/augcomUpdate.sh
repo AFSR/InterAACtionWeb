@@ -23,3 +23,18 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 echo "supression de l'ancienne version"
 
 ls | grep "AugCom.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
+
+fuser -k 8080/tcp
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
+
+AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
+if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
+  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
+  if [ -d "$AUGCOM_PATH" ]; then
+    cd "$AUGCOM_PATH" || exit
+    python3 -m http.server 8080 >AugCom.log &
+  fi
+fi
