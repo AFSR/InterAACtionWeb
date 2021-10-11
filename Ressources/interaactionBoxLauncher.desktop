@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=~/Desktop/interaactionBoxLauncher
+Exec=/bin/sh -c "$HOME/Desktop/interaactionBoxLauncher"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
