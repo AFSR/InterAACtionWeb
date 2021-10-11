@@ -23,3 +23,18 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 echo "supression de l'ancienne version"
 
 ls | grep "InterAACtionPlayer.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
+
+fuser -k 8082/tcp
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
+
+INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
+if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
+  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
+  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
+    cd "$INTERAACTIONPLAYER_PATH" || exit
+    python3 -m http.server 8082 >InterAACtionPlayer.log &
+  fi
+fi
