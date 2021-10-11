@@ -23,3 +23,18 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 echo "supression de l'ancienne version"
 
 ls | grep "InterAACtionScene.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
+
+fuser -k 8081/tcp
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
+
+INTERAACTIONSCENE_DIRECTORY=$(ls ~/dist | grep "InterAACtionScene" | head -n 1)
+if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
+  INTERAACTIONSCENE_PATH="$HOME/dist/${INTERAACTIONSCENE_DIRECTORY}"
+  if [ -d "$INTERAACTIONSCENE_PATH" ]; then
+    cd "$INTERAACTIONSCENE_PATH" || exit
+    python3 -m http.server 8081 >InterAACtionScene.log &
+  fi
+fi
