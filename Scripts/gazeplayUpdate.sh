@@ -22,7 +22,10 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
 echo "supression de l'ancienne version"
 
-ls | grep "gazeplay-linux.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | xargs rm -r
+ls | grep "gazeplay-linux.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
+rm -rf "${line}"; 
+rm -rf " ${line}"; 
+done
 
 cd ~/interaactionBox_Interface-linux/bin || exit
 
