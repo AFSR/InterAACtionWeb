@@ -134,3 +134,10 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # gedit org.freedesktop.NetworkManager.policy
 # System policy prevents modification of netwrk settings for all users
 # and change to <allow_active>yes</allow_active>
+
+
+# /********************************************************************************/
+# /* ICONS
+cd /usr/share/icons/
+mkdir interaaction
+cp ~/Ressources/icons/* /usr/share/icons/interaaction
