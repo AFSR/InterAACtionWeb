@@ -62,7 +62,8 @@ cd /etc/skel
 mkdir Desktop
 cd Desktop/
 
-cp ~/Ressources/interaactionBoxLauncher /etc/skel/Desktop/
+cp ~/Ressources/interaactionBoxLauncher /etc/skel/
+cd /etc/skel/
 chmod +x interaactionBoxLauncher
 
 cd /etc/skel/
@@ -71,7 +72,11 @@ cd .config
 mkdir autostart
 
 cp ~/Ressources/interaactionBoxLauncher.desktop /etc/skel/.config/autostart
+/etc/skel/
 chmod +x interaactionBoxLauncher.desktop
+
+cp interaactionBoxLauncher.desktop /etc/skel/Desktop
+
 
 # /********************************************************************************************************/
 # /* Part4 : Choose the default wallpaper */
@@ -123,7 +128,7 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # /org/gnome/desktop/wm/preferences/action-middle-click-titlebar
 #   'none'
 
-
+#Do it also for dock and for show-trash false and show-home false
 
 # cd /usr/share/polkit-1/actions/
 # gedit org.freedesktop.NetworkManager.policy
