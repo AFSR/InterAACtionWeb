@@ -7,6 +7,7 @@
 # **/
 
 
+# /* IF INTERNET DOESNT WORK
 #rm -r /etc/resolv.conf
 #touch /etc/resolv.conf
 #echo "nameserver 8.8.8.8" > /etc/resolv.conf
@@ -23,24 +24,6 @@ apt-get update
 apt-get install build-essential
 apt-get install ./*.deb
 apt-get install google-chrome-stable
-apt-get install ffmpeg
-#echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs)-proposed main" | tee /etc/apt/#sources.list.d/proposed-repositories.list
-#apt update
-#apt -t $(lsb_release -cs)-proposed install zsys
-#rm /etc/apt/sources.list.d/proposed-repositories.list
-#apt update
-
-#add-apt-repository ppa:xalt7x/chromium-deb-vaapi
-#cat <<EOF | tee /etc/apt/preferences.d/pin-xalt7x-chromium-deb-vaapi
-#Package: *
-#Pin: release o=LP-PPA-xalt7x-chromium-deb-vaapi
-#Pin-Priority: 1337
-#EOF
-#apt update
-#apt install chromium-browser
-#
-#cd ../
-#rm -r libs/
 
 
 # /********************************************************************************************************/
@@ -106,17 +89,43 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 
 # /********************************************************************************************************/
-# /* Part5 : spotify */
-apt-get install curl
-curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -
-echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
-apt-get update
-apt-get install spotify-client
-
-
-# /********************************************************************************************************/
 # /* Part6 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
-
-#adduser localuser
 #adduser localadmin --group sudo
+
+# /********************************************************************************************************/
+# /usr/share/gnome-shell/modes$ cat ubuntu.json
+# {
+#     "parentMode": "user",
+#     "stylesheetName": "Yaru/gnome-shell.css",
+#     "themeResourceName": "theme/Yaru/gnome-shell-theme.gresource",
+#     "debugFlags": ["backtrace-crashes-all"],
+#     "enabledExtensions": ["ubuntu-dock@ubuntu.com", "ubuntu-appindicators@ubuntu.com", "desktop-icons@csoriano"]
+# }
+# /org/gnome/shell/enabled-extensions
+#   ['desktop-icons@csoriano']
+
+# /org/gnome/shell/extensions/desktop-icons/icon-size
+#   'large'
+
+# /org/gnome/desktop/interface/show-battery-percentage
+#   true
+
+# /org/gnome/desktop/wm/preferences/button-layout
+#   ':close'
+
+# /org/gnome/desktop/wm/preferences/action-double-click-titlebar
+#   'none'
+
+# /org/gnome/desktop/wm/preferences/action-right-click-titlebar
+#   'none'
+
+# /org/gnome/desktop/wm/preferences/action-middle-click-titlebar
+#   'none'
+
+
+
+# cd /usr/share/polkit-1/actions/
+# gedit org.freedesktop.NetworkManager.policy
+# System policy prevents modification of netwrk settings for all users
+# and change to <allow_active>yes</allow_active>
