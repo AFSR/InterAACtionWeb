@@ -113,6 +113,12 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # /org/gnome/shell/extensions/desktop-icons/icon-size
 #   'large'
 
+# /org/gnome/shell/extensions/desktop-icons/show-home
+#   false
+
+# /org/gnome/shell/extensions/desktop-icons/show-trash
+#   false
+
 # /org/gnome/desktop/interface/show-battery-percentage
 #   true
 
