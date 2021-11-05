@@ -72,10 +72,14 @@ cd .config
 mkdir autostart
 
 cp ~/Ressources/interaactionBoxLauncher.desktop /etc/skel/.config/autostart
-/etc/skel/
+cd /etc/skel/.config/autostart
 chmod +x interaactionBoxLauncher.desktop
 
+
+cd /etc/skel/Desktop
 cp interaactionBoxLauncher.desktop /etc/skel/Desktop
+chmod a+x interaactionBoxLauncher.desktop
+dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
 
 # /********************************************************************************************************/
