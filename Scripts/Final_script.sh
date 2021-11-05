@@ -122,6 +122,9 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # /org/gnome/desktop/interface/show-battery-percentage
 #   true
 
+# /org/gnome/shell/extensions/dash-to-dock/dock-fixed
+#   false
+
 # /org/gnome/desktop/wm/preferences/button-layout
 #   ':close'
 
