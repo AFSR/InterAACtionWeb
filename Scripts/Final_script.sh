@@ -125,6 +125,21 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # /org/gnome/shell/extensions/dash-to-dock/dock-fixed
 #   false
 
+# /org/gnome/shell/extensions/dash-to-dock/show-running
+#   false
+
+# /org/gnome/shell/extensions/dash-to-dock/show-apps-at-top
+#   false
+
+# /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button
+#   false
+
+# /org/gnome/shell/extensions/dash-to-dock/show-favorites
+#   false
+
+# /org/gnome/shell/extensions/dash-to-dock/show-mounts
+#   false
+
 # /org/gnome/desktop/wm/preferences/button-layout
 #   ':close'
 
