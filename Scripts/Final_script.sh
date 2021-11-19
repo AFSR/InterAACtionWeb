@@ -62,6 +62,7 @@ cd /etc/skel
 mkdir Desktop
 cd Desktop/
 
+cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
 cd /etc/skel/
 chmod +x interaactionBoxLauncher
