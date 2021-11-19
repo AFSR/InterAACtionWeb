@@ -1,9 +1,10 @@
 [Desktop Entry]
 Type=Application
-Exec=/bin/sh -c "$HOME/Desktop/interaactionBoxLauncher"
+Exec=/bin/sh -c "$HOME/interaactionBoxLauncher"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
+Icon=/usr/share/icons/interaaction/box_square_logo_no_text.png
 Name[fr_FR]=interaactionBox
 Name=interaactionBox
 Comment[fr_FR]=Lanceur de l'Interface et des Modules de l'InteraactionBox

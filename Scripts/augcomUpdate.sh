@@ -22,7 +22,7 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
 echo "supression de l'ancienne version"
 
-ls | grep "AugCom.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
+ls | grep -i "AugCom.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
 rm -rf "${line}"; 
 rm -rf " ${line}"; 
 done
