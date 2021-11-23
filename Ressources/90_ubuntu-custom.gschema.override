@@ -29,6 +29,7 @@ action-middle-click-titlebar = 'none'
 
 [org.gnome.shell]
 favorite-apps = ['com.teamviewer.TeamViewer.desktop', 'InteraactionBoxLauncher.desktop', 'google-chrome.desktop']
+enabled-extensions = ['ubuntu-dock@ubuntu.com', 'ubuntu-appindicators@ubuntu.com', 'desktop-icons@csoriano']
 
 [org.gnome.desktop.background]
 picture-uri = 'file:///usr/share/backgrounds/wallpaper_interaactionBox.png'
