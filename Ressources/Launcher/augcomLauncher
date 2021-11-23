@@ -8,9 +8,9 @@ if [ -d ~/.cache/google-chrome/Default ]; then
 	rm -r ~/.cache/google-chrome/Default
 fi
 
-AUGCOM_DIRECTORY=$(ls /usr/share/interAACtion/dist | grep "AugCom" | head -n 1)
+AUGCOM_DIRECTORY=$(ls $HOME/dist | grep "AugCom" | head -n 1)
 if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
-  AUGCOM_PATH="/usr/share/interAACtion/dist/${AUGCOM_DIRECTORY}"
+  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
   if [ -d "$AUGCOM_PATH" ]; then
     cd "$AUGCOM_PATH" || exit
     python3 -m http.server 8080 > ~/AugCom.log &
@@ -18,8 +18,6 @@ if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
 fi
 
 google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:8080/#/fr/connect/$USERNAME" &
-
-echo "open http://localhost:8080/#/fr/connect/$USERNAME"
 
 sh ~/interaactionBox_Interface-linux/bin/scripts/close_chrome.sh
 
