@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/bin/sh -c "$HOME/augcomLauncher"
+Exec=/bin/sh -c "$HOME/Launcher/augcomLauncher"
 Icon=/usr/share/icons/interaactionBox/Logos_AugCom.png
 Name[fr_FR]=AugCom
 Name=AugCom
