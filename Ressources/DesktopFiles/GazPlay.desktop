@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh -c "$HOME/gazeplayLauncher"
+Icon=/usr/share/icons/interaactionBox/gazeplayicon.png
+Name[fr_FR]=GazePlay
+Name=GazePlay
+Comment[fr_FR]=Lanceur du logiciel GazePlay
+Comment=GazePlay software launcher
+X-Desktop-File-Install-Version=0.24

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh -c "$HOME/augcomLauncher"
+Icon=/usr/share/icons/interaactionBox/Logos_AugCom.png
+Name[fr_FR]=AugCom
+Name=AugCom
+Comment[fr_FR]=Lanceur du logiciel de communication AugCom
+Comment=AugCom software launcher
+X-Desktop-File-Install-Version=0.24
