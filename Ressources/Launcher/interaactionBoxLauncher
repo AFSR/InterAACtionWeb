@@ -1,0 +1,41 @@
+#!/bin/sh
+
+gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+
+fuser -k 8080/tcp
+fuser -k 8081/tcp
+fuser -k 8082/tcp
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
+
+AUGCOM_DIRECTORY=$(ls /usr/share/interAACtion/dist | grep "AugCom" | head -n 1)
+if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
+  AUGCOM_PATH="/usr/share/interAACtion/dist/${AUGCOM_DIRECTORY}"
+  if [ -d "$AUGCOM_PATH" ]; then
+    cd "$AUGCOM_PATH" || exit
+    python3 -m http.server 8080 > ~/AugCom.log &
+  fi
+fi
+
+INTERAACTIONSCENE_DIRECTORY=$(ls /usr/share/interAACtion/dist | grep "InterAACtionScene" | head -n 1)
+if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
+  INTERAACTIONSCENE_PATH="/usr/share/interAACtion/dist/${INTERAACTIONSCENE_DIRECTORY}"
+  if [ -d "$INTERAACTIONSCENE_PATH" ]; then
+    cd "$INTERAACTIONSCENE_PATH" || exit
+    python3 -m http.server 8081 >InterAACtionScene.log &
+  fi
+fi
+
+INTERAACTIONPLAYER_DIRECTORY=$(ls /usr/share/interAACtion/dist | grep "InterAACtionPlayer" | head -n 1)
+if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
+  INTERAACTIONPLAYER_PATH="/usr/share/interAACtion/dist/${INTERAACTIONPLAYER_DIRECTORY}"
+  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
+    cd "$INTERAACTIONPLAYER_PATH" || exit
+    python3 -m http.server 8082 >InterAACtionPlayer.log &
+  fi
+fi
+
+cd ~/interaactionBox_Interface-linux/bin || exit
+sh ./interaactionBoxOS-linux.sh

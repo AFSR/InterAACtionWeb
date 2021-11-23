@@ -1,0 +1,26 @@
+#!/bin/sh
+
+gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+
+fuser -k 8082/tcp
+
+if [ -d ~/.cache/google-chrome/Default ]; then
+	rm -r ~/.cache/google-chrome/Default
+fi
+
+INTERAACTIONPLAYER_DIRECTORY=$(ls $HOME/dist | grep "InterAACtionPlayer" | head -n 1)
+if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
+  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
+  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
+    cd "$INTERAACTIONPLAYER_PATH" || exit
+    python3 -m http.server 8082 >InterAACtionPlayer.log &
+  fi
+fi
+
+google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:8082/#/fr/connect/$USERNAME" &
+
+echo "open http://localhost:8082/#/fr/connect/$USERNAME"
+
+sh ~/interaactionBox_Interface-linux/bin/scripts/close_chrome.sh
+
+exit
