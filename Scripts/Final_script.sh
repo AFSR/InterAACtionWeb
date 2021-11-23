@@ -79,6 +79,9 @@ chmod a+x /etc/skel/.local/share/applications
 cp ~/Ressources/DesktopFiles/interaactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/interaactionBoxLauncher.desktop
 
+cp -R ~/Ressources/Launcher /etc/skel/
+chmod a+x /etc/skel/launcher/*
+
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
 
