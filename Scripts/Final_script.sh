@@ -89,11 +89,13 @@ dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 cd /usr/share/backgrounds/
 cp ~/Ressources/wallpaper_interaactionBox.png /usr/share/backgrounds/
 
-sed -i 's/\<filename\>.*\<\/filename\>/\<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>/' /usr/share/gnome-background-properties/ubuntu-wallpapers.xml
+# sed -i 's/\<filename\>.*\<\/filename\>/\<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>/' /usr/share/gnome-background-properties/ubuntu-wallpapers.xml
 
-sed -i 's/<\/wallpapers>/ \<wallpaper\>\n     \<name\>InteraactionBox wallpaper\<\/name\>\n     \<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>\n     \<options\>zoom\<\/options\>\n     \<pcolor\>#000000\<\/pcolor\>\n     \<scolor\>#000000\<\/scolor\>\n     \<shade_type\>solid\<\/shade_type\>\n \<\/wallpaper\>\n\<\/wallpapers\>/' /usr/share/gnome-background-properties/focal-wallpapers.xml
+# sed -i 's/<\/wallpapers>/ \<wallpaper\>\n     \<name\>InteraactionBox wallpaper\<\/name\>\n     \<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>\n     \<options\>zoom\<\/options\>\n     \<pcolor\>#000000\<\/pcolor\>\n     \<scolor\>#000000\<\/scolor\>\n     \<shade_type\>solid\<\/shade_type\>\n \<\/wallpaper\>\n\<\/wallpapers\>/' /usr/share/gnome-background-properties/focal-wallpapers.xml
 
-sed -i "s@picture-uri.*\'@picture-uri = \'file:///usr/share/backgrounds/wallpaper_interaactionBox.png\'@g" /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
+# sed -i "s@picture-uri.*\'@picture-uri = \'file:///usr/share/backgrounds/wallpaper_interaactionBox.png\'@g" /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
+
+cp ~/Ressources/90_ubuntu-custom.gschema.override /usr/share/glib-2.0/schemas/
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
@@ -102,60 +104,6 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 # /* Part6 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 #adduser localadmin --group sudo
-
-# /********************************************************************************************************/
-# /usr/share/gnome-shell/modes$ cat ubuntu.json
-# {
-#     "parentMode": "user",
-#     "stylesheetName": "Yaru/gnome-shell.css",
-#     "themeResourceName": "theme/Yaru/gnome-shell-theme.gresource",
-#     "debugFlags": ["backtrace-crashes-all"],
-#     "enabledExtensions": ["ubuntu-dock@ubuntu.com", "ubuntu-appindicators@ubuntu.com", "desktop-icons@csoriano"]
-# }
-# /org/gnome/shell/enabled-extensions
-#   ['desktop-icons@csoriano']
-
-# /org/gnome/shell/extensions/desktop-icons/icon-size
-#   'large'
-
-# /org/gnome/shell/extensions/desktop-icons/show-home
-#   false
-
-# /org/gnome/shell/extensions/desktop-icons/show-trash
-#   false
-
-# /org/gnome/desktop/interface/show-battery-percentage
-#   true
-
-# /org/gnome/shell/extensions/dash-to-dock/dock-fixed
-#   false
-
-# /org/gnome/shell/extensions/dash-to-dock/show-running
-#   false
-
-# /org/gnome/shell/extensions/dash-to-dock/show-apps-at-top
-#   false
-
-# /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button
-#   false
-
-# /org/gnome/shell/extensions/dash-to-dock/show-favorites
-#   false
-
-# /org/gnome/shell/extensions/dash-to-dock/show-mounts
-#   false
-
-# /org/gnome/desktop/wm/preferences/button-layout
-#   ':close'
-
-# /org/gnome/desktop/wm/preferences/action-double-click-titlebar
-#   'none'
-
-# /org/gnome/desktop/wm/preferences/action-right-click-titlebar
-#   'none'
-
-# /org/gnome/desktop/wm/preferences/action-middle-click-titlebar
-#   'none'
 
 #Do it also for dock and for show-trash false and show-home false
 
