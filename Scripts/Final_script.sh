@@ -99,9 +99,31 @@ cp ~/Ressources/90_ubuntu-custom.gschema.override /usr/share/glib-2.0/schemas/
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
+# /********************************************************************************************************/
+# /* Part6 : locale */
+
+cd /usr/share/localechooser/
+
+echo "fr;0;FR;fr_FR.UTF-8;;console-setup
+en;1;US;en_US.UTF-8;;console-setup" > languagelist
+
+echo "en
+fr" > shortlists
+
+gunzip languagelist.data.gz 
+echo "1:en:English:English
+0:fr:French:Français" > languagelist.data 
+gzip languagelist.data
+
+
+cd /usr/lib/ubiquity/localechooser
+cp /usr/share/localechooser/languagelist ./
+cp /usr/share/localechooser/languagelist.data.gz ./
+cp /usr/share/localechooser/regionmap ./           
+cp /usr/share/localechooser/shortlists ./
 
 # /********************************************************************************************************/
-# /* Part6 : account creation */
+# /* Part7 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 #adduser localadmin --group sudo
 
