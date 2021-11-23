@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/bin/sh -c "$HOME/gazeplayLauncher"
+Exec=/bin/sh -c "$HOME/Launcher/gazeplayLauncher"
 Icon=/usr/share/icons/interaactionBox/gazeplayicon.png
 Name[fr_FR]=GazePlay
 Name=GazePlay
