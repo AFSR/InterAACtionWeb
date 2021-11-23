@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/bin/sh -c "$HOME/interaactionSceneLauncher"
+Exec=/bin/sh -c "$HOME/Launcher/interaactionSceneLauncher"
 Icon=/usr/share/icons/interaactionBox/VisuelSceneDisplay.png
 Name[fr_FR]=InteraactionScene
 Name=InteraactionScene
