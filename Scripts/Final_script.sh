@@ -14,8 +14,6 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 cd Libs/
 
-#apt -y install ./dos2unix_7.4.0-2_amd64.deb ./gconf2_3.2.6-6ubuntu1_amd64.deb ./gconf2-common_3.2.6-6ubuntu1_all.deb ./gconf-service_3.2.6-6ubuntu1_amd64.deb ./gconf-service-backend_3.2.6-6ubuntu1_amd64.deb ./libappindicator1_12.10.1+18.04.20180322.1-0ubuntu1_amd64.deb ./libdbusmenu-gtk4_16.04.1+18.04.20171206-0ubuntu1_amd64.deb ./libgconf-2-4_3.2.6-6ubuntu1_amd64.deb ./libindicator7_12.10.2+16.04.20151208-0ubuntu1_amd64.deb ./TobiiProEyeTrackerManager-2.1.2.deb ./multiarch-support_2.27-3ubuntu1_amd64.deb ./google-chrome-stable_current_amd64.deb ./xdotool_3.20160805.1-4_amd64.deb
-
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
 deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
@@ -39,7 +37,15 @@ dos2unix interaactionBoxOS-linux.sh
 cd ./scripts/
 dos2unix ./*
 
+cd ./ISOScripts
+sh ./gazeplayUpdate.sh
+sh ./interAACtionGazeUpdate.sh 
+
+
 mkdir /etc/skel/dist
+sh ./interAACtionSceneUpdate.sh
+sh ./interAACtionPlayerUpdate.sh
+sh ./augcomUpdate.sh
 
 # /********************************************************************************************************/
 # /* Part3 : Create Desktop Shortcut */
@@ -81,12 +87,6 @@ cp -R ~/Scripts/* /etc/skel/Update
 cd /usr/share/backgrounds/
 cp ~/Ressources/wallpaper_interaactionBox.png /usr/share/backgrounds/
 
-# sed -i 's/\<filename\>.*\<\/filename\>/\<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>/' /usr/share/gnome-background-properties/ubuntu-wallpapers.xml
-
-# sed -i 's/<\/wallpapers>/ \<wallpaper\>\n     \<name\>InteraactionBox wallpaper\<\/name\>\n     \<filename\>\/usr\/share\/backgrounds\/wallpaper_interaactionBox.png\<\/filename\>\n     \<options\>zoom\<\/options\>\n     \<pcolor\>#000000\<\/pcolor\>\n     \<scolor\>#000000\<\/scolor\>\n     \<shade_type\>solid\<\/shade_type\>\n \<\/wallpaper\>\n\<\/wallpapers\>/' /usr/share/gnome-background-properties/focal-wallpapers.xml
-
-# sed -i "s@picture-uri.*\'@picture-uri = \'file:///usr/share/backgrounds/wallpaper_interaactionBox.png\'@g" /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
-
 cp ~/Ressources/90_ubuntu-custom.gschema.override /usr/share/glib-2.0/schemas/
 
 glib-compile-schemas /usr/share/glib-2.0/schemas/
@@ -117,7 +117,6 @@ cp /usr/share/localechooser/shortlists ./
 # /********************************************************************************************************/
 # /* Part7 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
-#adduser localadmin --group sudo
 
 # cd /usr/share/polkit-1/actions/
 # gedit org.freedesktop.NetworkManager.policy
