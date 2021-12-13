@@ -36,8 +36,8 @@ enabled-extensions = ['ubuntu-dock@ubuntu.com', 'ubuntu-appindicators@ubuntu.com
 
 [org.gnome.desktop.background]
 picture-uri = 'file:///usr/share/backgrounds/wallpaper_interaactionBox.png'
-picture-opions = 'zoom'
+picture-options = 'zoom'
 
 [org.gnome.desktop.screensaver]
 picture-uri = 'file:///usr/share/backgrounds/wallpaper_interaactionBox.png'
-picture-opions = 'zoom'
+picture-options = 'zoom'
