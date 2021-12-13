@@ -30,25 +30,16 @@ apt-get -y install google-chrome-stable
 # /********************************************************************************************************/
 # /* Part2 : Set-Up GazePlay, InteraactionScene and Tobii */
 
-cp -r ~/gazeplay-linux-x64-1.8.1-AFSR /etc/skel/
-cd /etc/skel/gazeplay-linux-x64-1.8.1-AFSR/lib/jre/bin/
-chmod +x java
-
-cd ../../../bin
-dos2unix gazeplay-linux.sh
-
-
 cp -r ~/interaactionBox_Interface-linux /etc/skel/
 cd /etc/skel/interaactionBox_Interface-linux/lib/jre/bin/
 chmod +x java
 cp ~/Ressources/configuration.conf /etc/skel/interaactionBox_Interface-linux/bin/
-
 cd ../../../bin
 dos2unix interaactionBoxOS-linux.sh
 cd ./scripts/
 dos2unix ./*
 
-cp -r ~/dist /etc/skel
+mkdir /etc/skel/dist
 
 # /********************************************************************************************************/
 # /* Part3 : Create Desktop Shortcut */
@@ -81,6 +72,8 @@ chmod a+x /etc/skel/Launcher/*
 
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
+mkdir /etc/skel/Update
+cp -R ~/Scripts/* /etc/skel/Update
 
 # /********************************************************************************************************/
 # /* Part4 : Choose the default wallpaper */
