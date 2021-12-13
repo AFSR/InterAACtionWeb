@@ -8,9 +8,9 @@
 
 
 # /* IF INTERNET DOESNT WORK
-#rm -r /etc/resolv.conf
-#touch /etc/resolv.conf
-#echo "nameserver 8.8.8.8" > /etc/resolv.conf
+rm -r /etc/resolv.conf
+touch /etc/resolv.conf
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 cd Libs/
 
