@@ -38,6 +38,6 @@ done
 mv "${NEW_VERSION_NAME_TEMP}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}"
-dos2unix bin/interaactionPicto-linux.sh 
+dos2unix bin/interAACtionGaze-linux.sh
 chmod +x lib/jre/bin/java
 
