@@ -28,10 +28,10 @@ apt-get -y install google-chrome-stable
 # /********************************************************************************************************/
 # /* Part2 : Set-Up GazePlay, InteraactionScene and Tobii */
 
-cp -r ~/interaactionBox_Interface-linux /etc/skel/
-cd /etc/skel/interaactionBox_Interface-linux/lib/jre/bin/
+cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
+cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
 chmod +x java
-cd /etc/skel/interaactionBox_Interface-linux/bin/
+cd /etc/skel/InterAACtionBox_Interface-linux/bin/
 dos2unix interaactionBoxOS-linux.sh
 cd ./scripts/
 dos2unix ./*
@@ -102,7 +102,11 @@ cp ~/slides/screenshots/* /usr/share/ubiquity-slideshow/slides/screenshots/
 
 cd ../l10n/fr/
 rm *
-cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
+cp ~/slides/fr/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
+
+cd ../en/
+rm *
+cp ~/slides/en/*.html /usr/share/ubiquity-slideshow/slides/l10n/en/
 
 # /********************************************************************************************************/
 # /* Part6 : locale */
