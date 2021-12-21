@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/InterAACtionBox.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final_script.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/Final_script.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Final_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Final_script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/apps.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/augcom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/box.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/gazeplay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/info.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/player.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/scene.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/fr/welcome.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="22MfRYIAckXSLEC8WzguifXPdmL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ISOScripts" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\en" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\fr" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="" />
+      <created>1639652369322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639652369322</updated>
+      <workItem from="1639652380658" duration="433000" />
+      <workItem from="1639659744680" duration="1148000" />
+      <workItem from="1639665902754" duration="898000" />
+      <workItem from="1639748590859" duration="2797000" />
+      <workItem from="1639990352946" duration="4824000" />
+      <workItem from="1640004859079" duration="6420000" />
+      <workItem from="1640075559778" duration="721000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

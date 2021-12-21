@@ -2,7 +2,7 @@
 
 gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-version=$(head -n 1 $HOME/interaactionBox_Interface-linux/bin/configuration.conf | cut -d/ -f3)
+version=$(head -n 1 $HOME/InterAACtionBox_Interface-linux/bin/configuration.conf | cut -d/ -f3)
 
 "$HOME/$version/lib/jre/bin/java" -cp "$HOME/$version/lib/*" -Djdk.gtk.version=2 net.gazeplay.GazePlayLauncher --user "$HOME"
 

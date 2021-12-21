@@ -1,6 +1,6 @@
 
 # /********************************************************************************************************/
-# /* Part1: Internet Connection and deb Libs installation */
+# /* Part1 : Internet Connection and deb Libs installation */
 
 # /**
 # ** Copy the libs folder to cubic
@@ -23,7 +23,6 @@ apt-get -y install build-essential
 apt-get -y install curl
 apt-get -y install ./*.deb
 apt-get -y install google-chrome-stable
-
 
 # /********************************************************************************************************/
 # /* Part2 : Set-Up GazePlay, InteraactionScene and Tobii */
@@ -102,11 +101,7 @@ cp ~/slides/screenshots/* /usr/share/ubiquity-slideshow/slides/screenshots/
 
 cd ../l10n/fr/
 rm *
-cp ~/slides/fr/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
-
-cd ../en/
-rm *
-cp ~/slides/en/*.html /usr/share/ubiquity-slideshow/slides/l10n/en/
+cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
 # /********************************************************************************************************/
 # /* Part6 : locale */

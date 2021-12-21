@@ -19,6 +19,6 @@ fi
 
 google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:8081/#/fr/connect/$USERNAME" &
 
-sh ~/interaactionBox_Interface-linux/bin/scripts/close_chrome.sh
+sh ~/InterAACtionBox_Interface-linux/bin/scripts/close_chrome.sh
 
 exit

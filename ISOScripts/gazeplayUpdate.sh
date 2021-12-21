@@ -27,7 +27,7 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-cd /etc/skel/interaactionBox_Interface-linux/bin || exit
+cd /etc/skel/InterAACtionBox_Interface-linux/bin || exit
 
 echo "../../${NEW_VERSION_NAME}" > configuration.conf
 
