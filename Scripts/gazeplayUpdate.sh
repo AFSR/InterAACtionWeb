@@ -27,6 +27,6 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-cd ~/interaactionBox_Interface-linux/bin || exit
+cd ~/InterAACtionBox_Interface-linux/bin || exit
 
 echo "../../${NEW_VERSION_NAME}" > configuration.conf

@@ -37,5 +37,5 @@ if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
   fi
 fi
 
-cd ~/interaactionBox_Interface-linux/bin || exit
+cd ~/InterAACtionBox_Interface-linux/bin || exit
 sh ./interaactionBoxOS-linux.sh
