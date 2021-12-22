@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/InterAACtionBox.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final_script.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/Final_script.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Final_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Final_script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/apps.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/augcom.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/box.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/gazeplay.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/info.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/player.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/scene.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/fr/welcome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +22,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ISOScripts" />
   </component>
   <component name="RecentsManager">
@@ -69,6 +46,7 @@
       <workItem from="1639990352946" duration="4824000" />
       <workItem from="1640004859079" duration="6420000" />
       <workItem from="1640075559778" duration="721000" />
+      <workItem from="1640163851789" duration="5348000" />
     </task>
     <servers />
   </component>
@@ -85,5 +63,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
