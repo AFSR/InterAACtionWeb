@@ -34,7 +34,6 @@ rm -rf "${line}";
 rm -rf " ${line}";
 done
 
-
 mv "${NEW_VERSION_NAME_TEMP}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}"

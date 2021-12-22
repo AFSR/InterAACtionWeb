@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/Final_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/Final_script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/augcomUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Final_script.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/updateAll.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/updateAll.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +38,9 @@
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\en" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\fr" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -46,7 +57,8 @@
       <workItem from="1639990352946" duration="4824000" />
       <workItem from="1640004859079" duration="6420000" />
       <workItem from="1640075559778" duration="721000" />
-      <workItem from="1640163851789" duration="5348000" />
+      <workItem from="1640163851789" duration="6024000" />
+      <workItem from="1640177495892" duration="4771000" />
     </task>
     <servers />
   </component>

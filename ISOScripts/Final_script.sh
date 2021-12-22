@@ -2,17 +2,11 @@
 # /********************************************************************************************************/
 # /* Part1 : Internet Connection and deb Libs installation */
 
-# /**
-# ** Copy the libs folder to cubic
-# **/
-
-
-# /* IF INTERNET DOESNT WORK
 rm -r /etc/resolv.conf
 touch /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
-cd Libs/
+cd ~/Libs/
 
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
@@ -25,7 +19,10 @@ apt-get -y install ./*.deb
 apt-get -y install google-chrome-stable
 
 # /********************************************************************************************************/
-# /* Part2 : Set-Up GazePlay, InteraactionScene and Tobii */
+# /* Part2 : Set-Up InteraactionInterface, GazePlay, InteraactionGaze, InteraactionScene, InteraactionPlayer, AugCom and Tobii */
+
+cd ~/ISOScripts/
+sh ./interAACtionBoxInterfaceInstall.sh
 
 cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
 cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
@@ -36,13 +33,13 @@ cd ./scripts/
 dos2unix ./*
 
 cd ~/ISOScripts/
-sh ./gazeplayUpdate.sh
-sh ./interAACtionGazeUpdate.sh 
+sh ./gazeplayInstall.sh
+sh ./interAACtionGazeInstall.sh
 
 mkdir /etc/skel/dist
-sh ./interAACtionSceneUpdate.sh
-sh ./interAACtionPlayerUpdate.sh
-sh ./augcomUpdate.sh
+sh ./interAACtionSceneInstall.sh
+sh ./interAACtionPlayerInstall.sh
+sh ./augcomInstall.sh
 
 # /********************************************************************************************************/
 # /* Part3 : Create Desktop Shortcut */
@@ -78,7 +75,7 @@ mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
 
 # /********************************************************************************************************/
-# /* Part4 : Choose the default wallpaper and modify slides*/
+# /* Part4 : Choose the default wallpaper and modify installation slides */
 
 cd /usr/share/backgrounds/
 cp ~/Ressources/wallpaper_interaactionBox.png /usr/share/backgrounds/
@@ -101,7 +98,7 @@ cp ~/slides/screenshots/* /usr/share/ubiquity-slideshow/slides/screenshots/
 
 cd ../l10n/fr/
 rm *
-cp ~/slides/fr/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
+cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
 # /********************************************************************************************************/
 # /* Part6 : locale */
@@ -111,12 +108,12 @@ cd /usr/share/localechooser/
 echo "fr;0;FR;fr_FR.UTF-8;;console-setup
 en;1;US;en_US.UTF-8;;console-setup" > languagelist
 
-echo "en
-fr" > shortlists
+echo "fr
+en" > shortlists
 
 gunzip languagelist.data.gz 
-echo "1:en:English:English
-0:fr:French:Français" > languagelist.data 
+echo "0:fr:French:Français
+1:en:English:English" > languagelist.data
 gzip languagelist.data
 
 
@@ -138,6 +135,7 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 
 # /********************************************************************************/
 # /* ICONS
+
 cd /usr/share/icons/
 mkdir interaaction
 cp ~/Ressources/icons/* /usr/share/icons/interaaction
