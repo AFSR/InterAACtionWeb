@@ -13,16 +13,32 @@ Inspiron 14 5000 2-in-1
 - HD webcam
 - decent performances/price ratio
 
-## 1) Generate the operating system
+## 1) Prepare the ISO
 
-### Install Cubic and Download ISO
+### Download ISO
+For this project we decided to use the last Long-Term support version of Ubuntu as basis for our OS.<br>
+Download "ubuntu-20.04.3.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
-#### ISO
-For this project we decided to use the last Long-Term support version of Ubuntu as basis for our OS.
-Download "ubuntu-20.04.2.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
+### Download essential folders
+It is necessary to download the folders present in this repository.<br>
+The folders are:
+* ISOScripts
+* Libs
+* Ressources
+* Scripts
+* slides
 
+When it's done, go on : https://github.com/InteraactionGroup/InterAACtionBox_Interface/releases and download "InterAACtionBox_Interface-linux.tar.gz", then unzip the file.
 
-#### Cubic
+Now we should have 6 folders :
+* ISOScripts
+* Libs
+* Ressources
+* Scripts
+* slides
+* InterAACtionBox_Interface-linux
+
+### Install Cubic
 In order to modify the previously downloaded Ubuntu OS you need to install a software like Cubic
 
 Copy/Past the following lines in order to download and install Cubic on your computer
@@ -33,21 +49,54 @@ sudo apt update
 sudo apt install cubic
 ```
 
-### Update Ubuntu with our ressources
-After these 2 steps you then need to start Cubic and open the Ubuntu 20.04 iso with it.
-You now have to copy/paste the folders contained in this repo at the root of the opened iso file system (cd ~ before copying if needed).
-Execute the Script/Final_script.sh (for now line by line is safer as there are some non automatic requests) to install all the dependencies of the project.
+## 3) Create the ISO
 
-### 2) Materials
+Before starting, make sure you have all the necessary files on the computer and not on a key in order to have better stability when using the files.
 
-#### Libs
+### Start Cubic
+You need to start Cubic, then :
+* select a folder that will contain your future iso 
+* Give the Ubuntu 20.04 iso.
+* Change the name of the future iso for InterAACtionBox
+
+### Install all files
+After a few seconds, you enter on the iso in command line.<br>
+Now do a ``` cd ``` in the terminal.<br>
+Now copy the 6 folders in the iso with Cubic using the button at the top left<br>
+Execute the Script/Final_script.sh to install all the files needed for the iso.<br>
+After a few minutes, normally you have finished the installation, and you can click in the green button "Next" at the top right
+
+### Generate the ISO
+At this step, all you have to do is click continuously on the Next button until you reach the moment of creating the iso.<br>
+Congratulations your iso has been created in the folder chosen at the beginning !
+
+### Use the ISO
+To use the iso, that we created, you have to burn the iso on an usb key.<br>
+For this, we use BalenaEtcher -> https://www.balena.io/etcher/ <br>
+This application work on Windows and Linux.
+
+### Burn the ISO
+Before using BalenaEtcher, make sure you have started it as an administrator.<br>
+Now, select the iso you have created recently then the usb key you want to use.<br>
+Be careful !!!, the usb key you are going to use will have this data deleted because the key will be reformatted !!!<br>
+If you ever later want to use the key for something else, just reformat it to FAT-32 (basic formatting).<br>
+After several minutes, if all went well, BalenaEtcher must tell you that the burn was successful !<br>
+Congratulation, you can now use this key to install the iso.
+
+## 3) Materials
+
+### Libs
 
 Contains the .deb files needed for the execution of the main script.
 
-#### Scripts
+### ISOScripts and Script
 
 Contains the main script needed to update the ubuntu 20.04 ISO file (for now using Cubic) with our project
 
-#### Ressources
+### Ressources and slides
 
-Some usefull ressources for the creation of the ISO
+Some useful resources for customize our ISO
+
+### InterAACtionBox Interface Linux
+
+Contains th files needed for the execution of our interface for InterAACtionBox
