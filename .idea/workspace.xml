@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/Final_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/Final_script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/augcomUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Final_script.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/updateAll.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/updateAll.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/Final_script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +22,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ISOScripts" />
+    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
+    <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -58,7 +56,7 @@
       <workItem from="1640004859079" duration="6420000" />
       <workItem from="1640075559778" duration="721000" />
       <workItem from="1640163851789" duration="6024000" />
-      <workItem from="1640177495892" duration="4771000" />
+      <workItem from="1640177495892" duration="10624000" />
     </task>
     <servers />
   </component>
@@ -76,5 +74,12 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

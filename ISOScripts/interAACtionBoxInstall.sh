@@ -1,25 +1,6 @@
 
 # /********************************************************************************************************/
-# /* Part1 : Internet Connection and deb Libs installation */
-
-rm -r /etc/resolv.conf
-touch /etc/resolv.conf
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-
-cd ~/Libs/
-
-echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
-" > /etc/apt/sources.list
-apt-get update
-apt-get -y install build-essential
-apt-get -y install curl
-apt-get -y install ./*.deb
-apt-get -y install google-chrome-stable
-
-# /********************************************************************************************************/
-# /* Part2 : Set-Up InteraactionInterface, GazePlay, InteraactionGaze, InteraactionScene, InteraactionPlayer, AugCom and Tobii */
+# /* Part1 : Set-Up InteraactionInterface, GazePlay, InteraactionGaze, InteraactionScene, InteraactionPlayer, AugCom and Tobii */
 
 cd ~/ISOScripts/
 sh ./interAACtionBoxInterfaceInstall.sh
@@ -42,7 +23,7 @@ sh ./interAACtionPlayerInstall.sh
 sh ./augcomInstall.sh
 
 # /********************************************************************************************************/
-# /* Part3 : Create Desktop Shortcut */
+# /* Part2 : Create Desktop Shortcut */
 
 cd /etc/skel
 mkdir Desktop
@@ -75,7 +56,7 @@ mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
 
 # /********************************************************************************************************/
-# /* Part4 : Choose the default wallpaper and modify installation slides */
+# /* Part3 : Choose the default wallpaper and modify installation slides */
 
 cd /usr/share/backgrounds/
 cp ~/Ressources/wallpaper_interaactionBox.png /usr/share/backgrounds/
@@ -101,7 +82,7 @@ rm *
 cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
 # /********************************************************************************************************/
-# /* Part6 : locale */
+# /* Part4 : locale */
 
 cd /usr/share/localechooser/
 
@@ -124,7 +105,7 @@ cp /usr/share/localechooser/regionmap ./
 cp /usr/share/localechooser/shortlists ./
 
 # /********************************************************************************************************/
-# /* Part7 : account creation */
+# /* Part5 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 
 # cd /usr/share/polkit-1/actions/
@@ -134,7 +115,7 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 
 
 # /********************************************************************************/
-# /* ICONS
+# /* Part6 : ICONS
 
 cd /usr/share/icons/
 mkdir interaaction
