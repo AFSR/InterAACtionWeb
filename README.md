@@ -19,24 +19,8 @@ Inspiron 14 5000 2-in-1
 For this project we decided to use the last Long-Term support version of Ubuntu as basis for our OS.<br>
 Download "ubuntu-20.04.3.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
-### Download essential folders
-It is necessary to download the folders present in this repository.<br>
-The folders are:
-* ISOScripts
-* Libs
-* Ressources
-* Scripts
-* slides
-
-When it's done, go on : https://github.com/InteraactionGroup/InterAACtionBox_Interface/releases and download "InterAACtionBox_Interface-linux.tar.gz", then unzip the file.
-
-Now we should have 6 folders :
-* ISOScripts
-* Libs
-* Ressources
-* Scripts
-* slides
-* InterAACtionBox_Interface-linux
+### Download script
+You need to download the script called "install.sh" of this repository.
 
 ### Install Cubic
 In order to modify the previously downloaded Ubuntu OS you need to install a software like Cubic
@@ -61,9 +45,9 @@ You need to start Cubic, then :
 
 ### Install all files
 After a few seconds, you enter on the iso in command line.<br>
-Now do a ``` cd ``` in the terminal.<br>
-Now copy the 6 folders in the iso with Cubic using the button at the top left<br>
-Execute the Script/Final_script.sh to install all the files needed for the iso.<br>
+Now do a ``` cd ~/ ``` in the terminal.<br>
+Now copy the script "install.sh" in the iso with Cubic using the button at the top left<br>
+Execute the script to install all the files needed for the iso. ``` sh install.sh ```<br>
 After a few minutes, normally you have finished the installation, and you can click in the green button "Next" at the top right
 
 ### Generate the ISO
