@@ -53,7 +53,18 @@ After a few minutes, normally you have finished the installation, and you can cl
 
 ### Generate the ISO
 At this step, all you have to do is click continuously on the Next button until you reach the moment of creating the iso.<br>
-Congratulations your iso has been created in the folder chosen at the beginning !
+Congratulations your iso has been created in the folder chosen at the beginning ! <br>
+You can also for security test the integrity of your iso :
+* With the "Test" button in Cubic. <br>
+  This button allows you to test the iso in a virtual box made by Cubic. <br>
+  This test only checks the iso files to see if there is an error. <br>
+  If your Iso do not contain error, he will display : "no error found !".
+* Or with this command in the directory where your iso is located -> ``` md5sum --check yourIsoName.md5  ```<br>
+Example :<br>
+``` md5sum --check ubuntu-20.04.3.0-desktop-amd64.md5 ``` <br>
+And the answer : <br>
+``` ubuntu-20.04.3.0-desktop-amd64.iso: OK ``` <br>
+In this example, the iso is fine !
 
 ### Use the ISO
 To use the iso, that we created, you have to burn the iso on an usb key.<br>
