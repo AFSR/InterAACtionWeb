@@ -47,13 +47,13 @@ apt-get -y install ./*.deb
 apt-get -y install google-chrome-stable
 
 cd ~/ISOScripts/
-dos2unix *
+dos2unix ./*
 
 cd ~/Scripts/
-dos2unix *
+dos2unix ./*
 
 cd ./Launcher/
-dos2unix *
+dos2unix ./*
 
 cd ~/Ressources/
 dos2unix interaactionBoxLauncher

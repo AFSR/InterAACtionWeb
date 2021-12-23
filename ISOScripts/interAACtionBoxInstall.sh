@@ -32,6 +32,7 @@ cd Desktop/
 cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
 cd /etc/skel/
+dos2unix interaactionBoxLauncher
 chmod +x interaactionBoxLauncher
 
 mkdir .config
@@ -48,12 +49,14 @@ cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/a
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
 
 cp -R ~/Ressources/Launcher /etc/skel/
+dos2unix /etc/skel/Launcher/*
 chmod a+x /etc/skel/Launcher/*
 
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
 mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
+dos2unix /etc/skel/Update
 
 # /********************************************************************************************************/
 # /* Part3 : Choose the default wallpaper and modify installation slides */
