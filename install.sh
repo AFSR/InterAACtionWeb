@@ -52,7 +52,7 @@ dos2unix ./*
 cd ~/Scripts/
 dos2unix ./*
 
-cd ./Launcher/
+cd ~/Launcher/
 dos2unix ./*
 
 cd ~/Ressources/
