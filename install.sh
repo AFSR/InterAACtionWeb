@@ -52,6 +52,12 @@ dos2unix *
 cd ~/Scripts/
 dos2unix *
 
+cd ./Launcher/
+dos2unix *
+
+cd ~/Ressources/
+dos2unix interaactionBoxLauncher
+
 # /********************************************************************************************************/
 # /* Part4 : run main installation */
 sh ~/ISOScripts/interAACtionBoxInstall.sh
