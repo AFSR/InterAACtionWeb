@@ -56,7 +56,7 @@ chmod a+x /etc/skel/Launcher/*
 
 mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
-dos2unix /etc/skel/Update
+dos2unix /etc/skel/Update/*
 
 # /********************************************************************************************************/
 # /* Part3 : Choose the default wallpaper and modify installation slides */
