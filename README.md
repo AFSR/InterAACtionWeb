@@ -20,7 +20,8 @@ For this project we decided to use the last Long-Term support version of Ubuntu 
 Download "ubuntu-20.04.3.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
 ### Download script
-You need to download the script called "install.sh" of this repository.
+You need to download the script called "install.sh" of this repository.<br>
+we can also find it here -> https://github.com/AFSR/InterAACtionBox/releases/tag/2.0.0
 
 ### Install Cubic
 In order to modify the previously downloaded Ubuntu OS you need to install a software like Cubic
@@ -60,7 +61,7 @@ For this, we use BalenaEtcher -> https://www.balena.io/etcher/ <br>
 This application work on Windows and Linux.
 
 ### Burn the ISO
-Before using BalenaEtcher, make sure you have started it as an administrator.<br>
+Before using BalenaEtcher, make sure you have started it as an administrator. ``` sudo ./balenaEtcher ```<br>
 Now, select the iso you have created recently then the usb key you want to use.<br>
 Be careful !!!, the usb key you are going to use will have this data deleted because the key will be reformatted !!!<br>
 If you ever later want to use the key for something else, just reformat it to FAT-32 (basic formatting).<br>
