@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/slides/en/gaze.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slides/gaze.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slides/icons/gaze.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/apps.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/apps.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/augcom.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/augcom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/box.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/box.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/gazeplay.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/gazeplay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/player.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/scene.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/scene.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/welcome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +37,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ISOScripts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/slides/en" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\en" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\icons" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\fr" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -56,7 +70,9 @@
       <workItem from="1640163851789" duration="6024000" />
       <workItem from="1640177495892" duration="10910000" />
       <workItem from="1640250846286" duration="4177000" />
-      <workItem from="1640264358184" duration="1747000" />
+      <workItem from="1640264358184" duration="1869000" />
+      <workItem from="1640269646605" duration="4708000" />
+      <workItem from="1640337345476" duration="5010000" />
     </task>
     <servers />
   </component>
