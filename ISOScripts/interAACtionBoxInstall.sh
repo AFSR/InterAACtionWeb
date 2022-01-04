@@ -84,6 +84,10 @@ cd ../l10n/fr/
 rm *
 cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
+cd ../en_GB/
+rm *
+cp ~/slides/en/*.html /usr/share/ubiquity-slideshow/slides/l10n/en_GB/
+
 # /********************************************************************************************************/
 # /* Part4 : locale */
 
