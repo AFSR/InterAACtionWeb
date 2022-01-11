@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
@@ -31,8 +32,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\en" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\fr" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\icons" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
@@ -56,7 +60,14 @@
       <workItem from="1640163851789" duration="6024000" />
       <workItem from="1640177495892" duration="10910000" />
       <workItem from="1640250846286" duration="4177000" />
-      <workItem from="1640264358184" duration="1747000" />
+      <workItem from="1640264358184" duration="1869000" />
+      <workItem from="1640269646605" duration="4708000" />
+      <workItem from="1640337345476" duration="5010000" />
+      <workItem from="1641289070831" duration="1081000" />
+      <workItem from="1641308638077" duration="707000" />
+      <workItem from="1641309594575" duration="385000" />
+      <workItem from="1641545488633" duration="1909000" />
+      <workItem from="1641913283514" duration="950000" />
     </task>
     <servers />
   </component>

@@ -43,10 +43,9 @@ rm -r "${NEW_VERSION}"
 
 # /********************************************************************************************************/
 # /* Part3 : deb Libs installation  */
-cd ~/Libs/
 
+cd ~/Libs/
 apt-get -y install ./*.deb
-apt-get -y install google-chrome-stable
 
 cd ~/ISOScripts/
 dos2unix ./*
@@ -61,5 +60,17 @@ cd ~/Ressources/
 dos2unix interaactionBoxLauncher
 
 # /********************************************************************************************************/
-# /* Part4 : run main installation */
+# /* Part4 : Google Chrome CORS installation  */
+
+apt-get -y install google-chrome-stable
+
+sh ~/ISOScripts/corsInstall.sh
+
+cd /etc/skel/
+mkdir .config
+
+cp -R ~/Ressources/google-chrome /etc/skel/.config
+
+# /********************************************************************************************************/
+# /* Part5 : run main installation */
 sh ~/ISOScripts/interAACtionBoxInstall.sh
