@@ -1,10 +1,12 @@
 
 # /********************************************************************************************************/
-# /* Part1 : Internet Connection and installation of important applications */
+# /* Part1 : Internet Connection, remove unecessary applications and installation of important applications */
 
 rm -r /etc/resolv.conf
 touch /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+apt-get -y purge firefox
 
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
