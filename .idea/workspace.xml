@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/gaze.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/gaze.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,16 +26,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/slides/en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ISOScripts" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\en" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\icons" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\fr" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
@@ -63,6 +65,9 @@
       <workItem from="1640337345476" duration="5010000" />
       <workItem from="1641289070831" duration="1081000" />
       <workItem from="1641308638077" duration="707000" />
+      <workItem from="1641309594575" duration="385000" />
+      <workItem from="1641545488633" duration="1909000" />
+      <workItem from="1641913283514" duration="950000" />
     </task>
     <servers />
   </component>

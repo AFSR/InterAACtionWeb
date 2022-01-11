@@ -35,7 +35,6 @@ cd /etc/skel/
 dos2unix interaactionBoxLauncher
 chmod +x interaactionBoxLauncher
 
-mkdir .config
 cd .config
 mkdir autostart
 
@@ -93,15 +92,15 @@ cp ~/slides/en/*.html /usr/share/ubiquity-slideshow/slides/l10n/en_GB/
 
 cd /usr/share/localechooser/
 
-echo "fr;0;FR;fr_FR.UTF-8;;console-setup
-en;1;US;en_US.UTF-8;;console-setup" > languagelist
+echo "en;0;US;en_US.UTF-8;;console-setup
+fr;1;FR;fr_FR.UTF-8;;console-setup" > languagelist
 
 echo "fr
 en" > shortlists
 
 gunzip languagelist.data.gz 
-echo "0:fr:French:Français
-1:en:English:English" > languagelist.data
+echo "0:en:English:English
+1:fr:French:Français" > languagelist.data
 gzip languagelist.data
 
 
