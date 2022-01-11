@@ -4,7 +4,7 @@
 This repo contains the Materials used to build and generate a custom ISO file for the InterAACtionBox device using Cubic. 
 
 ## 0) Selected Hardware for the project
-Inspiron 14 5000 2-in-1
+Dell Inspiron 14 5000 2-in-1
 ### why ?
 - Suitable dimensions ( 14' )
 - Convertible ( pc, tablet, reversible, easel )
