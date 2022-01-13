@@ -59,6 +59,10 @@ dos2unix ./*
 cd ~/Ressources/
 dos2unix interaactionBoxLauncher
 
+cd ~/Ressources/interAACtionBox-Splash-Screen/
+dos2unix splashScreenInstall
+chmod +x splashScreenInstall
+
 # /********************************************************************************************************/
 # /* Part4 : Google Chrome CORS installation  */
 

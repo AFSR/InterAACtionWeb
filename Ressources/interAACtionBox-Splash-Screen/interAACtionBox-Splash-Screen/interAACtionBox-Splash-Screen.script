@@ -1,0 +1,96 @@
+
+Window.SetBackgroundTopColor (0, 0, 0);           
+Window.SetBackgroundBottomColor (0, 0, 0);      
+bg_image = Image ("bg.png");
+bg_image = bg_image.Scale (Window.GetWidth (),Window.GetHeight ());
+bg =  Sprite (bg_image);
+bg.SetZ (-10);
+
+yPos = 0.5;
+
+size = 2.0;
+
+logo_image = Image ("logo.png");
+logo_image = logo_image.Scale (400 ,450 );
+logo_sprite = Sprite (logo_image);
+logo_sprite.SetX (Window.GetWidth ()  / 2 - logo_image.GetWidth()  / 2);
+logo_sprite.SetY ((Window.GetHeight() * yPos) - logo_image.GetHeight() / 2);
+
+img1 = Image ("cercleExt1.png");
+img1 = img1.Scale (img1.GetWidth() * size ,img1.GetHeight() * size );
+spriteImg1 = Sprite (img1);
+spriteImg1.SetX (Window.GetWidth ()  / 2 - img1.GetWidth()  / 2);
+spriteImg1.SetY ((Window.GetHeight() * yPos) - img1.GetHeight() / 2);
+
+img2 = Image ("cercleExt2.png");
+img2 = img2.Scale (img2.GetWidth() * size ,img2.GetHeight() * size );
+spriteImg2 = Sprite (img2);
+spriteImg2.SetX (Window.GetWidth ()  / 2 - img2.GetWidth()  / 2);
+spriteImg2.SetY ((Window.GetHeight() * yPos) - img2.GetHeight() / 2);
+
+img3 = Image ("cercleExt3.png");
+img3 = img3.Scale (img3.GetWidth() * size ,img3.GetHeight() * size );
+spriteImg3 = Sprite (img3);
+spriteImg3.SetX (Window.GetWidth ()  / 2 - img3.GetWidth()  / 2);
+spriteImg3.SetY ((Window.GetHeight() * yPos) - img3.GetHeight() / 2);
+
+img4 = Image ("cercleExt4.png");
+img4 = img4.Scale (img4.GetWidth() * size ,img4.GetHeight() * size );
+spriteImg4 = Sprite (img4);
+spriteImg4.SetX (Window.GetWidth ()  / 2 - img4.GetWidth()  / 2);
+spriteImg4.SetY ((Window.GetHeight() * yPos) - img4.GetHeight() / 2);
+
+img5 = Image ("cercleExt5.png");
+img5 = img5.Scale (img5.GetWidth() * size ,img5.GetHeight() * size );
+spriteImg5 = Sprite (img5);
+spriteImg5.SetX (Window.GetWidth ()  / 2 - img5.GetWidth()  / 2);
+spriteImg5.SetY ((Window.GetHeight() * yPos) - img5.GetHeight() / 2);
+
+img6 = Image ("cercleExt6.png");
+img6 = img6.Scale (img6.GetWidth() * size ,img6.GetHeight() * size );
+spriteImg6 = Sprite (img6);
+spriteImg6.SetX (Window.GetWidth ()  / 2 - img6.GetWidth()  / 2);
+spriteImg6.SetY ((Window.GetHeight() * yPos) - img6.GetHeight() / 2);
+
+img7 = Image ("cercleExt7.png");
+img7 = img7.Scale (img7.GetWidth() * size ,img7.GetHeight() * size );
+spriteImg7 = Sprite (img7);
+spriteImg7.SetX (Window.GetWidth ()  / 2 - img7.GetWidth()  / 2);
+spriteImg7.SetY ((Window.GetHeight() * yPos) - img7.GetHeight() / 2);
+
+img8 = Image ("cercleExt8.png");
+img8 = img8.Scale (img8.GetWidth() * size ,img8.GetHeight() * size );
+spriteImg8 = Sprite (img8);
+spriteImg8.SetX (Window.GetWidth ()  / 2 - img8.GetWidth()  / 2);
+spriteImg8.SetY ((Window.GetHeight() * yPos) - img8.GetHeight() / 2);
+
+img9 = Image ("cercleExt9.png");
+img9 = img9.Scale (img9.GetWidth() * size ,img9.GetHeight() * size );
+spriteImg9 = Sprite (img9);
+spriteImg9.SetX (Window.GetWidth ()  / 2 - img9.GetWidth()  / 2);
+spriteImg9.SetY ((Window.GetHeight() * yPos) - img9.GetHeight() / 2);
+
+img10 = Image ("cercleExt10.png");
+img10 = img10.Scale (img10.GetWidth() * size ,img10.GetHeight() * size );
+spriteImg10 = Sprite (img10);
+spriteImg10.SetX (Window.GetWidth ()  / 2 - img10.GetWidth()  / 2);
+spriteImg10.SetY ((Window.GetHeight() * yPos) - img10.GetHeight() / 2);
+
+rt=1;
+
+fun rotateImg ()
+{
+    spriteImg1.SetImage(img1.Rotate(rt * 0.0065));
+    spriteImg2.SetImage(img2.Rotate(rt * 0.0060));
+    spriteImg3.SetImage(img3.Rotate(rt * 0.0055));
+    spriteImg4.SetImage(img4.Rotate(rt * 0.0050));
+    spriteImg5.SetImage(img5.Rotate(rt * 0.0045));
+    spriteImg6.SetImage(img6.Rotate(rt * 0.0040));
+    spriteImg7.SetImage(img7.Rotate(rt * 0.0035));
+    spriteImg8.SetImage(img8.Rotate(rt * 0.0030));
+    spriteImg9.SetImage(img9.Rotate(rt * 0.0025));
+    spriteImg10.SetImage(img10.Rotate(rt * 0.0020));
+    rt++;
+}
+  
+Plymouth.SetRefreshFunction (rotateImg);
