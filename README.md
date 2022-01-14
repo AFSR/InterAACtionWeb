@@ -17,11 +17,11 @@ Dell Inspiron 14 5000 2-in-1
 
 ### Download ISO
 For this project we decided to use the last Long-Term support version of Ubuntu as basis for our OS.<br>
-Download "ubuntu-20.04.3.0-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
+Download "ubuntu-20.04.3-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
 ### Download script
 You need to download the script called "install.sh" of this repository.<br>
-we can also find it here -> https://github.com/AFSR/InterAACtionBox/releases/tag/2.0.0
+You can also find it here -> https://github.com/AFSR/InterAACtionBox/releases
 
 ### Install Cubic
 In order to modify the previously downloaded Ubuntu OS you need to install a software like Cubic
