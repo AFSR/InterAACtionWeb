@@ -36,19 +36,21 @@ sudo apt install cubic
 
 ## 3) Create the ISO
 
-Before starting, make sure you have all the necessary files on the computer and not on a key in order to have better stability when using the files.
+Before starting, make sure you have :
+* All the necessary files on the computer and not on a key in order to have better stability when using the files
+* Create a folder with the name of your choice. This folder will contain the iso you are going to create 
 
 ### Start Cubic
 You need to start Cubic, then :
-* Select a folder that will contain your future iso
-* Give the Ubuntu 20.04 iso
+* Select the folder you created especially for the ISO
+* Give the Ubuntu 20.04.03 iso
 
 ### Have interAACtionBox as name for the iso
 You need to change some lines :
 * <b>Version</b> -> Put the version of your choice. <br> 
   In our case, it will be a date : "2022.01.13".
 * <b>Filename</b> -> The name of the generated iso. <br> 
-  In our case, it will be : "interAACtionBox-2022.01.13-desktop-amd64.iso"
+  In our case, it will be : "interAACtionBox-2022.01.13-LTS.iso" (2022.01.13 correspond to the actuel value of Version)
 * <b>Directory</b> -> Generated automatically, we don't need to touch it
 * <b>VolumeID</b> -> The name of the volumeID. <br> 
   In our case, it will be : "InterAACtionBox 2022.01.13 LTS" (2022.01.13 correspond to the actuel value of Version)
@@ -62,10 +64,12 @@ You need to change some lines :
 
 ### Install all files
 After a few seconds, you enter on the iso in command line.<br>
-Now do a ``` cd ~/ ``` in the terminal.<br>
-Now copy the script "install.sh" in the iso with Cubic using the button at the top left<br>
-Execute the script to install all the files needed for the iso. ``` sh install.sh ```<br>
-After a few minutes, normally you have finished the installation, and you can click on the green button "Next" at the top right
+Now do a ``` cd ~/ ``` in the terminal. (Just to make sure you're in the right place) <br>
+Now copy the script "install.sh" in the iso with Cubic using the clipboard button at the top left. <br>
+Once the script is in cubic, click on the green button "copy" at the top right. <br>
+Now execute the script "install.sh " to install all the files needed for the iso with this command : .<br>
+``` sh install.sh ``` <br>
+After a few minutes, normally you have finished the installation, and you can click on the green button "Next" at the top right.
 
 ### Set French language to default
 At this step, all you have to do is click continuously on the Next button until you reach the page who contains three tabs : "Kernel, Pressed and Boot". <br>
@@ -89,9 +93,9 @@ You can also for security test the integrity of your iso :
   If your Iso do not contain error, he will display : "no error found !".
 * Or with this command in the directory where your iso is located -> ``` md5sum --check yourIsoName.md5  ```<br>
 Example :<br>
-``` md5sum --check ubuntu-20.04.3.0-desktop-amd64.md5 ``` <br>
+``` md5sum --check ubuntu-20.04.3-desktop-amd64.md5 ``` <br>
 And the answer : <br>
-``` ubuntu-20.04.3.0-desktop-amd64.iso: OK ``` <br>
+``` ubuntu-20.04.3-desktop-amd64.iso: OK ``` <br>
 In this example, the iso is fine !
 
 ### Use the ISO
@@ -120,7 +124,3 @@ Contains the main script needed to update the ubuntu 20.04 ISO file (for now usi
 ### Ressources and slides
 
 Some useful resources for customize our ISO
-
-### InterAACtionBox Interface Linux
-
-Contains th files needed for the execution of our interface for InterAACtionBox
