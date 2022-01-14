@@ -40,16 +40,44 @@ Before starting, make sure you have all the necessary files on the computer and 
 
 ### Start Cubic
 You need to start Cubic, then :
-* select a folder that will contain your future iso 
-* Give the Ubuntu 20.04 iso.
-* Change the name of the future iso for InterAACtionBox
+* Select a folder that will contain your future iso
+* Give the Ubuntu 20.04 iso
+
+### Have interAACtionBox as name for the iso
+You need to change some lines :
+* <b>Version</b> -> Put the version of your choice. <br> 
+  In our case, it will be a date : "2022.01.13".
+* <b>Filename</b> -> The name of the generated iso. <br> 
+  In our case, it will be : "interAACtionBox-2022.01.13-desktop-amd64.iso"
+* <b>Directory</b> -> Generated automatically, we don't need to touch it
+* <b>VolumeID</b> -> The name of the volumeID. <br> 
+  In our case, it will be : "InterAACtionBox 2022.01.13 LTS" (2022.01.13 correspond to the actuel value of Version)
+* <b>Release</b> -> The release name of our iso. <br>
+  In our case, it will be : "InterAACtionBox"
+* <b>Disk name</b> -> The disk name of our iso. <br> 
+  In our case, it will be : "InterAACtionBox 2022.01.13 LTS 'InterAACtionBox' "
+* <b>Release Url</b> -> The url of our release. <br>
+  Leave as it is
+* <b>OS Release</b> -> Leave the button checked.
 
 ### Install all files
 After a few seconds, you enter on the iso in command line.<br>
 Now do a ``` cd ~/ ``` in the terminal.<br>
 Now copy the script "install.sh" in the iso with Cubic using the button at the top left<br>
 Execute the script to install all the files needed for the iso. ``` sh install.sh ```<br>
-After a few minutes, normally you have finished the installation, and you can click in the green button "Next" at the top right
+After a few minutes, normally you have finished the installation, and you can click on the green button "Next" at the top right
+
+### Set French language to default
+At this step, all you have to do is click continuously on the Next button until you reach the page who contains three tabs : "Kernel, Pressed and Boot". <br>
+Click on the Pressed tab, then click on the file called "ubuntu.seed". <br>
+Now copy and paste the code written below at the end of the file. <br>
+```
+#Set language, country and locale.
+d-i debian-installer/language string fr
+d-i debian-installer/country string FR
+d-i debian-installer/local string fr_FR.UTF-8
+```
+After that, you can click on the green button "Next" at the top right to continue to generate the iso.
 
 ### Generate the ISO
 At this step, all you have to do is click continuously on the Next button until you reach the moment of creating the iso.<br>

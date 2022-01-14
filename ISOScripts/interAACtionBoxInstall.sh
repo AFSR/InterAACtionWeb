@@ -95,8 +95,8 @@ cd /usr/share/localechooser/
 echo "en;0;US;en_US.UTF-8;;console-setup
 fr;1;FR;fr_FR.UTF-8;;console-setup" > languagelist
 
-echo "fr
-en" > shortlists
+echo "en
+fr" > shortlists
 
 gunzip languagelist.data.gz 
 echo "0:en:English:English
@@ -121,8 +121,17 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 
 
 # /********************************************************************************/
-# /* Part6 : ICONS
+# /* Part6 : Icons
 
 cd /usr/share/icons/
 mkdir interaaction
 cp ~/Ressources/icons/* /usr/share/icons/interaaction
+
+# /********************************************************************************/
+# /* Part7 : Splash Screen
+
+cd ~/Ressources/interAACtionBox-Splash-Screen
+./splashScreenInstall
+
+rm /etc/default/grub
+cp grub /etc/default/
