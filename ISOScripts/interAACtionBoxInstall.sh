@@ -26,8 +26,12 @@ sh ./augcomInstall.sh
 # /* Part2 : Create Desktop Shortcut */
 
 cd /etc/skel
+
 mkdir Desktop
-cd Desktop/
+cd Desktop
+cp ~/Ressources/interaactionBoxLauncher /etc/skel/
+dos2unix interaactionBoxLauncher
+chmod +x interaactionBoxLauncher
 
 cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
@@ -83,10 +87,6 @@ cd ../l10n/fr/
 rm *
 cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
-cd ../en_GB/
-rm *
-cp ~/slides/en/*.html /usr/share/ubiquity-slideshow/slides/l10n/en_GB/
-
 # /********************************************************************************************************/
 # /* Part4 : locale */
 
@@ -133,5 +133,22 @@ cp ~/Ressources/icons/* /usr/share/icons/interaaction
 cd ~/Ressources/interAACtionBox-Splash-Screen
 ./splashScreenInstall
 
-rm /etc/default/grub
-cp grub /etc/default/
+# /********************************************************************************/
+# /* Part8 : Remove pop up
+
+# Software problem detected
+
+rm /var/crash/*
+sed -i 's/enabled=1/enabled=0/' /etc/default/apport
+systemctl disable apport.service
+systemctl mask apport.service
+
+# Update software
+
+sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic/
+
+# /********************************************************************************/
+# /* Part9 : Remove unecessary file
+
+cd ~
+rm -R *
