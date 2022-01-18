@@ -52,13 +52,11 @@ echo "# Préparation de InterAACtionPlayer" ;
 	fi
 sleep 0.5
 echo "100" ;
-echo "# Lancement de l'interAACtionBox" ;
-	cd ~/InterAACtionBox_Interface-linux/bin || exit
-	sh ./interaactionBoxOS-linux.sh
+echo "# Lancement de l'InterAACtionBox" ;
 ) |
 zenity --progress \
   --title="InterAACtionBox" \
-  --text="Démarrage de l'interAACtionBox" \
+  --text="Démarrage de l'InterAACtionBox" \
   --percentage=0 \
   --width=300 \
   --height=100 \
@@ -68,3 +66,6 @@ if [ "$?" = -1 ] ; then
         zenity --error \
           --text="Erreur ! Démarrage de l'interAACtionBox impossible !"
 fi
+
+cd ~/InterAACtionBox_Interface-linux/bin || exit
+sh ./interaactionBoxOS-linux.sh
