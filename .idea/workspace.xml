@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/grub" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,8 @@
       <workItem from="1641913283514" duration="950000" />
       <workItem from="1642081018888" duration="5646000" />
       <workItem from="1642167234145" duration="462000" />
-      <workItem from="1642424019154" duration="3112000" />
+      <workItem from="1642424019154" duration="3918000" />
+      <workItem from="1642510042756" duration="291000" />
     </task>
     <servers />
   </component>
