@@ -145,6 +145,7 @@ systemctl mask apport.service
 
 # Update software
 
+gconftool -s -t bool /apps/update-notifier/auto_launch false
 sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic/
 
 # /********************************************************************************/
