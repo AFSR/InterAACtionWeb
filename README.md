@@ -72,7 +72,7 @@ After a few minutes, normally you have finished the installation, and you can cl
 
 ### Set French language to default
 At this step, all you have to do is click continuously on the Next button until you reach the page who contains three tabs : "Kernel, Pressed and Boot". <br>
-Click on the Pressed tab, then click on the file called "ubuntu.seed". <br>
+Click on the Presseed tab, then click on the file called "ubuntu.seed". <br>
 Now copy and paste the code written below at the end of the file. <br>
 ```
 #Set language, country and locale.
