@@ -4,14 +4,7 @@
 This repo contains the Materials used to build and generate a custom ISO file for the InterAACtionBox device using Cubic. 
 
 ## 0) Selected Hardware for the project
-Dell Inspiron 14 5000 2-in-1
-### why ?
-- Suitable dimensions ( 14' )
-- Convertible ( pc, tablet, reversible, easel )
-- multi-touch
-- eye-tracker compatible
-- HD webcam
-- decent performances/price ratio
+Microsoft Surface Pro (tested on Pro 6)
 
 ## 1) Prepare the ISO
 
@@ -20,7 +13,7 @@ For this project we decided to use the last Long-Term support version of Ubuntu 
 Download "ubuntu-20.04.3-desktop-amd64.iso" on https://releases.ubuntu.com/20.04/
 
 ### Download script
-You need to download the script called ``` install.sh ``` of this repository.<br>
+You need to download the script called ``` install_surface.sh ``` of this repository.<br>
 You can also find it here -> https://github.com/AFSR/InterAACtionBox/releases
 
 ### Install Cubic
@@ -65,9 +58,9 @@ You need to change some lines :
 ### Install all files
 After a few seconds, you enter on the iso in command line.<br>
 Now do a ``` cd ~/ ``` in the terminal. (Just to make sure you're in the right place) <br>
-Now copy the script ``` install.sh ``` in the iso with Cubic using the clipboard button at the top left. <br>
+Now copy the script ``` install_surface.sh ``` in the iso with Cubic using the clipboard button at the top left. <br>
 Once the script is in cubic, click on the green button "copy" at the top right. <br>
-Now execute the script ``` install.sh ``` to install all the files needed for the iso with this command : ``` sh install.sh ``` <br>
+Now execute the script ``` install_surface.sh ``` to install all the files needed for the iso with this command : ``` sh install.sh ``` <br>
 After a few minutes, normally you have finished the installation, and you can click on the green button "Next" at the top right.
 
 ### Set French language to default

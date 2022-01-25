@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Libs/teamviewer_15.25.5_amd64.deb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Libs/iptsd_0.5-1_amd64.deb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Libs/libwacom-surface_1.2-2_amd64.deb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Libs/linux-headers-5.15.14-surface_5.15.14-surface-1_amd64.deb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Libs/linux-image-5.15.14-surface_5.15.14-surface-1_amd64.deb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_surface.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +18,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="touchScreenSurfaceMicrosoft" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,6 +82,8 @@
       <workItem from="1642424019154" duration="3918000" />
       <workItem from="1642510042756" duration="494000" />
       <workItem from="1642512941293" duration="2247000" />
+      <workItem from="1642761919554" duration="646000" />
+      <workItem from="1643124964433" duration="785000" />
     </task>
     <servers />
   </component>
