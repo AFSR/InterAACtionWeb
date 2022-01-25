@@ -71,8 +71,8 @@ Now execute the script ``` install.sh ``` to install all the files needed for th
 After a few minutes, normally you have finished the installation, and you can click on the green button "Next" at the top right.
 
 ### Set French language to default
-At this step, all you have to do is click continuously on the Next button until you reach the page who contains three tabs : "Kernel, Pressed and Boot". <br>
-Click on the Presseed tab, then click on the file called "ubuntu.seed". <br>
+At this step, all you have to do is click continuously on the Next button until you reach the page who contains three tabs : "Kernel, Preseed and Boot". <br>
+Click on the Preseed tab, then click on the file called "ubuntu.seed". <br>
 Now copy and paste the code written below at the end of the file. <br>
 ```
 #Set language, country and locale.
