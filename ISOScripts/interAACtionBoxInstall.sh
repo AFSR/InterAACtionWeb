@@ -9,7 +9,7 @@ cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
 cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
 chmod +x java
 cd /etc/skel/InterAACtionBox_Interface-linux/bin/
-dos2unix interaactionBoxOS-linux.sh
+dos2unix ./*
 cd ./scripts/
 dos2unix ./*
 
