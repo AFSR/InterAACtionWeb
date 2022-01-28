@@ -16,8 +16,6 @@ install_chrome_extension () {
 
 	echo "}" >> "$pref_file_path"
 
-	echo Added \""$pref_file_path"\" ["$2"]
-
 }
 
 install_chrome_extension "lfhmikememgdcahcdlaciloancbhjino" "CORS"

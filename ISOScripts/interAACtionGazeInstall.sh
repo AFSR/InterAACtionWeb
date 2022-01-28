@@ -12,17 +12,13 @@ NEW_VERSION_NAME_TEMP="InterAACtionGazeTEMP"
 
 cd /etc/skel || exit
 
-echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
+echo "Download of ${NEW_VERSION_NAME}"
 
 wget $NEW_VERSION_LINK
 
-echo "extraction de l'archive ${NEW_VERSION}"
-
-tar -zxvf "${NEW_VERSION}"
+tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionGaze.log
 
 mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME_TEMP}"
-
-echo "supression de l'ancienne version"
 
 ls | grep "InterAACtionGaze*" | egrep -v "^(${NEW_VERSION_NAME_TEMP}$)" | while read -r line; do
 rm -rf "${line}";
@@ -37,7 +33,8 @@ done
 mv "${NEW_VERSION_NAME_TEMP}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}"
-dos2unix bin/interAACtionGaze-linux.sh
-dos2unix bin/interAACtionGaze-linux-calibration.sh
+dos2unix bin/interAACtionGaze-linux.sh >>/etc/skel/log/dos2unix.log
+dos2unix bin/interAACtionGaze-linux-calibration.sh >>/etc/skel/log/dos2unix.log
 chmod +x lib/jre/bin/java
 
+echo -e "\E[32m Download of InterAACtionGaze ... Done \E[0m"

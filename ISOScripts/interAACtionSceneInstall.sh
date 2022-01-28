@@ -10,20 +10,17 @@ NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionScene*"
 
 cd /etc/skel/dist || exit
 
-echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
+echo "Download of ${NEW_VERSION_NAME}"
 
 wget $NEW_VERSION_LINK
 
-echo "extraction de l'archive ${NEW_VERSION}"
-
-tar -zxvf "${NEW_VERSION}"
+tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionScene.log
 
 mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
-
-echo "supression de l'ancienne version"
 
 ls | grep -i "InterAACtionScene.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
 rm -rf "${line}"; 
 rm -rf " ${line}"; 
 done
 
+echo -e "\E[32m Download of InterAACtionScene ... Done \E[0m"

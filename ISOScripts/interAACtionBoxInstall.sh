@@ -9,9 +9,9 @@ cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
 cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
 chmod +x java
 cd /etc/skel/InterAACtionBox_Interface-linux/bin/
-dos2unix ./*
+dos2unix ./* >>/etc/skel/log/dos2unix.log
 cd ./scripts/
-dos2unix ./*
+dos2unix ./* >>/etc/skel/log/dos2unix.log
 
 cd ~/ISOScripts/
 sh ./gazeplayInstall.sh
@@ -29,15 +29,19 @@ cd /etc/skel
 
 mkdir Desktop
 cd Desktop
-cp ~/Ressources/interaactionBoxLauncher /etc/skel/
-dos2unix interaactionBoxLauncher
+cp ~/Ressources/interaactionBoxLauncher /etc/skel/Desktop
+dos2unix interaactionBoxLauncher >>/etc/skel/log/dos2unix.log
 chmod +x interaactionBoxLauncher
+echo -e "\E[32m Shortcut creation ... Done \E[0m"
+
 
 cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
 cd /etc/skel/
-dos2unix interaactionBoxLauncher
+dos2unix interaactionBoxLauncher >>/etc/skel/log/dos2unix.log
 chmod +x interaactionBoxLauncher
+
+echo -e "\E[32m Email settings ... Done \E[0m"
 
 cd .config
 mkdir autostart
@@ -51,15 +55,21 @@ chmod a+x /etc/skel/.local/share/applications
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
 
+echo -e "\E[32m Install autostart files ... Done \E[0m"
+
 cp -R ~/Ressources/Launcher /etc/skel/
-dos2unix /etc/skel/Launcher/*
+dos2unix /etc/skel/Launcher/* >>/etc/skel/log/dos2unix.log
 chmod a+x /etc/skel/Launcher/*
+
+echo -e "\E[32m Install launcher files for applications ... Done \E[0m"
 
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
 mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
-dos2unix /etc/skel/Update/*
+dos2unix /etc/skel/Update/* >>/etc/skel/log/dos2unix.log
+
+echo -e "\E[32m Install update files for applications ... Done \E[0m"
 
 # /********************************************************************************************************/
 # /* Part3 : Choose the default wallpaper and modify installation slides */
@@ -87,6 +97,8 @@ cd ../l10n/fr/
 rm *
 cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
+echo -e "\E[32m Install background & Slides ... Done \E[0m"
+
 # /********************************************************************************************************/
 # /* Part4 : locale */
 
@@ -110,6 +122,8 @@ cp /usr/share/localechooser/languagelist.data.gz ./
 cp /usr/share/localechooser/regionmap ./           
 cp /usr/share/localechooser/shortlists ./
 
+echo -e "\E[32m Local settings ... Done \E[0m"
+
 # /********************************************************************************************************/
 # /* Part5 : account creation */
 echo "yes" > /etc/skel/.config/gnome-initial-setup-done
@@ -119,6 +133,7 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # System policy prevents modification of network settings for all users
 # and change to <allow_active>yes</allow_active>
 
+echo -e "\E[32m Gnome setup ... Done \E[0m"
 
 # /********************************************************************************/
 # /* Part6 : Icons
@@ -126,12 +141,15 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 cd /usr/share/icons/
 mkdir interaaction
 cp ~/Ressources/icons/* /usr/share/icons/interaaction
+echo -e "\E[32m Install icons ... Done \E[0m"
 
 # /********************************************************************************/
 # /* Part7 : Splash Screen
 
 cd ~/Ressources/interAACtionBox-Splash-Screen
 ./splashScreenInstall
+
+echo -e "\E[32m Install of InterAACtionBox splash screen ... Done \E[0m"
 
 # /********************************************************************************/
 # /* Part8 : Remove pop up
@@ -140,16 +158,17 @@ cd ~/Ressources/interAACtionBox-Splash-Screen
 
 rm /var/crash/*
 sed -i 's/enabled=1/enabled=0/' /etc/default/apport
-systemctl disable apport.service
-systemctl mask apport.service
 
 # Update software
 
-gconftool -s -t bool /apps/update-notifier/auto_launch false
 sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic/
+
+echo -e "\E[32m Pop-up settings ... Done \E[0m"
 
 # /********************************************************************************/
 # /* Part9 : Remove unecessary file
 
 cd ~
 rm -R *
+
+echo -e "\E[32m Remove unecessary files ... Done \E[0m"
