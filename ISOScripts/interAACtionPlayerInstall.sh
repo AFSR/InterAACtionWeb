@@ -26,4 +26,4 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-echo -e "${vert}Download of InterAACtionPlayer ... Done${neutre}"
+echo "${vert}Download of InterAACtionPlayer ... Done${neutre}"

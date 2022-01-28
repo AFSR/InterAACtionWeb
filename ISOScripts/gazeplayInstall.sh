@@ -33,6 +33,6 @@ echo "../../${NEW_VERSION_NAME}" > configuration.conf
 cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
 chmod +x java
 cd ../../../bin
-dos2unix gazeplay-linux.sh >>/etc/skel/log/dos2unix.log
+dos2unix gazeplay-linux.sh 2>>/etc/skel/log/dos2unix.log
 
-echo -e "${vert}Download of GazePLay ... Done${neutre}"
+echo "${vert}Download of GazePLay ... Done${neutre}"

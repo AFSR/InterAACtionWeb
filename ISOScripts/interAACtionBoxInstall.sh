@@ -15,9 +15,9 @@ cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
 cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
 chmod +x java
 cd /etc/skel/InterAACtionBox_Interface-linux/bin/
-dos2unix ./* >>/etc/skel/log/dos2unix.log
+dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 cd ./scripts/
-dos2unix ./* >>/etc/skel/log/dos2unix.log
+dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
 cd ~/ISOScripts/
 sh ./gazeplayInstall.sh
@@ -36,18 +36,18 @@ cd /etc/skel
 mkdir Desktop
 cd Desktop
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/Desktop
-dos2unix interaactionBoxLauncher >>/etc/skel/log/dos2unix.log
+dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
 chmod +x interaactionBoxLauncher
-echo -e "${vert}Shortcut creation ... Done${neutre}"
+echo "${vert}Shortcut creation ... Done${neutre}"
 
 
 cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
 cd /etc/skel/
-dos2unix interaactionBoxLauncher >>/etc/skel/log/dos2unix.log
+dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
 chmod +x interaactionBoxLauncher
 
-echo -e "${vert}Email settings ... Done${neutre}"
+echo "${vert}Email settings ... Done${neutre}"
 
 cd .config
 mkdir autostart
@@ -61,21 +61,21 @@ chmod a+x /etc/skel/.local/share/applications
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
 
-echo -e "${vert}Install autostart files ... Done${neutre}"
+echo "${vert}Install autostart files ... Done${neutre}"
 
 cp -R ~/Ressources/Launcher /etc/skel/
-dos2unix /etc/skel/Launcher/* >>/etc/skel/log/dos2unix.log
+dos2unix /etc/skel/Launcher/* 2>>/etc/skel/log/dos2unix.log
 chmod a+x /etc/skel/Launcher/*
 
-echo -e "${vert}Install launcher files for applications ... Done${neutre}"
+echo "${vert}Install launcher files for applications ... Done${neutre}"
 
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
 
 mkdir /etc/skel/Update
 cp -R ~/Scripts/* /etc/skel/Update
-dos2unix /etc/skel/Update/* >>/etc/skel/log/dos2unix.log
+dos2unix /etc/skel/Update/* 2>>/etc/skel/log/dos2unix.log
 
-echo -e "${vert}Install update files for applications ... Done${neutre}"
+echo "${vert}Install update files for applications ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part3 : Choose the default wallpaper and modify installation slides */
@@ -103,7 +103,7 @@ cd ../l10n/fr/
 rm *
 cp ~/slides/*.html /usr/share/ubiquity-slideshow/slides/l10n/fr/
 
-echo -e "${vert}Install background & Slides ... Done${neutre}"
+echo "${vert}Install background & Slides ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part4 : locale */
@@ -128,7 +128,7 @@ cp /usr/share/localechooser/languagelist.data.gz ./
 cp /usr/share/localechooser/regionmap ./           
 cp /usr/share/localechooser/shortlists ./
 
-echo -e "${vert}Local settings ... Done${neutre}"
+echo "${vert}Local settings ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part5 : account creation */
@@ -139,7 +139,7 @@ echo "yes" > /etc/skel/.config/gnome-initial-setup-done
 # System policy prevents modification of network settings for all users
 # and change to <allow_active>yes</allow_active>
 
-echo -e "${vert}Gnome setup ... Done${neutre}"
+echo "${vert}Gnome setup ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part6 : Icons
@@ -147,7 +147,7 @@ echo -e "${vert}Gnome setup ... Done${neutre}"
 cd /usr/share/icons/
 mkdir interaaction
 cp ~/Ressources/icons/* /usr/share/icons/interaaction
-echo -e "${vert}Install icons ... Done${neutre}"
+echo "${vert}Install icons ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part7 : Splash Screen
@@ -155,7 +155,7 @@ echo -e "${vert}Install icons ... Done${neutre}"
 cd ~/Ressources/interAACtionBox-Splash-Screen
 ./splashScreenInstall
 
-echo -e "${vert}Install of InterAACtionBox splash screen ... Done${neutre}"
+echo "${vert}Install of InterAACtionBox splash screen ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part8 : Remove pop up
@@ -167,9 +167,9 @@ sed -i 's/enabled=1/enabled=0/' /etc/default/apport
 
 # Update software
 
-sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic/
+sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic
 
-echo -e "${vert}Pop-up settings ... Done${neutre}"
+echo "${vert}Pop-up settings ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part9 : Remove unecessary file
@@ -177,4 +177,4 @@ echo -e "${vert}Pop-up settings ... Done${neutre}"
 cd ~
 rm -R *
 
-echo -e "${vert}Remove unecessary files ... Done${neutre}"
+echo "${vert}Remove unecessary files ... Done${neutre}"

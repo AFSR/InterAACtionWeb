@@ -26,4 +26,4 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-echo -e "${vert}Download of AugCom ... Done${neutre}"
+echo"${vert}Download of AugCom ... Done${neutre}"

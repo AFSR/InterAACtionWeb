@@ -19,4 +19,4 @@ tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBoxInterface.log
 
 rm -r "${NEW_VERSION}"
 
-echo -e "${vert}Download of InterAACtionBox_Interface ... Done${neutre}"
+echo "${vert}Download of InterAACtionBox_Interface ... Done${neutre}"

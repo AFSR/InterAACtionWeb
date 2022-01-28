@@ -13,10 +13,10 @@ mkdir /etc/skel/log
 rm -r /etc/resolv.conf
 touch /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo -e "${vert}Internet configuration ... Done${neutre}"
+echo "${vert}Internet configuration ... Done${neutre}"
 
 apt-get -y purge firefox 2>>errorAptGet.log 1>>/etc/skel/log/purgeApp.log
-echo -e "${vert}Delete unecessary file ... Done${neutre}"
+echo "${vert}Delete unecessary file ... Done${neutre}"
 
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
@@ -24,9 +24,9 @@ deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
 " > /etc/apt/sources.list
 
 apt-get update 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install build-essential 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install builssential 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install curl 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
-echo -e "${vert}Install necessary file ... Done${neutre}"
+echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part2 : Download main installation files */
@@ -49,7 +49,7 @@ tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBox.log
 
 rm -r "${NEW_VERSION}"
 
-echo -e "${vert}Download files of InterAACtionBox ... Done${neutre}"
+echo "${vert}Download files of InterAACtionBox ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part3 : deb Libs installation  */
@@ -58,22 +58,22 @@ cd ~/Libs/
 apt-get -y install ./*.deb 2>>errorAptGet.log 1>>/etc/skel/log/installDeb.log
 
 cd ~/ISOScripts/
-dos2unix ./* >>/etc/skel/log/dos2unix.log
+dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
 cd ~/Scripts/
-dos2unix ./* >>/etc/skel/log/dos2unix.log
-
-cd ~/Launcher/
-dos2unix ./* >>/etc/skel/log/dos2unix.log
+dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
 cd ~/Ressources/
-dos2unix interaactionBoxLauncher >>/etc/skel/log/dos2unix.log
+dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
+
+cd ~/Ressources/Launcher/
+dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
 cd ~/Ressources/interAACtionBox-Splash-Screen/
-dos2unix splashScreenInstall >>/etc/skel/log/dos2unix.log
+dos2unix splashScreenInstall 2>>/etc/skel/log/dos2unix.log
 chmod +x splashScreenInstall
 
-echo -e "${vert}Install necessary file ... Done${neutre}"
+echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part4 : Google Chrome CORS installation  */
@@ -87,10 +87,10 @@ mkdir .config
 
 cp -R ~/Ressources/google-chrome /etc/skel/.config
 
-echo -e "${vert}Install & Configure Google Chrome ... Done${neutre}"
+echo "${vert}Install & Configure Google Chrome ... Done${neutre}"
 
 # /********************************************************************************************************/
 # /* Part5 : run main installation */
 sh ~/ISOScripts/interAACtionBoxInstall.sh
 
-echo -e "${vert}Install of InterAACtionBox sucessful !${neutre}"
+echo "${vert}Install of InterAACtionBox sucessful !${neutre}"
