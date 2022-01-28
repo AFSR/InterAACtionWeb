@@ -1,3 +1,6 @@
+neutre='\e[0;m'
+vert='\e[0;32m'
+
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InteraactionScene-AFSR/releases/latest)
 
 NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionScene*" | cut -d: -f2,3 | tr -d \")
@@ -23,4 +26,4 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-echo -e "\E[32m Download of InterAACtionScene ... Done \E[0m"
+echo -e "${vert}Download of InterAACtionScene ... Done${neutre}"

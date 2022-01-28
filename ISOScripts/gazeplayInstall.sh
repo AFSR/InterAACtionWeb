@@ -1,3 +1,6 @@
+neutre='\e[0;m'
+vert='\e[0;32m'
+
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/GazePlay-AFSR/releases/latest)
 
 NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*gazeplay-linux*" | cut -d: -f2,3 | tr -d \")
@@ -32,4 +35,4 @@ chmod +x java
 cd ../../../bin
 dos2unix gazeplay-linux.sh >>/etc/skel/log/dos2unix.log
 
-echo -e "\E[32m Download of GazePLay ... Done \E[0m"
+echo -e "${vert}Download of GazePLay ... Done${neutre}"

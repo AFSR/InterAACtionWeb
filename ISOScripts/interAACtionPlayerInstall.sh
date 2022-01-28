@@ -1,3 +1,6 @@
+neutre='\e[0;m'
+vert='\e[0;32m'
+
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InteraactionPlayer-AFSR/releases/latest)
 
 NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionPlayer*" | cut -d: -f2,3 | tr -d \")
@@ -18,10 +21,9 @@ tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionPlayer.log
 
 mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
-
 ls | grep -i "InterAACtionPlayer.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
 rm -rf "${line}"; 
 rm -rf " ${line}"; 
 done
 
-echo -e "\E[32m Download of InterAACtionPlayer ... Done \E[0m"
+echo -e "${vert}Download of InterAACtionPlayer ... Done${neutre}"
