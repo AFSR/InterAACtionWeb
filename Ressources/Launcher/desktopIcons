@@ -3,5 +3,7 @@
 gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
 
-rm ~/.config/autostart/hideDesktopIcons.desktop
-rm ~/Launcher/hideDesktopIcons
+cp -r ~/Launcher/interaactionBoxLauncher ~/Desktop
+
+rm ~/.config/autostart/0-desktopIcons.desktop
+rm ~/Launcher/desktopIcons

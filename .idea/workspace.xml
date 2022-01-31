@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/hideDesktopIcons.desktop" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/hideDesktopIcons" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/hideDesktopIcons.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/0-desktopIcons.desktop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/hideDesktopIcons" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +83,7 @@
       <workItem from="1643641330536" duration="3123000" />
       <workItem from="1643644574650" duration="583000" />
       <workItem from="1643645194329" duration="300000" />
+      <workItem from="1643645571280" duration="687000" />
     </task>
     <servers />
   </component>
