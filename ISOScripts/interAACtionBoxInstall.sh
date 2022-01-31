@@ -60,6 +60,8 @@ cp ~/Ressources/DesktopFiles/*.desktop  .local/share/applications
 chmod a+x /etc/skel/.local/share/applications
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
+cp ~/Ressources/DesktopFiles/hideDesktopIcons.desktop /etc/skel/.config/autostart
+chmod a+x /etc/skel/.config/autostart/hideDesktopIcons.desktop
 
 echo "${vert}Install autostart files ... Done${neutre}"
 

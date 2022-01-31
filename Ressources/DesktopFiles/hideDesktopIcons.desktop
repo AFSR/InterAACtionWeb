@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh -c "$HOME/Launcher/hideDesktopIcons"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[fr_FR]=0-hideIconsDesktop
+Name=0-hideIconsDesktop
+Comment[fr_FR]=Hide icons on desktop
+Comment=Hide icons on desktop
