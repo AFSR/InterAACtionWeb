@@ -28,16 +28,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/Launcher" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\DesktopFiles" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Libs" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\screenshots" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -82,7 +82,7 @@
       <workItem from="1643644574650" duration="583000" />
       <workItem from="1643645194329" duration="300000" />
       <workItem from="1643645571280" duration="996000" />
-      <workItem from="1643709856244" duration="2293000" />
+      <workItem from="1643709856244" duration="4948000" />
     </task>
     <servers />
   </component>
