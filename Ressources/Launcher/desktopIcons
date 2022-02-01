@@ -1,9 +1,14 @@
 #!/bin/sh
 
-gsettings set org.gnome.shell.extensions.desktop-icons show-home false
-gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
+gsettings set org.gnome.shell.extensions.desktop-icons show-home 'false'
+gsettings set org.gnome.shell.extensions.desktop-icons show-trash 'false'
 
-cp -r ~/Launcher/interaactionBoxLauncher ~/Desktop
+cp -r ~/.local/share/applications/InteraactionBoxLauncher.desktop ~/Desktop
 
-rm ~/.config/autostart/0-desktopIcons.desktop
+gio set ~/Desktop/InteraactionBoxLauncher.desktop metadata::trusted true
+chmod +x ~/Desktop/InteraactionBoxLauncher.desktop
+
+rm ~/.config/autostart/desktopIcons.desktop
 rm ~/Launcher/desktopIcons
+
+exit

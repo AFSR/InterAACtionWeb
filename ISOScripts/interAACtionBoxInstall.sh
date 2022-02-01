@@ -33,14 +33,6 @@ sh ./augcomInstall.sh
 
 cd /etc/skel
 
-mkdir Desktop
-cd Desktop
-cp ~/Ressources/interaactionBoxLauncher /etc/skel/Desktop
-dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
-chmod +x interaactionBoxLauncher
-echo "${vert}Shortcut creation ... Done${neutre}"
-
-
 cp -R ~/Ressources/.email /etc/skel/
 cp ~/Ressources/interaactionBoxLauncher /etc/skel/
 cd /etc/skel/
@@ -60,10 +52,10 @@ cp ~/Ressources/DesktopFiles/*.desktop  .local/share/applications
 chmod a+x /etc/skel/.local/share/applications
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
-cp ~/Ressources/DesktopFiles/0-desktopIcons.desktop /etc/skel/.config/autostart
-chmod a+x /etc/skel/.config/autostart/0-desktopIcons.desktop
+cp ~/Ressources/DesktopFiles/desktopIcons.desktop /etc/skel/.config/autostart
+chmod a+x /etc/skel/.config/autostart/desktopIcons.desktop
 
-echo "${vert}Install autostart files ... Done${neutre}"
+echo "${vert}Shortcut creation ... Done${neutre}"
 
 cp -R ~/Ressources/Launcher /etc/skel/
 dos2unix /etc/skel/Launcher/* 2>>/etc/skel/log/dos2unix.log
@@ -147,8 +139,8 @@ echo "${vert}Gnome setup ... Done${neutre}"
 # /* Part6 : Icons
 
 cd /usr/share/icons/
-mkdir interaaction
-cp ~/Ressources/icons/* /usr/share/icons/interaaction
+mkdir interaactionBox
+cp ~/Ressources/icons/* /usr/share/icons/interaactionBox
 echo "${vert}Install icons ... Done${neutre}"
 
 # /********************************************************************************/
