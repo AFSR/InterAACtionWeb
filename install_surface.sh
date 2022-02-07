@@ -21,11 +21,11 @@ apt-get -y install curl
 
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InterAACtionBox/releases/latest)
 
-NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionBox-main-surface*" | cut -d: -f2,3 | tr -d \")
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionBox-surface*" | cut -d: -f2,3 | tr -d \")
 
 NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
 
-NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionBox-main-surface*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
+NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionBox-surface*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
 
 cd ~/ || exit
 
