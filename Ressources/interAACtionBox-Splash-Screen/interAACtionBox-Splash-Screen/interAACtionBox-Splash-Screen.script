@@ -76,21 +76,49 @@ spriteImg10 = Sprite (img10);
 spriteImg10.SetX (Window.GetWidth ()  / 2 - img10.GetWidth()  / 2);
 spriteImg10.SetY ((Window.GetHeight() * yPos) - img10.GetHeight() / 2);
 
-rt=1;
+rotateCounts=1;
 
-fun rotateImg ()
-{
-    spriteImg1.SetImage(img1.Rotate(rt * 0.0065));
-    spriteImg2.SetImage(img2.Rotate(rt * 0.0060));
-    spriteImg3.SetImage(img3.Rotate(rt * 0.0055));
-    spriteImg4.SetImage(img4.Rotate(rt * 0.0050));
-    spriteImg5.SetImage(img5.Rotate(rt * 0.0045));
-    spriteImg6.SetImage(img6.Rotate(rt * 0.0040));
-    spriteImg7.SetImage(img7.Rotate(rt * 0.0035));
-    spriteImg8.SetImage(img8.Rotate(rt * 0.0030));
-    spriteImg9.SetImage(img9.Rotate(rt * 0.0025));
-    spriteImg10.SetImage(img10.Rotate(rt * 0.0020));
-    rt++;
+fun rotateImg (){
+	spriteImg1.SetImage(img1.Rotate(rotateCounts * 0.0065));
+    	spriteImg2.SetImage(img2.Rotate(rotateCounts * 0.0060));
+    	spriteImg3.SetImage(img3.Rotate(rotateCounts * 0.0055));
+    	spriteImg4.SetImage(img4.Rotate(rotateCounts * 0.0050));
+    	spriteImg5.SetImage(img5.Rotate(rotateCounts * 0.0045));
+    	spriteImg6.SetImage(img6.Rotate(rotateCounts * 0.0040));
+    	spriteImg7.SetImage(img7.Rotate(rotateCounts * 0.0035));
+    	spriteImg8.SetImage(img8.Rotate(rotateCounts * 0.0030));
+    	spriteImg9.SetImage(img9.Rotate(rotateCounts * 0.0025));
+    	spriteImg10.SetImage(img10.Rotate(rotateCounts * 0.0020));
+    	rotateCounts++;
 }
   
-Plymouth.SetRefreshFunction (rotateImg);
+Plymouth.SetRefreshFunction(rotateImg);
+
+if (Plymouth.GetMode() == "boot") {
+    progress_box.image = Image("progress-box.png");
+    progress_box.image = progress_box.image.Scale(progress_box.image.GetWidth(), progress_box.image.GetHeight() + 30);
+    progress_box.sprite = Sprite(progress_box.image);
+
+    progress_box.x = Window.GetX() + (Window.GetWidth() / 2) - (progress_box.image.GetWidth() / 2);
+    progress_box.y = Window.GetY() + (Window.GetHeight() * 0.85 + 15) - (progress_box.image.GetHeight() / 2);
+    progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 0);
+
+    progress_bar.original_image = Image("progress-bar.png");
+    progress_bar.sprite = Sprite();
+
+    progress_bar.x = Window.GetX() + (Window.GetWidth() / 2) - (progress_bar.original_image.GetWidth() / 2);
+    progress_bar.y = Window.GetY() + (1.7 * (Window.GetHeight() / 2)) - (progress_box.image.GetHeight() / 2) + ((progress_box.image.GetHeight() - progress_bar.original_image.GetHeight()) / 2);
+    progress_bar.sprite.SetPosition(progress_bar.x, progress_bar.y, 1);
+
+    fun progress_callback(duration, progress) {
+	if (progress_bar.image.GetWidth() != Math.Int(progress_bar.original_image.GetWidth() * progress)) {
+		progress_bar.image = progress_bar.original_image.Scale(progress_bar.original_image.GetWidth(progress_bar.original_image) * progress, progress_bar.original_image.GetHeight() + 30);
+              	progress_bar.sprite.SetImage(progress_bar.image);
+            }
+    }
+
+    Plymouth.SetBootProgressFunction(progress_callback);
+}
+
+if (Plymouth.GetMode() == "shutdown") {
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh -c "$HOME/Launcher/desktopIcons"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[fr_FR]=desktopIcons
+Name=desktopIcons
+Comment[fr_FR]=Configure les icones sur le bureau
+Comment=Configure icons on desktop
