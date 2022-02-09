@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Libs/TobiiProEyeTrackerManager-2.2.10.deb" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/TobiiProEyeTrackerManager-2.1.2.deb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,8 @@
       <workItem from="1643709856244" duration="4948000" />
       <workItem from="1643732799277" duration="276000" />
       <workItem from="1643807520206" duration="981000" />
-      <workItem from="1643815301668" duration="1519000" />
+      <workItem from="1643815301668" duration="1633000" />
+      <workItem from="1644410847991" duration="1160000" />
     </task>
     <servers />
   </component>
