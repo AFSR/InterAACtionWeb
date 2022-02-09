@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Libs/iptsd_0.5-1_amd64.deb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/libwacom-surface_1.2-2_amd64.deb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/linux-headers-5.15.14-surface_5.15.14-surface-1_amd64.deb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Libs/linux-image-5.15.14-surface_5.15.14-surface-1_amd64.deb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_surface.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher.desktop" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/install_surface.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_surface.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +92,7 @@
       <workItem from="1642512941293" duration="2247000" />
       <workItem from="1642761919554" duration="646000" />
       <workItem from="1643124964433" duration="785000" />
+      <workItem from="1644414365191" duration="1256000" />
     </task>
     <servers />
   </component>

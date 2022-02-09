@@ -1,3 +1,6 @@
+neutre='\e[0;m'
+vert='\e[0;32m'
+
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
 
 NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \")
@@ -8,14 +11,12 @@ NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionBox_Int
 
 cd ~/ || exit
 
-echo "téléchargement de la version ${NEW_VERSION_NAME} en utilisant le lien ${NEW_VERSION_LINK}"
+echo "Download of ${NEW_VERSION_NAME}"
 
 wget $NEW_VERSION_LINK
 
-echo "extraction de l'archive ${NEW_VERSION}"
-
-tar -zxvf "${NEW_VERSION}"
-
-echo "suppression de l'archive ${NEW_VERSION}"
+tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBoxInterface.log
 
 rm -r "${NEW_VERSION}"
+
+echo "${vert}Download of InterAACtionBox_Interface ... Done${neutre}"
