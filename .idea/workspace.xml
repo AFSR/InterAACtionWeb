@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libs/TobiiProEyeTrackerManager-2.2.10.deb" beforeDir="false" afterPath="$PROJECT_DIR$/Libs/TobiiProEyeTrackerManager-2.1.2.deb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +18,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="22MfRYIAckXSLEC8WzguifXPdmL" />
   <component name="ProjectViewState">
@@ -88,6 +92,7 @@
       <workItem from="1643807520206" duration="981000" />
       <workItem from="1643815301668" duration="1633000" />
       <workItem from="1644410847991" duration="1160000" />
+      <workItem from="1646048395061" duration="1098000" />
     </task>
     <servers />
   </component>
@@ -115,7 +120,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
