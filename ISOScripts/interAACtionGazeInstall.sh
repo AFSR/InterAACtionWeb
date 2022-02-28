@@ -28,7 +28,7 @@ rm -rf "${line}";
 rm -rf " ${line}";
 done
 
-ls | grep "untitled-linux*" | egrep -v "^(${NEW_VERSION_NAME_TEMP}$)" | while read -r line; do
+ls | grep "interAACtionGaze-linux*" | egrep -v "^(${NEW_VERSION_NAME_TEMP}$)" | while read -r line; do
 rm -rf "${line}";
 rm -rf " ${line}";
 done
