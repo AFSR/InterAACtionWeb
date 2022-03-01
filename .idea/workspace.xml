@@ -4,11 +4,6 @@
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +92,8 @@
       <workItem from="1643815301668" duration="1633000" />
       <workItem from="1644410847991" duration="1160000" />
       <workItem from="1646048395061" duration="3544000" />
-      <workItem from="1646142628523" duration="665000" />
+      <workItem from="1646142628523" duration="1345000" />
+      <workItem from="1646150075978" duration="636000" />
     </task>
     <servers />
   </component>
