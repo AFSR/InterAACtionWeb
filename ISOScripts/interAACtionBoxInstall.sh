@@ -49,11 +49,9 @@ mkdir .local/
 mkdir .local/share
 mkdir .local/share/applications
 cp ~/Ressources/DesktopFiles/*.desktop  .local/share/applications
-chmod a+x /etc/skel/.local/share/applications
+chmod a+x /etc/skel/.local/share/applications/*
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
-cp ~/Ressources/DesktopFiles/desktopIcons.desktop /etc/skel/.config/autostart
-chmod a+x /etc/skel/.config/autostart/desktopIcons.desktop
 
 echo "${vert}Shortcut creation ... Done${neutre}"
 
