@@ -6,48 +6,48 @@ echo "0" ;
 echo "# Préparation de Google Chrome" ;
 	gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-	fuser -k 8080/tcp
-	fuser -k 8081/tcp
-	fuser -k 8082/tcp
+	fuser -k 4200/tcp
+	fuser -k 4201/tcp
+	fuser -k 4202/tcp
 
 	if [ -d ~/.cache/google-chrome/Default ]; then
 	rm -r ~/.cache/google-chrome/Default
 	fi
-sleep 0.5	
+sleep 0.5
 echo "20" ;
 echo "20" ;
-echo "# Préparation de GazePlay" ; 
+echo "# Préparation de GazePlay" ;
 sleep 0.5
 echo "40" ;
-echo "# Préparation de AugCom" ; 
+echo "# Préparation de AugCom" ;
 	AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
 	if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
 	  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
 	  if [ -d "$AUGCOM_PATH" ]; then
 	    cd "$AUGCOM_PATH" || exit
-	    python3 -m http.server 8080 >AugCom.log &
+	    python3 -m http.server 4200 >AugCom.log &
 	  fi
 	fi
 sleep 0.5
-echo "60" ; 
-echo "# Préparation de InterAACtionScene" ; 
+echo "60" ;
+echo "# Préparation de InterAACtionScene" ;
 	INTERAACTIONSCENE_DIRECTORY=$(ls ~/dist | grep "InterAACtionScene" | head -n 1)
 	if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
 	  INTERAACTIONSCENE_PATH="$HOME/dist/${INTERAACTIONSCENE_DIRECTORY}"
 	  if [ -d "$INTERAACTIONSCENE_PATH" ]; then
 	    cd "$INTERAACTIONSCENE_PATH" || exit
-	    python3 -m http.server 8081 >InterAACtionScene.log &
+	    python3 -m http.server 4201 >InterAACtionScene.log &
 	  fi
 	fi
 sleep 0.5
 echo "80" ;
-echo "# Préparation de InterAACtionPlayer" ; 
+echo "# Préparation de InterAACtionPlayer" ;
 	INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
 	if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
 	  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
 	  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
 	    cd "$INTERAACTIONPLAYER_PATH" || exit
-	    python3 -m http.server 8082 >InterAACtionPlayer.log &
+	    python3 -m http.server 4202 >InterAACtionPlayer.log &
 	  fi
 	fi
 sleep 0.5

@@ -2,7 +2,7 @@
 
 gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-fuser -k 8082/tcp
+fuser -k 4202/tcp
 
 if [ -d ~/.cache/google-chrome/Default ]; then
 	rm -r ~/.cache/google-chrome/Default
@@ -13,11 +13,11 @@ if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
   INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
   if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
     cd "$INTERAACTIONPLAYER_PATH" || exit
-    python3 -m http.server 8082 >InterAACtionPlayer.log &
+    python3 -m http.server 4202 >InterAACtionPlayer.log &
   fi
 fi
 
-google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:8082/#/fr/connect/$USERNAME" &
+google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:4202/#/fr/connect/$USERNAME" &
 
 sh ~/InterAACtionBox_Interface-linux/bin/scripts/close_chrome.sh
 
