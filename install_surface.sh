@@ -87,7 +87,7 @@ mkdir .config
 
 cp -R ~/Ressources/google-chrome /etc/skel/.config
 
-sed -i '/^Exec=/s/$/ --password-store=basic %U' /usr/share/applications/google-chrome.desktop
+sed -i '/^Exec=/s/$/ --password-store=basic %U/' /usr/share/applications/google-chrome.desktop
 
 echo "${vert}Install & Configure Google Chrome ... Done${neutre}"
 

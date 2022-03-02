@@ -2,7 +2,7 @@
 
 gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-fuser -k 8080/tcp
+fuser -k 4200/tcp
 
 if [ -d ~/.cache/google-chrome/Default ]; then
 	rm -r ~/.cache/google-chrome/Default
@@ -13,11 +13,11 @@ if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
   AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
   if [ -d "$AUGCOM_PATH" ]; then
     cd "$AUGCOM_PATH" || exit
-    python3 -m http.server 8080 > ~/AugCom.log &
+    python3 -m http.server 4200 > ~/AugCom.log &
   fi
 fi
 
-google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:8080/#/fr/connect/$USERNAME" &
+google-chrome --kiosk --fullscreen --disabled-component-update "http://localhost:4200/#/fr/connect/$USERNAME" &
 
 sh ~/InterAACtionBox_Interface-linux/bin/scripts/close_chrome.sh
 

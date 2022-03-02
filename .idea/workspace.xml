@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher.desktop" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/install_surface.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_surface.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +25,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="22MfRYIAckXSLEC8WzguifXPdmL" />
   <component name="ProjectViewState">
@@ -93,6 +91,7 @@
       <workItem from="1642761919554" duration="646000" />
       <workItem from="1643124964433" duration="785000" />
       <workItem from="1644414365191" duration="1256000" />
+      <workItem from="1646217659147" duration="464000" />
     </task>
     <servers />
   </component>
@@ -120,7 +119,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

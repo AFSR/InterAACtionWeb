@@ -3,10 +3,10 @@
 gsettings set org.gnome.shell.extensions.desktop-icons show-home 'false'
 gsettings set org.gnome.shell.extensions.desktop-icons show-trash 'false'
 
-cp -r ~/.local/share/applications/InteraactionBoxLauncher.desktop ~/Desktop
+cp ~/.local/share/applications/InteraactionBoxLauncher.desktop ~/Desktop
 
 gio set ~/Desktop/InteraactionBoxLauncher.desktop metadata::trusted true
-chmod +x ~/Desktop/InteraactionBoxLauncher.desktop
+chmod a+x ~/Desktop/InteraactionBoxLauncher.desktop
 
 rm ~/.config/autostart/desktopIcons.desktop
 rm ~/Launcher/desktopIcons
