@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +32,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/Launcher" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Libs" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\DesktopFiles" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\screenshots" />
     </key>
@@ -95,6 +95,7 @@
       <workItem from="1646142628523" duration="1345000" />
       <workItem from="1646150075978" duration="1232000" />
       <workItem from="1646211262361" duration="743000" />
+      <workItem from="1646831703051" duration="1411000" />
     </task>
     <servers />
   </component>
