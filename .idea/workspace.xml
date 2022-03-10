@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="touchScreenSurfaceMicrosoft" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,8 +44,8 @@
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Libs" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\DesktopFiles" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\screenshots" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
@@ -80,22 +83,11 @@
       <workItem from="1642424019154" duration="3918000" />
       <workItem from="1642510042756" duration="494000" />
       <workItem from="1642512941293" duration="2247000" />
-      <workItem from="1643295695518" duration="974000" />
-      <workItem from="1643361478970" duration="14787000" />
-      <workItem from="1643641330536" duration="3123000" />
-      <workItem from="1643644574650" duration="583000" />
-      <workItem from="1643645194329" duration="300000" />
-      <workItem from="1643645571280" duration="996000" />
-      <workItem from="1643709856244" duration="4948000" />
-      <workItem from="1643732799277" duration="276000" />
-      <workItem from="1643807520206" duration="981000" />
-      <workItem from="1643815301668" duration="1633000" />
-      <workItem from="1644410847991" duration="1160000" />
-      <workItem from="1646048395061" duration="3544000" />
-      <workItem from="1646142628523" duration="1345000" />
-      <workItem from="1646150075978" duration="1232000" />
-      <workItem from="1646211262361" duration="743000" />
-      <workItem from="1646831703051" duration="1411000" />
+      <workItem from="1642761919554" duration="646000" />
+      <workItem from="1643124964433" duration="785000" />
+      <workItem from="1644414365191" duration="1256000" />
+      <workItem from="1646217659147" duration="464000" />
+      <workItem from="1646926171613" duration="2727000" />
     </task>
     <servers />
   </component>
