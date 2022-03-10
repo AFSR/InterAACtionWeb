@@ -75,6 +75,12 @@ At this step, all you have to do is click continuously on the Next button until 
 Click on the Preseed tab, then click on the file called "ubuntu.seed". <br>
 Now copy and paste the code written below at the end of the file. <br>
 ```
+#Set minimal install by default to true.
+ubiquity ubiquity/minimal_install boolean true
+#Disable download update.
+ubiquity ubiquity/download_updates boolean false
+#Set auto login by défault to true.
+d-i passwd/auto-login boolean true
 #Set language, country and locale.
 d-i debian-installer/language string fr
 d-i debian-installer/country string FR
