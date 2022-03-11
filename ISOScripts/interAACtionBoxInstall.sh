@@ -48,7 +48,7 @@ cd /etc/skel/
 mkdir .local/
 mkdir .local/share
 mkdir .local/share/applications
-cp ~/Ressources/DesktopFiles/*.desktop  .local/share/applications
+cp ~/Ressources/DesktopFiles/*.desktop  /etc/skel/.local/share/applications
 chmod a+x /etc/skel/.local/share/applications/*
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
 cp ~/Ressources/DesktopFiles/desktopIcons.desktop /etc/skel/.config/autostart

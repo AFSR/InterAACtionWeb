@@ -4,9 +4,9 @@
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,8 @@
       <workItem from="1643124964433" duration="785000" />
       <workItem from="1644414365191" duration="1256000" />
       <workItem from="1646217659147" duration="464000" />
-      <workItem from="1646926171613" duration="2727000" />
+      <workItem from="1646926171613" duration="2836000" />
+      <workItem from="1646992884120" duration="350000" />
     </task>
     <servers />
   </component>
