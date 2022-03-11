@@ -161,7 +161,7 @@ sed -i 's/enabled=1/enabled=0/' /etc/default/apport
 # Update software
 
 sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic
-apt-get -y remove update-notifier 2>>errorAptGet.log 1>>/etc/skel/log/purgeApp.log
+apt-get -y remove update-notifier 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
 
 echo "${vert}Pop-up settings ... Done${neutre}"
 

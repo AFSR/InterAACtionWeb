@@ -9,6 +9,5 @@ gio set ~/Desktop/InteraactionBoxLauncher.desktop metadata::trusted true
 chmod a+x ~/Desktop/InteraactionBoxLauncher.desktop
 
 rm ~/.config/autostart/desktopIcons.desktop
-rm ~/Launcher/desktopIcons
 
 exit
