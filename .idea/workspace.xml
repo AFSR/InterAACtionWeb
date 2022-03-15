@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/tobiiConfigLauncher.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionInterfaceLauncher.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/DesktopFiles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/Launcher" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
@@ -92,7 +88,8 @@
       <workItem from="1646926171613" duration="2836000" />
       <workItem from="1646992884120" duration="492000" />
       <workItem from="1647007425515" duration="5602000" />
-      <workItem from="1647353355846" duration="607000" />
+      <workItem from="1647353355846" duration="1040000" />
+      <workItem from="1647359514698" duration="603000" />
     </task>
     <servers />
   </component>
