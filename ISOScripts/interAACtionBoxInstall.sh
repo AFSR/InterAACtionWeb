@@ -34,10 +34,6 @@ sh ./augcomInstall.sh
 cd /etc/skel
 
 cp -R ~/Ressources/.email /etc/skel/
-cp ~/Ressources/interaactionBoxLauncher /etc/skel/
-cd /etc/skel/
-dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
-chmod +x interaactionBoxLauncher
 
 echo "${vert}Email settings ... Done${neutre}"
 

@@ -1,71 +1,133 @@
 #!/bin/sh
 
-(
-sleep 0.5
-echo "0" ;
-echo "# Préparation de Google Chrome" ;
-	gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+File=~/args.txt
+valueFile=""
 
-	fuser -k 4200/tcp
-	fuser -k 4201/tcp
-	fuser -k 4202/tcp
-
-	if [ -d ~/.cache/google-chrome/Default ]; then
-	rm -r ~/.cache/google-chrome/Default
+if [ -f "$File" ]; then
+	
+	while IFS= read -r line
+	do
+		valueFile="$line"
+	done < "$File"
+	
+	if [ "$valueFile" = "true" ]; then
+		
+		zenity --info \
+			--title="Finalisation de l'installation" \
+			--text="Nous allons finaliser l'installation de l'interAACtionBox !" \
+			--width=300 \
+			--height=100 \
+			--ok-label Suivant
+			
+		if [ $? -eq 1 ]; then
+			exit 0
+		else
+			zenity --question \
+				--title="Finalisation de l'installation" \
+				--text="Avez-vous branché votre Eye Tracker ?" \
+				--width=300 \
+				--height=100 \
+				--ok-label="Oui" \
+				--cancel-label="Non"
+				
+			if [ $? -eq 1 ]; then
+				zenity --info \
+					--title="Finalisation de l'installation" \
+					--text="Veuillez brancher votre Eye Tracker puis relancer l'application !" \
+					--width=300 \
+					--height=100 \
+					--ok-label Suivant
+			else
+				zenity --info \
+					--title="Finalisation de l'installation" \
+					--text="Nous allons commencer la calibration de l'Eye Tracker !" \
+					--width=300 \
+					--height=100 \
+					--ok-label Suivant
+					
+				if [ $? -eq 0 ]; then
+					sh ~/Launcher/tobiiConfigLauncher.sh &
+					tobii_config
+					
+					sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
+					sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
+					
+					while IFS= read -r line
+					do
+						valueFile="$line"
+					done < "$File"
+	
+					if [ "$valueFile" = "false" ]; then
+						sh ~/Launcher/interaactionInterfaceLauncher.sh
+					else
+						exit 0
+					fi
+				else
+					exit 0
+				fi	
+			fi
+		fi	
+		
+	else
+		sh ~/Launcher/interaactionInterfaceLauncher.sh	
 	fi
-sleep 0.5	
-echo "20" ;
-echo "20" ;
-echo "# Préparation de GazePlay" ; 
-sleep 0.5
-echo "40" ;
-echo "# Préparation de AugCom" ; 
-	AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
-	if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
-	  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
-	  if [ -d "$AUGCOM_PATH" ]; then
-	    cd "$AUGCOM_PATH" || exit
-	    python3 -m http.server 4200 >AugCom.log &
-	  fi
-	fi
-sleep 0.5
-echo "60" ; 
-echo "# Préparation de InterAACtionScene" ; 
-	INTERAACTIONSCENE_DIRECTORY=$(ls ~/dist | grep "InterAACtionScene" | head -n 1)
-	if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
-	  INTERAACTIONSCENE_PATH="$HOME/dist/${INTERAACTIONSCENE_DIRECTORY}"
-	  if [ -d "$INTERAACTIONSCENE_PATH" ]; then
-	    cd "$INTERAACTIONSCENE_PATH" || exit
-	    python3 -m http.server 4201 >InterAACtionScene.log &
-	  fi
-	fi
-sleep 0.5
-echo "80" ;
-echo "# Préparation de InterAACtionPlayer" ; 
-	INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
-	if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
-	  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
-	  if [ -d "$INTERAACTIONPLAYER_PATH" ]; then
-	    cd "$INTERAACTIONPLAYER_PATH" || exit
-	    python3 -m http.server 4202 >InterAACtionPlayer.log &
-	  fi
-	fi
-sleep 0.5
-echo "100" ;
-echo "# Lancement de l'InterAACtionBox" ;
-) |
-zenity --progress \
-  --title="InterAACtionBox" \
-  --text="Démarrage de l'InterAACtionBox" \
-  --percentage=0 \
-  --width=300 \
-  --height=100 \
-  --timeout=5
-
-if [ "$?" = -1 ] ; then
-        zenity --error \
-          --text="Erreur ! Démarrage de l'interAACtionBox impossible !"
+	
+else
+	zenity --info \
+			--title="Finalisation de l'installation" \
+			--text="Nous allons finaliser l'installation de l'interAACtionBox !" \
+			--width=300 \
+			--height=100 \
+			--ok-label Suivant
+			
+		if [ $? -eq 1 ]; then
+			exit 0
+		else
+			zenity --question \
+				--title="Finalisation de l'installation" \
+				--text="Avez-vous branché votre Eye Tracker ?" \
+				--width=300 \
+				--height=100 \
+				--ok-label="Oui" \
+				--cancel-label="Non"
+				
+			if [ $? -eq 1 ]; then
+				zenity --info \
+					--title="Finalisation de l'installation" \
+					--text="Veuillez brancher votre Eye Tracker puis relancer l'application !" \
+					--width=300 \
+					--height=100 \
+					--ok-label Suivant
+			else
+				zenity --info \
+					--title="Finalisation de l'installation" \
+					--text="Nous allons commencer la calibration de l'Eye Tracker !" \
+					--width=300 \
+					--height=100 \
+					--ok-label Suivant
+					
+				if [ $? -eq 0 ]; then
+					sh ~/Launcher/tobiiConfigLauncher.sh &
+					tobii_config
+					
+					sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
+					sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
+					
+					while IFS= read -r line
+					do
+						valueFile="$line"
+					done < "$File"
+	
+					if [ "$valueFile" = "false" ]; then
+						sh ~/Launcher/interaactionInterfaceLauncher.sh
+					else
+						exit 0
+					fi
+				else
+					exit 0
+				fi	
+			fi
+		fi
 fi
 
-cd ~/InterAACtionBox_Interface-linux/bin || exit
-sh ./interaactionBoxOS-linux.sh
+exit 0
