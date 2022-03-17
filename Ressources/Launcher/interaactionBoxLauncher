@@ -2,6 +2,21 @@
 
 File=~/args.txt
 valueFile=""
+actualLanguage=$LANG
+
+title="Completing the installation"
+text1="We are going to finalize the installation of interAACtionBox !"
+text2="Please plug your Eye Tracker !"
+text3="We will start calibrating your Eye Tracker !"
+nextButton="Next"
+
+if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
+	title="Finalisation de l'installation"
+	text1="Nous allons finaliser l'installation de l'interAACtionBox !"
+	text2="Veuillez branché votre commande oculaire !"
+	text3="Nous allons commencer la calibration de votre commande oculaire !"
+	nextButton="Suivant"
+fi
 
 if [ -f "$File" ]; then
 	
@@ -13,37 +28,30 @@ if [ -f "$File" ]; then
 	if [ "$valueFile" = "true" ]; then
 		
 		zenity --info \
-			--title="Finalisation de l'installation" \
-			--text="Nous allons finaliser l'installation de l'interAACtionBox !" \
+			--title="$title" \
+			--text="$text1" \
 			--width=300 \
 			--height=100 \
-			--ok-label Suivant
+			--ok-label "$nextButton"
 			
 		if [ $? -eq 1 ]; then
 			exit 0
 		else
-			zenity --question \
-				--title="Finalisation de l'installation" \
-				--text="Avez-vous branché votre Eye Tracker ?" \
+			zenity --info \
+				--title="$title" \
+				--text="$text2" \
 				--width=300 \
 				--height=100 \
-				--ok-label="Oui" \
-				--cancel-label="Non"
+				--ok-label "$nextButton"
 				
-			if [ $? -eq 1 ]; then
+			if [ $? -eq 0 ]; then
+
 				zenity --info \
-					--title="Finalisation de l'installation" \
-					--text="Veuillez brancher votre Eye Tracker puis relancer l'application !" \
+					--title="$title" \
+					--text="$text3" \
 					--width=300 \
 					--height=100 \
-					--ok-label Suivant
-			else
-				zenity --info \
-					--title="Finalisation de l'installation" \
-					--text="Nous allons commencer la calibration de l'Eye Tracker !" \
-					--width=300 \
-					--height=100 \
-					--ok-label Suivant
+					--ok-label "$nextButton"
 					
 				if [ $? -eq 0 ]; then
 					sh ~/Launcher/tobiiConfigLauncher.sh &
@@ -74,60 +82,53 @@ if [ -f "$File" ]; then
 	
 else
 	zenity --info \
-			--title="Finalisation de l'installation" \
-			--text="Nous allons finaliser l'installation de l'interAACtionBox !" \
+			--title="$title" \
+			--text="$text1" \
 			--width=300 \
 			--height=100 \
-			--ok-label Suivant
+			--ok-label "$nextButton"
 			
-		if [ $? -eq 1 ]; then
-			exit 0
-		else
-			zenity --question \
-				--title="Finalisation de l'installation" \
-				--text="Avez-vous branché votre Eye Tracker ?" \
+	if [ $? -eq 1 ]; then
+		exit 0
+	else
+		zenity --info \
+			--title="$title" \
+			--text="$text2" \
+			--width=300 \
+			--height=100 \
+			--ok-label "$nextButton"
+				
+		if [ $? -eq 0 ]; then
+
+			zenity --info \
+				--title="$title" \
+				--text="$text3" \
 				--width=300 \
 				--height=100 \
-				--ok-label="Oui" \
-				--cancel-label="Non"
-				
-			if [ $? -eq 1 ]; then
-				zenity --info \
-					--title="Finalisation de l'installation" \
-					--text="Veuillez brancher votre Eye Tracker puis relancer l'application !" \
-					--width=300 \
-					--height=100 \
-					--ok-label Suivant
-			else
-				zenity --info \
-					--title="Finalisation de l'installation" \
-					--text="Nous allons commencer la calibration de l'Eye Tracker !" \
-					--width=300 \
-					--height=100 \
-					--ok-label Suivant
+				--ok-label "$nextButton"
 					
-				if [ $? -eq 0 ]; then
-					sh ~/Launcher/tobiiConfigLauncher.sh &
-					tobii_config
+			if [ $? -eq 0 ]; then
+				sh ~/Launcher/tobiiConfigLauncher.sh &
+				tobii_config
 					
-					sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
-					sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
+				sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
+				sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 					
-					while IFS= read -r line
-					do
-						valueFile="$line"
-					done < "$File"
+				while IFS= read -r line
+				do
+					valueFile="$line"
+				done < "$File"
 	
-					if [ "$valueFile" = "false" ]; then
-						sh ~/Launcher/interaactionInterfaceLauncher.sh
-					else
-						exit 0
-					fi
+				if [ "$valueFile" = "false" ]; then
+					sh ~/Launcher/interaactionInterfaceLauncher.sh
 				else
 					exit 0
-				fi	
-			fi
+				fi
+			else
+				exit 0
+			fi	
 		fi
+	fi
 fi
 
 exit 0
