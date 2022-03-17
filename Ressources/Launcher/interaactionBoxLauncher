@@ -1,6 +1,6 @@
 #!/bin/sh
 
-File=~/args.txt
+File=~/calibration.txt
 valueFile=""
 actualLanguage=$LANG
 

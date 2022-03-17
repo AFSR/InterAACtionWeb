@@ -9,8 +9,6 @@ sceneStatus="# Preparing InterAACtionScene"
 player="# Preparing InterAACtionPlayer"
 interfaceStatus="# Launch of InterAACtionBox"
 text="Starting the InterAACtionBox"
-okButton="Launch"
-
 
 if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	googleStatus="# Préparation de Google Chrome"
@@ -20,7 +18,6 @@ if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	playerStatus="# Préparation de InterAACtionPlayer"
 	interfaceStatus="# Lancement de l'InterAACtionBox"
 	text="Démarrage de l'InterAACtionBox"
-	okButton="Lancer"
 fi
 
 (
@@ -83,8 +80,7 @@ zenity --progress \
   --percentage=0 \
   --width=300 \
   --height=100 \
-  --timeout=5 \
-  --ok-label "$okButton" \
+  --auto-close \
   --no-cancel
 
 cd ~/InterAACtionBox_Interface-linux/bin || exit
