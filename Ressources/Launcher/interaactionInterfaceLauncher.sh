@@ -1,9 +1,32 @@
 #!/bin/sh
 
+actualLanguage=$LANG
+
+googleStatus="# Preparing Google Chrome"
+gazeplayStatus="# Preparing GazePlay"
+augcomStatus="# Preparing AugCom"
+sceneStatus="# Preparing InterAACtionScene"
+player="# Preparing InterAACtionPlayer"
+interfaceStatus="# Launch of InterAACtionBox"
+text="Starting the InterAACtionBox"
+okButton="Launch"
+
+
+if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
+	googleStatus="# Préparation de Google Chrome"
+	gazeplayStatus="# Préparation de GazePlay"
+	augcomStatus="# Préparation de AugCom"
+	sceneStatus="# Préparation de InterAACtionScene"
+	playerStatus="# Préparation de InterAACtionPlayer"
+	interfaceStatus="# Lancement de l'InterAACtionBox"
+	text="Démarrage de l'InterAACtionBox"
+	okButton="Lancer"
+fi
+
 (
 sleep 0.5
 echo "0" ;
-echo "# Préparation de Google Chrome" ;
+echo "$googleStatus" ;
 	gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
 	fuser -k 4200/tcp
@@ -16,10 +39,10 @@ echo "# Préparation de Google Chrome" ;
 sleep 0.5	
 echo "20" ;
 echo "20" ;
-echo "# Préparation de GazePlay" ; 
+echo "$gazeplayStatus" ; 
 sleep 0.5
 echo "40" ;
-echo "# Préparation de AugCom" ; 
+echo "$augcomStatus" ; 
 	AUGCOM_DIRECTORY=$(ls ~/dist | grep "AugCom" | head -n 1)
 	if [ ! "$AUGCOM_DIRECTORY" = "" ]; then
 	  AUGCOM_PATH="$HOME/dist/${AUGCOM_DIRECTORY}"
@@ -30,7 +53,7 @@ echo "# Préparation de AugCom" ;
 	fi
 sleep 0.5
 echo "60" ; 
-echo "# Préparation de InterAACtionScene" ; 
+echo "$sceneStatus" ; 
 	INTERAACTIONSCENE_DIRECTORY=$(ls ~/dist | grep "InterAACtionScene" | head -n 1)
 	if [ ! "$INTERAACTIONSCENE_DIRECTORY" = "" ]; then
 	  INTERAACTIONSCENE_PATH="$HOME/dist/${INTERAACTIONSCENE_DIRECTORY}"
@@ -41,7 +64,7 @@ echo "# Préparation de InterAACtionScene" ;
 	fi
 sleep 0.5
 echo "80" ;
-echo "# Préparation de InterAACtionPlayer" ; 
+echo "playerStatus" ; 
 	INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
 	if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
 	  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"
@@ -52,20 +75,17 @@ echo "# Préparation de InterAACtionPlayer" ;
 	fi
 sleep 0.5
 echo "100" ;
-echo "# Lancement de l'InterAACtionBox" ;
+echo "$interfaceStatus" ;
 ) |
 zenity --progress \
   --title="InterAACtionBox" \
-  --text="Démarrage de l'InterAACtionBox" \
+  --text="$text" \
   --percentage=0 \
   --width=300 \
   --height=100 \
-  --timeout=5
-
-if [ "$?" = -1 ] ; then
-        zenity --error \
-          --text="Erreur ! Démarrage de l'interAACtionBox impossible !"
-fi
+  --timeout=5 \
+  --ok-label "$okButton" \
+  --no-cancel
 
 cd ~/InterAACtionBox_Interface-linux/bin || exit
-sh ./interaactionBoxOS-linux.sh
+sh ./interaactionBoxOS-linux.sh	
