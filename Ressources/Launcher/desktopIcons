@@ -5,16 +5,26 @@ gsettings set org.gnome.shell.extensions.desktop-icons show-trash 'false'
 
 functionDesktop(){
 	rm ~/Desktop/*
+
 	cp ~/.local/share/applications/InteraactionBoxLauncher.desktop ~/Desktop/
 	gio set ~/Desktop/InteraactionBoxLauncher.desktop metadata::trusted true
 	chmod a+x ~/Desktop/InteraactionBoxLauncher.desktop
+
+	cp ~/.local/share/applications/ResetTobiiLauncher.desktop ~/Desktop/
+  gio set ~/Desktop/ResetTobiiLauncher.desktop metadata::trusted true
+  chmod a+x ~/Desktop/ResetTobiiLauncher.desktop
 }
 
 functionBureau(){
 	rm ~/Bureau/*
+
 	cp ~/.local/share/applications/InteraactionBoxLauncher.desktop ~/Bureau/
 	gio set ~/Bureau/InteraactionBoxLauncher.desktop metadata::trusted true
 	chmod a+x ~/Bureau/InteraactionBoxLauncher.desktop
+
+	cp ~/.local/share/applications/ResetTobiiLauncher.desktop ~/Bureau/
+  gio set ~/Bureau/ResetTobiiLauncher.desktop metadata::trusted true
+  chmod a+x ~/Bureau/ResetTobiiLauncher.desktop
 }
 
 (functionBureau) || echo "Bureau icons don't work !"
