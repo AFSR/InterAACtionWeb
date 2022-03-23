@@ -2,16 +2,12 @@
 
 version=$(head -n 1 /etc/skel/InterAACtionBox_Interface-linux/bin/configuration.conf | cut -d/ -f3)
 File=~/"$version"/run.txt
-valueFile=""
 
 if [ -f "$File" ]; then
 
-	while IFS= read -r line
-	do
-		valueFile="$line"
-	done < "$File"
+	read -r line< "$File"
 
-	if [ "$valueFile" = "true" ]; then
+	if [ "$line" = "true" ]; then
 
 		exit 0
 

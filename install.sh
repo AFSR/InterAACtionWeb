@@ -26,7 +26,9 @@ deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
 apt-get update 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install builssential 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install curl 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install yard 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install yad 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install msmtp msmtp-mta 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install bsd-mailx 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
@@ -63,9 +65,6 @@ dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
 cd ~/Scripts/
 dos2unix ./* 2>>/etc/skel/log/dos2unix.log
-
-cd ~/Ressources/
-dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
 
 cd ~/Ressources/Launcher/
 dos2unix ./* 2>>/etc/skel/log/dos2unix.log
