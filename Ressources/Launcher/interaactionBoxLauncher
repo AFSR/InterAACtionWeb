@@ -1,7 +1,6 @@
 #!/bin/sh
 
 File=~/calibration.txt
-valueFile=""
 actualLanguage=$LANG
 
 title="Completing the installation"
@@ -20,12 +19,9 @@ fi
 
 if [ -f "$File" ]; then
 	
-	while IFS= read -r line
-	do
-		valueFile="$line"
-	done < "$File"
+	read -r line <$File
 	
-	if [ "$valueFile" = "true" ]; then
+	if [ "$line" = "true" ]; then
 		
 		zenity --info \
 			--title="$title" \
@@ -54,18 +50,16 @@ if [ -f "$File" ]; then
 					--ok-label "$nextButton"
 					
 				if [ $? -eq 0 ]; then
+				
 					sh ~/Launcher/tobiiConfigLauncher.sh &
 					tobii_config
 					
 					sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
 					sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 					
-					while IFS= read -r line
-					do
-						valueFile="$line"
-					done < "$File"
+					read -r line <$File
 	
-					if [ "$valueFile" = "false" ]; then
+					if [ "$line" = "false" ]; then
 						sh ~/Launcher/interaactionInterfaceLauncher.sh
 					else
 						exit 0
@@ -108,18 +102,16 @@ else
 				--ok-label "$nextButton"
 					
 			if [ $? -eq 0 ]; then
+			
 				sh ~/Launcher/tobiiConfigLauncher.sh &
 				tobii_config
 					
 				sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
 				sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 					
-				while IFS= read -r line
-				do
-					valueFile="$line"
-				done < "$File"
+				read -r line <$File
 	
-				if [ "$valueFile" = "false" ]; then
+				if [ "$line" = "false" ]; then
 					sh ~/Launcher/interaactionInterfaceLauncher.sh
 				else
 					exit 0

@@ -34,6 +34,8 @@ sh ./augcomInstall.sh
 cd /etc/skel
 
 cp -R ~/Ressources/.email /etc/skel/
+cp ~/Ressources/.msmtprc /etc/skel/
+chmod 600 /etc/skel/.msmtprc
 
 echo "${vert}Email settings ... Done${neutre}"
 
@@ -163,6 +165,17 @@ echo "${vert}Pop-up settings ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part9 : Remove unecessary file
+
+echo "${vert}Start check files ...${neutre}"
+
+cd ~/Ressources/tests/
+dos2unix * 2>>/etc/skel/log/dos2unix.log
+chmod a+x *
+
+sh ./checkFiles.sh
+
+# /********************************************************************************/
+# /* Part10 : Remove unecessary file
 
 cd ~
 rm -R *
