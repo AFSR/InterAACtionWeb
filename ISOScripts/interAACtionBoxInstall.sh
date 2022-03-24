@@ -164,7 +164,7 @@ apt-get -y remove update-notifier 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/
 echo "${vert}Pop-up settings ... Done${neutre}"
 
 # /********************************************************************************/
-# /* Part9 : Remove unecessary file
+# /* Part9 : Check installation
 
 echo "${vert}Start check files ...${neutre}"
 
