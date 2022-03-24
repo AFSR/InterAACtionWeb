@@ -2,15 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Ressources/.msmtprc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/ResetTobiiLauncher.desktop" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionInterfaceLauncher" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Ressources/icons/tobii_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/augcomInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionGazeInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/desktopIcons.desktop" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/augcomLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/desktopIcons" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionPlayerLauncher" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionSceneLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interaactionBoxLauncher" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstall" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/install_surface.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_surface.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,17 +53,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/Launcher" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\DesktopFiles" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Libs" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\slides\screenshots" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />

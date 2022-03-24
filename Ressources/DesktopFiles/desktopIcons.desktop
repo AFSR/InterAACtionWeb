@@ -8,3 +8,4 @@ Name[fr_FR]=desktopIcons
 Name=desktopIcons
 Comment[fr_FR]=Configure les icones sur le bureau
 Comment=Configure icons on desktop
+X-Desktop-File-Install-Version=0.24
