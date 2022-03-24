@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh -c "$HOME/Launcher/resetTobiiLauncher"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Icon=/usr/share/icons/interaactionBox/tobii_logo.png
+Name[fr_FR]=Réinitialiser calibration
+Name=Reset calibration
+Comment[fr_FR]=Permet de réinitialiser la calibration de l'Eye Tracker
+Comment=Allows to reset Eye Tracker calibration
+X-Desktop-File-Install-Version=0.24

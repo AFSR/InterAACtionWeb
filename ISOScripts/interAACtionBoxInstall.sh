@@ -34,10 +34,8 @@ sh ./augcomInstall.sh
 cd /etc/skel
 
 cp -R ~/Ressources/.email /etc/skel/
-cp ~/Ressources/interaactionBoxLauncher /etc/skel/
-cd /etc/skel/
-dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
-chmod +x interaactionBoxLauncher
+cp ~/Ressources/.msmtprc /etc/skel/
+chmod 600 /etc/skel/.msmtprc
 
 echo "${vert}Email settings ... Done${neutre}"
 
@@ -48,12 +46,11 @@ cd /etc/skel/
 mkdir .local/
 mkdir .local/share
 mkdir .local/share/applications
-cp ~/Ressources/DesktopFiles/*.desktop  .local/share/applications
+cp ~/Ressources/DesktopFiles/*.desktop  /etc/skel/.local/share/applications
 chmod a+x /etc/skel/.local/share/applications/*
 cp ~/Ressources/DesktopFiles/InteraactionBoxLauncher.desktop /etc/skel/.config/autostart
-chmod a+x /etc/skel/.config/autostart/InteraactionBoxLauncher.desktop
 cp ~/Ressources/DesktopFiles/desktopIcons.desktop /etc/skel/.config/autostart
-chmod a+x /etc/skel/.config/autostart/desktopIcons.desktop
+chmod a+x /etc/skel/.config/autostart/*
 
 echo "${vert}Shortcut creation ... Done${neutre}"
 
@@ -162,12 +159,23 @@ sed -i 's/enabled=1/enabled=0/' /etc/default/apport
 # Update software
 
 sed -i 's/APT::Periodic::Update-Package-Lists "[0-9]";/APT::Periodic::Update-Package-Lists "0";/' /etc/apt/apt.conf.d/10periodic
-apt-get -y remove update-notifier 2>>errorAptGet.log 1>>/etc/skel/log/purgeApp.log
+apt-get -y remove update-notifier 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
 
 echo "${vert}Pop-up settings ... Done${neutre}"
 
 # /********************************************************************************/
 # /* Part9 : Remove unecessary file
+
+echo "${vert}Start check files ...${neutre}"
+
+cd ~/Ressources/tests/
+dos2unix * 2>>/etc/skel/log/dos2unix.log
+chmod a+x *
+
+sh ./checkFiles.sh
+
+# /********************************************************************************/
+# /* Part10 : Remove unecessary file
 
 cd ~
 rm -R *

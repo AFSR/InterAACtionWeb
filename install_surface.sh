@@ -15,7 +15,7 @@ touch /etc/resolv.conf
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "${vert}Internet configuration ... Done${neutre}"
 
-apt-get -y purge firefox 2>>errorAptGet.log 1>>/etc/skel/log/purgeApp.log
+apt-get -y purge firefox 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
 echo "${vert}Delete unecessary file ... Done${neutre}"
 
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
@@ -23,9 +23,12 @@ deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
 deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
 " > /etc/apt/sources.list
 
-apt-get update 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install builssential 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install curl 2>>errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get update 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install builssential 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install curl 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install yad 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install msmtp msmtp-mta 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install bsd-mailx 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
@@ -63,9 +66,6 @@ dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 cd ~/Scripts/
 dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
-cd ~/Ressources/
-dos2unix interaactionBoxLauncher 2>>/etc/skel/log/dos2unix.log
-
 cd ~/Ressources/Launcher/
 dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
@@ -87,7 +87,7 @@ mkdir .config
 
 cp -R ~/Ressources/google-chrome /etc/skel/.config
 
-sed -i '/^Exec=/s/$/ --password-store=basic %U/' /usr/share/applications/google-chrome.desktop
+# sed -i '/^Exec=/s/$/ --password-store=basic %U/' /usr/share/applications/google-chrome.desktop
 
 echo "${vert}Install & Configure Google Chrome ... Done${neutre}"
 

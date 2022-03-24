@@ -20,7 +20,7 @@ if [ $? -gt 0 ]; then
 fi
 
 # adding interAACtionBox-Splash-Screen in the list of aviable themes
-update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth 100  &> /dev/null ;
+update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth 200  &> /dev/null ;
 if [ $? -gt 0 ]; then
 	echo -e "\nan error occoured installing alternative in /usr/share/plymouth/themes/default.plymouth" ;
 	exit 1;
