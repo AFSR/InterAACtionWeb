@@ -167,4 +167,6 @@ else
   echo "${vert}No error found !${neutre}"
 fi
 
+echo "${vert}Check ... Done${neutre}"
+
 exit 0
