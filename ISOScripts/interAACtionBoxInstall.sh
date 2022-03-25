@@ -8,25 +8,14 @@ vert='\e[0;32m'
 # /********************************************************************************************************/
 # /* Part1 : Set-Up InteraactionInterface, GazePlay, InteraactionGaze, InteraactionScene, InteraactionPlayer, AugCom and Tobii */
 
-cd ~/ISOScripts/
-sh ./interAACtionBoxInterfaceInstall.sh
-
-cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
-cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
-chmod +x java
-cd /etc/skel/InterAACtionBox_Interface-linux/bin/
-dos2unix ./* 2>>/etc/skel/log/dos2unix.log
-cd ./scripts/
-dos2unix ./* 2>>/etc/skel/log/dos2unix.log
-
-cd ~/ISOScripts/
-sh ./gazeplayInstall.sh
-sh ./interAACtionGazeInstall.sh
+sh ~/ISOScripts/interAACtionBoxInterfaceInstall.sh
+sh ~/ISOScripts/gazeplayInstall.sh
+sh ~/ISOScripts/interAACtionGazeInstall.sh
 
 mkdir /etc/skel/dist
-sh ./interAACtionSceneInstall.sh
-sh ./interAACtionPlayerInstall.sh
-sh ./augcomInstall.sh
+sh ~/ISOScripts/interAACtionSceneInstall.sh
+sh ~/ISOScripts/interAACtionPlayerInstall.sh
+sh ~/ISOScripts/augcomInstall.sh
 
 # /********************************************************************************************************/
 # /* Part2 : Create Desktop Shortcut */

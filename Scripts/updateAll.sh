@@ -12,3 +12,6 @@ sh interAACtionPlayerUpdate.sh
 
 cd ~/Update || exit
 sh augcomUpdate.sh
+
+cd ~/Update || exit
+sh interAACtionBoxInterfaceUpdate.sh
