@@ -26,10 +26,6 @@ rm -rf "${line}";
 rm -rf " ${line}"; 
 done
 
-cd /etc/skel/InterAACtionBox_Interface-linux/bin || exit
-
-echo "../../${NEW_VERSION_NAME}" > configuration.conf
-
 cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
 chmod +x java
 cd ../../../bin

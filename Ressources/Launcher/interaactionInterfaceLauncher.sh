@@ -31,7 +31,7 @@ echo "$googleStatus" ;
 	fuser -k 4202/tcp
 
 	if [ -d ~/.cache/google-chrome/Default ]; then
-	rm -r ~/.cache/google-chrome/Default
+	  rm -r ~/.cache/google-chrome/Default
 	fi
 sleep 0.5	
 echo "20" ;

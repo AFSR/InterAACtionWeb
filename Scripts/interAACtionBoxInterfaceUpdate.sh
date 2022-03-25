@@ -1,5 +1,5 @@
-neutre='\e[0;m'
-vert='\e[0;32m'
+interfaceName=$(find $HOME/* -name "InterAACtionBox_Interface-linux")
+rm -r "$interfaceName"
 
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
 
@@ -15,16 +15,13 @@ echo "Download of ${NEW_VERSION_NAME}"
 
 wget $NEW_VERSION_LINK
 
-tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBoxInterface.log
+tar -zxvf "${NEW_VERSION}"
 
 rm -r "${NEW_VERSION}"
 
-cp -r ~/InterAACtionBox_Interface-linux /etc/skel/
 cd /etc/skel/InterAACtionBox_Interface-linux/lib/jre/bin/
 chmod +x java
 cd /etc/skel/InterAACtionBox_Interface-linux/bin/
-dos2unix ./* 2>>/etc/skel/log/dos2unix.log
+dos2unix ./*
 cd ./scripts/
-dos2unix ./* 2>>/etc/skel/log/dos2unix.log
-
-echo "${vert}Download of InterAACtionBox_Interface ... Done${neutre}"
+dos2unix ./*
