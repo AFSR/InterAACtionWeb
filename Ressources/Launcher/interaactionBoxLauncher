@@ -60,6 +60,7 @@ if [ -f "$File" ]; then
 					read -r line <$File
 	
 					if [ "$line" = "false" ]; then
+					  sh ~/InterAACtionGaze/bin/interAACtionGaze-linux.sh &
 						sh ~/Launcher/interaactionInterfaceLauncher.sh
 					else
 						exit 0
@@ -112,6 +113,7 @@ else
 				read -r line <$File
 	
 				if [ "$line" = "false" ]; then
+				  sh ~/InterAACtionGaze/bin/interAACtionGaze-linux.sh &
 					sh ~/Launcher/interaactionInterfaceLauncher.sh
 				else
 					exit 0
