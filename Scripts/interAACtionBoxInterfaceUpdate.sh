@@ -13,7 +13,7 @@ fi
 cd ~/ || exit
 
 url=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
-curl_url=$(echo "$url" | grep "browser_download_url.*InterAACtionScene*" | cut -d: -f2,3 | tr -d \")
+curl_url=$(echo "$url" | grep "browser_download_url.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \")
 nameFile=$(echo $curl_url | -d/ -f9)
 
 wget $curl_url -q --show-progress 2>&1 |

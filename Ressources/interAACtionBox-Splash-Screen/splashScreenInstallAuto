@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cp -r ~/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen /usr/share/plymouth/themes/
+
+update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth 200
+
+update-alternatives --set default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth
+
+update-initramfs -u
+
+exit 0;
