@@ -133,7 +133,7 @@ echo "${vert}Install icons ... Done${neutre}"
 # /* Part7 : Splash Screen
 
 cd ~/Ressources/interAACtionBox-Splash-Screen
-./splashScreenInstall
+./splashScreenInstallAuto
 
 echo "${vert}Install of InterAACtionBox splash screen ... Done${neutre}"
 
