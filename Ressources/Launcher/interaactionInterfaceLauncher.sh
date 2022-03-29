@@ -36,7 +36,10 @@ echo "$googleStatus" ;
 sleep 0.5	
 echo "20" ;
 echo "20" ;
-echo "$gazeplayStatus" ; 
+echo "$gazeplayStatus" ;
+  version=$(find $HOME/* -name "*GazePlay-AFSR*")
+  File="$version"/run.txt
+  echo "false" > $File
 sleep 0.5
 echo "40" ;
 echo "$augcomStatus" ; 
