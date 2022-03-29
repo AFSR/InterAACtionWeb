@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/interAACtionBoxInterfaceUpdate.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/gazeplayInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInterfaceInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayAfsrLauncher.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/gazeplayLauncher.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionInterfaceLauncher.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionInterfaceLauncher.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/augcomUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/augcomUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/gazeplayUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionGazeUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionPlayerUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionPlayerUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionSceneUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionSceneUpdate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/updateAll.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/updateAll.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionBoxInterfaceUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionBoxInterfaceUpdate.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +98,10 @@
       <workItem from="1647954901820" duration="5922000" />
       <workItem from="1648030433200" duration="740000" />
       <workItem from="1648113222176" duration="310000" />
-      <workItem from="1648219316627" duration="5214000" />
+      <workItem from="1648219316627" duration="5796000" />
+      <workItem from="1648451300341" duration="411000" />
+      <workItem from="1648474142603" duration="2281000" />
+      <workItem from="1648559505177" duration="1235000" />
     </task>
     <servers />
   </component>
