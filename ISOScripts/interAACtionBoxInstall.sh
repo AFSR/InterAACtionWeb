@@ -47,6 +47,8 @@ cp -R ~/Ressources/Launcher /etc/skel/
 dos2unix /etc/skel/Launcher/* 2>>/etc/skel/log/dos2unix.log
 chmod a+x /etc/skel/Launcher/*
 
+cp ~/Ressources/pdf/* /etc/skel/
+
 echo "${vert}Install launcher files for applications ... Done${neutre}"
 
 # dbus-launch gio set InteraactionBoxLauncher.desktop "metadata::trusted" true
