@@ -19,7 +19,7 @@ fi
 if [ -d /opt/google/chrome/extensions ];
 then
   cd /opt/google/chrome/extensions
-  fileCors=$(find . -name "lfhmikememgdcahcdlaciloancbhjino.json" | head -n 1 | cut -d/ -f2)
+  fileCors=$(find . -name "lhobafahddgcelffkeicbaginigeejlf.json" | head -n 1 | cut -d/ -f2)
   if [ -z "$fileCors" ]:
   then
     nbError=$(( $nbError + 1 ))
