@@ -72,7 +72,8 @@ if [ -f "$File" ]; then
 		fi	
 		
 	else
-		sh ~/Launcher/interaactionInterfaceLauncher.sh	
+		sh ~/InterAACtionGaze/bin/interAACtionGaze-linux.sh &
+    sh ~/Launcher/interaactionInterfaceLauncher.sh
 	fi
 	
 else

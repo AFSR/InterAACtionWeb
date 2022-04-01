@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# check if runing as root user
+if [ "$EUID" -ne 0 ]; then
+	exit 1;
+fi
+
+# check if plymouth themes directory exist
+if [ ! -d "/usr/share/plymouth/themes" ]; then
+	exit 1;
+fi
+
+# coping theme in /usr/share/plymouth/themes/
+cp -r `dirname $0`/splashScreenBox /usr/share/plymouth/themes/ ;
+if [ $? -gt 0 ]; then
+	exit 1;
+fi
+
+# adding vortex-ubuntu in the list of aviable themes
+update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/splashScreenBox/splashScreenBox.plymouth 100  &> /dev/null ;
+if [ $? -gt 0 ]; then
+	exit 1;
+fi
+
+# setting vortex-ubuntu as default plymouth theme;
+update-alternatives --set default.plymouth /usr/share/plymouth/themes/splashScreenBox/splashScreenBox.plymouth  &> /dev/null ;
+if [ $? -gt 0 ]; then
+	exit 1;
+fi
+
+# updating Initial RAM File System
+update-initramfs -u &> /dev/null ;
+if [ $? -gt 0 ]; then
+	exit 1;
+fi
+
+exit 0;

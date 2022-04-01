@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Box Splash Screen
+Description=Box logo with spinning colored stripes
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/splashScreenBox
+ScriptFile=/usr/share/plymouth/themes/splashScreenBox/splashScreenBox.script
+UseFirmwareBackground=false

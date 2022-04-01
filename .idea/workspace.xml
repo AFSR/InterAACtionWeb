@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/corsInstall.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallAuto" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallAuto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/interaactionBoxLauncher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/cercleExt9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.grub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.script" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/progress-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/progress-box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallAuto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallManual" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,10 +60,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\pdf" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\interAACtionBox-Splash-Screen" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
@@ -103,6 +124,7 @@
       <workItem from="1648559505177" duration="4573000" />
       <workItem from="1648649215372" duration="1312000" />
       <workItem from="1648732375379" duration="1293000" />
+      <workItem from="1648806981831" duration="2478000" />
     </task>
     <servers />
   </component>
