@@ -120,5 +120,3 @@ if (Plymouth.GetMode() == "boot") {
     Plymouth.SetBootProgressFunction(progress_callback);
 }
 
-if (Plymouth.GetMode() == "shutdown") {
-}

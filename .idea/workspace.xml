@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallAuto" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/interAACtionBox-Splash-Screen/splashScreenInstallAuto" afterDir="false" />
-    </list>
+    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,17 +29,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/Launcher" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\pdf" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\interAACtionBox-Splash-Screen" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
@@ -103,6 +100,7 @@
       <workItem from="1648559505177" duration="4573000" />
       <workItem from="1648649215372" duration="1312000" />
       <workItem from="1648732375379" duration="1293000" />
+      <workItem from="1648806981831" duration="2905000" />
     </task>
     <servers />
   </component>

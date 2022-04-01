@@ -134,13 +134,9 @@ echo "${vert}Install icons ... Done${neutre}"
 # /********************************************************************************/
 # /* Part7 : Splash Screen
 
-cd /usr/share/plymouth/themes/
-mkdir interAACtionBox-Splash-Screen
-cp ~/Ressources/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen/* /usr/share/plymouth/themes/interAACtionBox-Splash-Screen
-
-update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth 200
-update-alternatives --set default.plymouth /usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.plymouth
-update-initramfs -u
+cd ~/Ressources/splashScreenBox
+chmod +x install
+./install
 
 echo "${vert}Install of InterAACtionBox splash screen ... Done${neutre}"
 

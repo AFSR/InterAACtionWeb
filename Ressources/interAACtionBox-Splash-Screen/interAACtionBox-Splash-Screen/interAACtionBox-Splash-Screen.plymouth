@@ -1,9 +1,0 @@
-[Plymouth Theme]
-Name=InterAACtionBox Splash Screen
-Description=InterAACtionBox logo with spinning stripes
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/interAACtionBox-Splash-Screen
-ScriptFile=/usr/share/plymouth/themes/interAACtionBox-Splash-Screen/interAACtionBox-Splash-Screen.script
-UseFirmwareBackground=false

@@ -18,4 +18,4 @@ install_chrome_extension () {
 
 }
 
-install_chrome_extension "lfhmikememgdcahcdlaciloancbhjino" "CORS"
+install_chrome_extension "lhobafahddgcelffkeicbaginigeejlf" "CORS"
