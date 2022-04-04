@@ -137,6 +137,7 @@ echo "${vert}Install icons ... Done${neutre}"
 cd ~/Ressources/splashScreenBox
 chmod +x install
 ./install
+./install
 
 echo "${vert}Install of InterAACtionBox splash screen ... Done${neutre}"
 
