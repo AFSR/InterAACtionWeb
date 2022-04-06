@@ -2,7 +2,7 @@ To: contact.interaactionBox@gmail.com
 From: help.interaactionbox@outlook.fr
 Subject: xxxxx
 
-Nom de l'utilisateur : xxxxx
-Prénom de l'utilisateur : xxxxx
-Mail de l'utilisateur : xxxxx
+Nom utilisateur : xxxxx
+Prenom utilisateur : xxxxx
+Mail utilisateur : xxxxx
 Message : xxxxx

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ressources/.email/emailEnDev.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/.email/emailEnUser.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/.email/emailFrDev.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Ressources/.email/emailFrUser.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/.msmtprc" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/.msmtprc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +106,8 @@
       <workItem from="1648806981831" duration="4135000" />
       <workItem from="1649059720173" duration="4159000" />
       <workItem from="1649161780321" duration="3031000" />
-      <workItem from="1649233357779" duration="1563000" />
+      <workItem from="1649233357779" duration="2127000" />
+      <workItem from="1649252430432" duration="93000" />
     </task>
     <servers />
   </component>
