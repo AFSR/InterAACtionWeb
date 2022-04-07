@@ -5,7 +5,12 @@ startProgress=0
 actualLanguage=$LANG
 
 title="Eye Tracker"
-text="Preparation for setting up your Eye Tracker"
+text="Preparation for setting up your Eye Tracker
+
+Guide for Tobii_Config here -> <a href='file://$HOME/GuideTobiiConfig.pdf'>Guide Tobii Config</a>
+
+QR Code for Tobii_Config guide here -> <a href='file://$HOME/qrCodeTobiiConfig.pdf'>QR Code Tobii Config</a>
+ "
 
 if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	title="Commande oculaire"
@@ -13,7 +18,7 @@ if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	
 Guide pour Tobii_Config ici -> <a href='file://$HOME/GuideTobiiConfig.pdf'>Guide Tobii Config</a>
 
-QR Code pour Guide Tobii_Config ici -> <a href='file://$HOME/qrCodeTobiiConfig.pdf'>Guide Tobii Config</a>
+QR Code pour Guide Tobii_Config ici -> <a href='file://$HOME/qrCodeTobiiConfig.pdf'>QR Code Tobii Config</a>
  "
  
 fi
