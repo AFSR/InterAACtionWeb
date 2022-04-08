@@ -53,8 +53,7 @@ if [ -f "$File" ]; then
 				
 					sh ~/Launcher/tobiiConfigLauncher.sh &
 					tobii_config
-					
-					sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
+				
 					sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 					
 					read -r line <$File
@@ -71,16 +70,16 @@ if [ -f "$File" ]; then
 		fi	
 		
 	else
-    sh ~/Launcher/interaactionInterfaceLauncher.sh
+    		sh ~/Launcher/interaactionInterfaceLauncher.sh
 	fi
 	
 else
 	zenity --info \
-			--title="$title" \
-			--text="$text1" \
-			--width=300 \
-			--height=100 \
-			--ok-label "$nextButton"
+		--title="$title" \
+		--text="$text1" \
+		--width=300 \
+		--height=100 \
+		--ok-label "$nextButton"
 			
 	if [ $? -eq 1 ]; then
 		exit 0
@@ -106,7 +105,6 @@ else
 				sh ~/Launcher/tobiiConfigLauncher.sh &
 				tobii_config
 					
-				sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
 				sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 					
 				read -r line <$File
