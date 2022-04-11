@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,17 +32,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="GitIgnore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Ressources/.email" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.github/workflows" />
     <property name="settings.editor.selected.configurable" value="gradle.compiler" />
     <property name="settings.editor.splitter.proportion" value="0.23727088" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\.github\workflows" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\.email" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\Launcher" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\ISOScripts" />
-      <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources\pdf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jordan\Documents\GitHub\InterAACtionBox\Ressources" />
@@ -108,6 +109,9 @@
       <workItem from="1649161780321" duration="3031000" />
       <workItem from="1649233357779" duration="2127000" />
       <workItem from="1649252430432" duration="93000" />
+      <workItem from="1649255029466" duration="523000" />
+      <workItem from="1649406124314" duration="671000" />
+      <workItem from="1649688696608" duration="1239000" />
     </task>
     <servers />
   </component>
