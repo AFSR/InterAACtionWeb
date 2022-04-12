@@ -14,7 +14,11 @@ jobs:
       - name: get-name
         run: |
           echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
+          echo "REPO_BASENAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
 
       - name: print-name
         run: |
           echo "${{ env.REPO_NAME }}"
+          echo "${{ env.REPO_BASENAME }}"
+          echo "https://api.github.com/repos/${{ env.REPO_NAME }}/releases/latest"
+          echo "*${{ env.REPO_BASENAME }}*"
