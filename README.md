@@ -34,7 +34,7 @@ sudo apt update
 sudo apt install cubic
 ```
 
-## 3) Create the ISO
+## 2) Create the ISO
 
 Before starting, make sure you have :
 * All the necessary files on the computer and not on a key in order to have better stability when using the files
