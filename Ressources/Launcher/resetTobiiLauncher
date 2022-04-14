@@ -6,19 +6,25 @@ title="Reset calibration"
 text="Do you want to reset the current calibration ?"
 text2="Old calibration erased !"
 nextButton="Next"
+yes="yes"
+no="no"
 
 if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	title="Réinitialiser calibration"
 	text="Voulez-vous réinitialiser la calibration actuelle ?"
 	text2="Ancienne calibration effacé !"
 	nextButton="Suivant"
+	yes="oui"
+	no="no"
 fi
 
 zenity --question \
         --title="$title" \
 	      --text="$text" \
 	      --width=300 \
-        --height=100
+        --height=100 \
+        --ok-label "$yes" \
+        --cancel-label "$no"
 
 	      if [ $? -eq 0 ]; then
 
