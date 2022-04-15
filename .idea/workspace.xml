@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/Launcher/resetTobiiLauncher" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/Launcher/resetTobiiLauncher" afterDir="false" />
-    </list>
+    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="fix language yes/no" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,8 +110,16 @@
       <workItem from="1649406124314" duration="671000" />
       <workItem from="1649688696608" duration="2568000" />
       <workItem from="1649748593096" duration="1131000" />
-      <workItem from="1649947921745" duration="785000" />
+      <workItem from="1649947921745" duration="975000" />
     </task>
+    <task id="LOCAL-00001" summary="fix language yes/no">
+      <created>1649948753514</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649948753514</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +150,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fix language yes/no" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix language yes/no" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

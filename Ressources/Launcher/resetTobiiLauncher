@@ -15,7 +15,7 @@ if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	text2="Ancienne calibration effacé !"
 	nextButton="Suivant"
 	yes="oui"
-	no="no"
+	no="non"
 fi
 
 zenity --question \
