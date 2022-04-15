@@ -42,7 +42,6 @@ zenity --question \
                 sh ~/Launcher/tobiiConfigLauncher.sh &
                 tobii_config
 
-                sh ~/InterAACtionBox_Interface-linux/bin/scripts/transition.sh ~/InterAACtionBox_Interface-linux/bin/images/transition.gif
                 sh ~/InterAACtionGaze/bin/interAACtionGaze-linux-calibration.sh
 
             else
