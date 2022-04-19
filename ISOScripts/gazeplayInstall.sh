@@ -30,5 +30,6 @@ cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
 chmod +x java
 cd ../../../bin
 dos2unix gazeplay-linux.sh 2>>/etc/skel/log/dos2unix.log
+dos2unix gazeplay-afsr-linux.sh 2>>/etc/skel/log/dos2unix.log
 
 echo "${vert}Download of GazePLay ... Done${neutre}"
