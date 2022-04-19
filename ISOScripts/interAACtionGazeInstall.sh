@@ -36,8 +36,7 @@ done
 mv "${NEW_VERSION_NAME_TEMP}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}"
-dos2unix bin/interAACtionGaze-linux.sh 2>>/etc/skel/log/dos2unix.log
-dos2unix bin/interAACtionGaze-linux-calibration.sh 2>>/etc/skel/log/dos2unix.log
+dos2unix bin/* 2>>/etc/skel/log/dos2unix.log
 chmod +x lib/jre/bin/java
 
 echo "${vert}Download of InterAACtionGaze ... Done${neutre}"
