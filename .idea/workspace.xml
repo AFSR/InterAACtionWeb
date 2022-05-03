@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="fix language yes/no" />
+    <list default="true" id="eb1964bb-a440-4dd2-9ea9-ce1d72705177" name="Changes" comment="fix language yes/no">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionBoxInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionPlayerInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ISOScripts/interAACtionSceneInstall.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/90_ubuntu-custom.gschema.override" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/90_ubuntu-custom.gschema.override" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/InteraactionPlayer.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/InterAACtionPlayer.desktop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ressources/DesktopFiles/InteraactionScene.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/Ressources/DesktopFiles/InterAACtionScene.desktop" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionPlayerUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionPlayerUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/interAACtionSceneUpdate.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/interAACtionSceneUpdate.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/en/scene.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/en/scene.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides/scene.html" beforeDir="false" afterPath="$PROJECT_DIR$/slides/scene.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +123,7 @@
       <workItem from="1649688696608" duration="2568000" />
       <workItem from="1649748593096" duration="1131000" />
       <workItem from="1649947921745" duration="975000" />
+      <workItem from="1651584024106" duration="1482000" />
     </task>
     <task id="LOCAL-00001" summary="fix language yes/no">
       <created>1649948753514</created>
@@ -146,7 +159,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -2,8 +2,8 @@
 Type=Application
 Exec=/bin/sh -c "$HOME/Launcher/interaactionPlayerLauncher"
 Icon=/usr/share/icons/interaactionBox/gazeMediaPlayer.png
-Name[fr_FR]=InteraactionPlayer
-Name=InteraactionPlayer
-Comment[fr_FR]=Lanceur du logiciel de communication InteraactionPlayer
-Comment=InteraactionPlayer software launcher
+Name[fr_FR]=InterAACtionPlayer
+Name=InterAACtionPlayer
+Comment[fr_FR]=Lanceur du logiciel de communication InterAACtionPlayer
+Comment=InterAACtionPlayer software launcher
 X-Desktop-File-Install-Version=0.24
