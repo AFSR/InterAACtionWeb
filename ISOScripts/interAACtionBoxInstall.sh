@@ -6,7 +6,7 @@ neutre='\e[0;m'
 vert='\e[0;32m'
 
 # /********************************************************************************************************/
-# /* Part1 : Set-Up InteraactionInterface, GazePlay, InteraactionGaze, InteraactionScene, InteraactionPlayer, AugCom and Tobii */
+# /* Part1 : Set-Up InteraactionInterface, GazePlay, InterAACtionGaze, InterAACtionScene, InterAACtionPlayer, AugCom and Tobii */
 
 sh ~/ISOScripts/interAACtionBoxInterfaceInstall.sh
 sh ~/ISOScripts/gazeplayInstall.sh
@@ -98,7 +98,7 @@ fr;1;FR;fr_FR.UTF-8;;console-setup" > languagelist
 echo "en
 fr" > shortlists
 
-gunzip languagelist.data.gz 
+gunzip languagelist.data.gz
 echo "0:en:English:English
 1:fr:French:Français" > languagelist.data
 gzip languagelist.data
@@ -107,7 +107,7 @@ gzip languagelist.data
 cd /usr/lib/ubiquity/localechooser
 cp /usr/share/localechooser/languagelist ./
 cp /usr/share/localechooser/languagelist.data.gz ./
-cp /usr/share/localechooser/regionmap ./           
+cp /usr/share/localechooser/regionmap ./
 cp /usr/share/localechooser/shortlists ./
 
 echo "${vert}Local settings ... Done${neutre}"

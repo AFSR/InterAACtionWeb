@@ -2,8 +2,8 @@
 Type=Application
 Exec=/bin/sh -c "$HOME/Launcher/interaactionSceneLauncher"
 Icon=/usr/share/icons/interaactionBox/VisuelSceneDisplay.png
-Name[fr_FR]=InteraactionScene
-Name=InteraactionScene
-Comment[fr_FR]=Lanceur du logiciel de communication InteraactionScene
-Comment=InteraactionScene software launcher
+Name[fr_FR]=InterAACtionScene
+Name=InterAACtionScene
+Comment[fr_FR]=Lanceur du logiciel de communication InterAACtionScene
+Comment=InterAACtionScene software launcher
 X-Desktop-File-Install-Version=0.24

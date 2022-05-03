@@ -31,7 +31,7 @@ action-right-click-titlebar = 'none'
 action-middle-click-titlebar = 'none'
 
 [org.gnome.shell]
-favorite-apps = ['InteraactionBoxLauncher.desktop', 'GazPlay.desktop', 'AugCom.desktop', 'InteraactionScene.desktop', 'InteraactionPlayer.desktop', 'com.teamviewer.TeamViewer.desktop']
+favorite-apps = ['InteraactionBoxLauncher.desktop', 'GazPlay.desktop', 'AugCom.desktop', 'InterAACtionScene.desktop', 'InterAACtionPlayer.desktop', 'com.teamviewer.TeamViewer.desktop']
 enabled-extensions = ['ubuntu-dock@ubuntu.com', 'ubuntu-appindicators@ubuntu.com', 'desktop-icons@csoriano']
 
 [org.gnome.desktop.background]

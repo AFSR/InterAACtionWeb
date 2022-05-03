@@ -1,7 +1,7 @@
 sceneName=$(find "$HOME/dist/" -name "*InterAACtionScene-AFSR*")
 rm -r "$sceneName"
 
-LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InteraactionScene-AFSR/releases/latest)
+LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InterAACtionScene-AFSR/releases/latest)
 
 NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionScene*" | cut -d: -f2,3 | tr -d \")
 
@@ -21,9 +21,9 @@ tar -zxvf "${NEW_VERSION}"
 
 mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
-ls | grep -i "InterAACtionScene.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
-rm -rf "${line}"; 
-rm -rf " ${line}"; 
+ls | grep -i "InterAACtionScene.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do
+rm -rf "${line}";
+rm -rf " ${line}";
 done
 
 fuser -k 4201/tcp
