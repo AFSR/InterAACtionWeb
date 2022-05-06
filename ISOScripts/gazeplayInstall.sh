@@ -15,6 +15,8 @@ NEW_NAME="$NEW_VERSION_NO_EXT-$TAG_VERSION"
 
 NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*GazePlay*" | cut -d: -f2 | tr -d \" | head -n 1 | tr -d \,)
 
+cd /etc/skel || exit
+
 echo "Download of ${NEW_NAME}"
 
 wget $NEW_VERSION_LINK
@@ -23,9 +25,9 @@ tar -zxvf ${NEW_VERSION}
 
 mv "${NEW_NAME}" "${NEW_VERSION_NAME}"
 
-ls | grep -i "gazeplay-.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
-rm -rf "${line}"; 
-rm -rf " ${line}"; 
+ls | grep -i "gazeplay-.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do
+rm -rf "${line}";
+rm -rf " ${line}";
 done
 
 cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
