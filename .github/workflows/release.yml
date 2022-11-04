@@ -11,13 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       - name: Tar gz Main
         run: |
           tar -czvf InterAACtionBox-main.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
+
+      - name: Change Branch
+        run: |
+          git checkout surface
+
+      - name: Tar gz Surface
+        run: |
+          tar -czvf InterAACtionBox-surface.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
 
       - name: Get Env
         run: |
@@ -38,43 +44,16 @@ jobs:
           TAG_3=$(echo "$GET_TAG" | cut -d. -f3)
           NEW_TAG=$(echo "$(( $TAG_3 + 1 ))")
           TAG="${TAG_1}.${TAG_2}.${NEW_TAG}"
-          echo ::set-output name=tag::$(echo $TAG)
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Create Release Main
+      - name: Create GitHub Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.new-tag.outputs.tag }}
-          release_name: InterAACtionBox ${{ steps.new-tag.outputs.tag }}
-          draft: false
+          tag: ${{ steps.new-tag.outputs.tag }}
+          name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit: "main"
           prerelease: false
-
-      - name: Upload Release Main
-        id: upload-assets-main
-        uses: csexton/release-asset-action@v2
-        with:
-          release-url: ${{ steps.create_release.outputs.upload_url }}
-          files: |
-            InterAACtionBox-main.tar.gz
-            install.sh
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Change Branch
-        run: |
-          git checkout surface
-
-      - name: Tar gz Surface
-        run: |
-          tar -czvf InterAACtionBox-surface.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
-
-      - name: Upload Release Surface
-        id: upload-assets-surface
-        uses: csexton/release-asset-action@v2
-        with:
-          release-url: ${{ steps.create_release.outputs.upload_url }}
-          files: |
-            InterAACtionBox-surface.tar.gz
-            install_surface.sh
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          artifacts: "InterAACtionBox-main.tar.gz,install.sh,InterAACtionBox-surface.tar.gz,install_surface.sh"
