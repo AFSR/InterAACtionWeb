@@ -23,12 +23,9 @@ wget $NEW_VERSION_LINK
 
 tar -zxvf ${NEW_VERSION}
 
-mv "${NEW_NAME}" "${NEW_VERSION_NAME}"
+rm *.tar.gz
 
-ls | grep -i "gazeplay-.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do
-rm -rf "${line}";
-rm -rf " ${line}";
-done
+mv "${NEW_NAME}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
 chmod +x java
