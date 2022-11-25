@@ -16,7 +16,7 @@ if [ -f "$File" ]; then
 
 		gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-		"$version/lib/jre/bin/java" -cp "$version/lib/*" -Djdk.gtk.version=2 net.gazeplay.GazePlayLauncher --user "$HOME"
+		"$version/lib/jre/bin/java" -cp "$version/lib/*" -Xms256m -Xmx1g --add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED -Dlogging.appender.console.level=OFF --user "$HOME"
 
 		echo "false" > $File
 
@@ -27,7 +27,7 @@ else
 
 	gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
-	"$version/lib/jre/bin/java" -cp "$version/lib/*" -Djdk.gtk.version=2 net.gazeplay.GazePlayLauncher --user "$HOME"
+	"$version/lib/jre/bin/java" -cp "$version/lib/*" -Xms256m -Xmx1g --add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED -Dlogging.appender.console.level=OFF --user "$HOME"
 
 	echo "false" > $File
 
