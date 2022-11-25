@@ -3,7 +3,7 @@ rm -r "$augcomName"
 
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/AugCom-AFSR/releases/latest)
 
-NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*AugCom*" | cut -d: -f2,3 | tr -d \")
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*AugCom.tar.gz*" | cut -d: -f2,3 | tr -d \")
 
 NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
 
