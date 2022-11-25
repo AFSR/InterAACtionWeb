@@ -3,7 +3,7 @@ vert='\e[0;32m'
 
 LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InterAACtionPlayer-AFSR/releases/latest)
 
-NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionPlayer*" | cut -d: -f2,3 | tr -d \")
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionPlayer.tar.gz*" | cut -d: -f2,3 | tr -d \")
 
 NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
 
