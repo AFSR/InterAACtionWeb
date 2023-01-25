@@ -69,9 +69,9 @@ dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 cd ~/Ressources/Launcher/
 dos2unix ./* 2>>/etc/skel/log/dos2unix.log
 
-cd ~/Ressources/interAACtionBox-Splash-Screen/
-dos2unix splashScreenInstall 2>>/etc/skel/log/dos2unix.log
-chmod +x splashScreenInstall
+cd ~/Ressources/splashScreenBox/
+dos2unix install 2>>/etc/skel/log/dos2unix.log
+chmod +x install
 
 echo "${vert}Install necessary file ... Done${neutre}"
 
