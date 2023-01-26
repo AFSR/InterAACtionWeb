@@ -38,14 +38,14 @@ jobs:
 
       - name: Create GitHub Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.new-tag.outputs.tag }}
-          release_name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
+          tag: ${{ steps.new-tag.outputs.tag }}
+          name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit: "main"
+          prerelease: false
           draft: false
-          prerelease: true
 
       - name: Tar gz Main
         run: |
