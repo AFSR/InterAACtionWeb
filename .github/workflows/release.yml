@@ -15,19 +15,6 @@ jobs:
         with:
           ref: main
 
-      - name: Tar gz Main
-        run: |
-          tar -czvf InterAACtionBox-main.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
-
-      - name: Checkout Surface Repo
-        uses: actions/checkout@v3
-        with:
-          ref: surface
-
-      - name: Tar gz Surface
-        run: |
-          tar -czvf InterAACtionBox-surface.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
-
       - name: Get Env
         run: |
           echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
@@ -49,6 +36,10 @@ jobs:
           TAG="${TAG_1}.${TAG_2}.${NEW_TAG}"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
+      - name: Tar gz Main
+        run: |
+          tar -czvf InterAACtionBox-main.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
+
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
@@ -59,4 +50,25 @@ jobs:
           commit: "main"
           prerelease: false
           draft: false
-          artifacts: "InterAACtionBox-main.tar.gz,install.sh,InterAACtionBox-surface.tar.gz,install_surface.sh"
+          artifacts: "InterAACtionBox-main.tar.gz,install.sh"
+
+      - name: Checkout Surface Repo
+        uses: actions/checkout@v3
+        with:
+          ref: surface
+
+      - name: Tar gz Surface
+        run: |
+          tar -czvf InterAACtionBox-surface.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
+
+      - name: Add surface in LTS Release
+        id: add_surface_release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.new-tag.outputs.tag }}
+          name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit: "main"
+          prerelease: false
+          draft: false
+          artifacts: "InterAACtionBox-surface.tar.gz,install_surface.sh"
