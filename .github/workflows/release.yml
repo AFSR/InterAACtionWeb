@@ -36,21 +36,31 @@ jobs:
           TAG="${TAG_1}.${TAG_2}.${NEW_TAG}"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.new-tag.outputs.tag }}
+          release_name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
+          draft: false
+          prerelease: true
+
       - name: Tar gz Main
         run: |
           tar -czvf InterAACtionBox-main.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: ncipollo/release-action@v1
+      - name: Upload Main to Release
+        id: upload-main-assets
+        uses: csexton/release-asset-action@v2
         with:
-          tag: ${{ steps.new-tag.outputs.tag }}
-          name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit: "main"
-          prerelease: false
-          draft: false
-          artifacts: "InterAACtionBox-main.tar.gz,install.sh"
+          release-url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`.
+          files: |
+            InterAACtionBox-main.tar.gz
+            install.sh
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Checkout Surface Repo
         uses: actions/checkout@v3
@@ -61,14 +71,12 @@ jobs:
         run: |
           tar -czvf InterAACtionBox-surface.tar.gz ./ISOScripts/ ./Libs/ ./Ressources/ ./Scripts/ ./slides/
 
-      - name: Add surface in LTS Release
-        id: add_surface_release
-        uses: ncipollo/release-action@v1
+      - name: Upload Surface to Release
+        id: upload-surface-assets
+        uses: csexton/release-asset-action@v2
         with:
-          tag: ${{ steps.new-tag.outputs.tag }}
-          name: ${{ env.REPO_BASENAME }} ${{ steps.new-tag.outputs.tag }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit: "main"
-          prerelease: false
-          draft: false
-          artifacts: "InterAACtionBox-surface.tar.gz,install_surface.sh"
+          release-url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`.
+          files: |
+            InterAACtionBox-surface.tar.gz
+            install_surface.sh
+          github-token: ${{ secrets.GITHUB_TOKEN }}
