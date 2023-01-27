@@ -21,9 +21,6 @@ tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarAugCom.log
 
 mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
-ls | grep -i "AugCom.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do 
-rm -rf "${line}"; 
-rm -rf " ${line}"; 
-done
+rm *.tar.gz
 
 echo"${vert}Download of AugCom ... Done${neutre}"
