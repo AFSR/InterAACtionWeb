@@ -11,8 +11,6 @@ NEW_VERSION_NO_EXT=$( echo ${NEW_VERSION} | cut -d. -f1)
 
 NEW_VERSION_NAME="InterAACtionGaze"
 
-NEW_VERSION_NAME_TEMP="InterAACtionGazeTEMP"
-
 cd /etc/skel || exit
 
 echo "Download of ${NEW_VERSION_NAME}"
@@ -21,19 +19,9 @@ wget $NEW_VERSION_LINK
 
 tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionGaze.log
 
-mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME_TEMP}"
+rm *.tar.gz
 
-ls | grep "InterAACtionGaze*" | egrep -v "^(${NEW_VERSION_NAME_TEMP}$)" | while read -r line; do
-rm -rf "${line}";
-rm -rf " ${line}";
-done
-
-ls | grep "interAACtionGaze-linux*" | egrep -v "^(${NEW_VERSION_NAME_TEMP}$)" | while read -r line; do
-rm -rf "${line}";
-rm -rf " ${line}";
-done
-
-mv "${NEW_VERSION_NAME_TEMP}" "${NEW_VERSION_NAME}"
+mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}"
 dos2unix bin/* 2>>/etc/skel/log/dos2unix.log
