@@ -19,11 +19,8 @@ wget $NEW_VERSION_LINK
 
 tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionPlayer.log
 
-mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
+rm *.tar.gz
 
-ls | grep -i "InterAACtionPlayer.*" | egrep -v "^(${NEW_VERSION_NAME}$)" | while read -r line; do
-rm -rf "${line}";
-rm -rf " ${line}";
-done
+mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
 echo "${vert}Download of InterAACtionPlayer ... Done${neutre}"
