@@ -25,7 +25,7 @@ tar -zxvf ${NEW_VERSION}
 
 rm *.tar.gz
 
-mv "${NEW_NAME}" "${NEW_VERSION_NAME}"
+mv gazeplay-linux-x64* "${NEW_VERSION_NAME}"
 
 cd "/etc/skel/${NEW_VERSION_NAME}/lib/jre/bin/"
 chmod +x java
