@@ -129,6 +129,7 @@ echo "${vert}Gnome setup ... Done${neutre}"
 cd /usr/share/icons/
 mkdir interaactionBox
 cp ~/Ressources/icons/* /usr/share/icons/interaactionBox
+
 echo "${vert}Install icons ... Done${neutre}"
 
 # /********************************************************************************/
