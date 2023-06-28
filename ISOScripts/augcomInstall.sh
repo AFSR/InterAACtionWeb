@@ -23,4 +23,4 @@ mv "${NEW_VERSION_NO_EXT}" "${NEW_VERSION_NAME}"
 
 rm *.tar.gz
 
-echo"${vert}Download of AugCom ... Done${neutre}"
+echo "${vert}Download of AugCom ... Done${neutre}"
