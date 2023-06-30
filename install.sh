@@ -29,6 +29,7 @@ apt-get -y install curl 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/instal
 apt-get -y install yad 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install msmtp msmtp-mta 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install bsd-mailx 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install grub-efi-amd64-signed 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
