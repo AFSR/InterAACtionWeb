@@ -1,2 +1,28 @@
+# IDE / editor configs
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
 
-*.xml
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Build artefacts
+*.iso
+*.iso.md5
+*.log
+
+# Secrets and local config
+# NOTE: .msmtprc.example is committed as a template; the real file must
+# never be committed (it holds SMTP credentials).
+Ressources/.msmtprc
+*.env
+.env.local
