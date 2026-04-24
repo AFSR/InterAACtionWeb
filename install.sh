@@ -54,21 +54,21 @@ echo "${vert}Install necessary file ... Done${neutre}"
 # /********************************************************************************************************/
 # /* Part2 : Download main installation files */
 
-LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/AFSR/InterAACtionBox/releases/latest)
+LATEST_RELEASE_INFO=$(curl -fsSL https://api.github.com/repos/AFSR/InterAACtionBox/releases/latest)
 
-NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionBox-main*" | cut -d: -f2,3 | tr -d \")
+NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | jq -r '.assets[] | select(.name | test("InterAACtionBox-main")) | .browser_download_url' | head -n 1)
 
-NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
+NEW_VERSION=$(basename "$NEW_VERSION_LINK")
 
-NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionBox-main*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
+NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | jq -r '.name')
 
 cd ~/ || exit
 
 echo "Download of ${NEW_VERSION_NAME}"
 
-wget $NEW_VERSION_LINK
+wget "$NEW_VERSION_LINK"
 
-tar -zxvf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBox.log
+tar -zxf "${NEW_VERSION}" >>/etc/skel/log/tarInterAACtionBox.log
 
 rm -r "${NEW_VERSION}"
 
