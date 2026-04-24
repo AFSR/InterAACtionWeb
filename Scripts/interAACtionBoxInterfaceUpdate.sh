@@ -14,7 +14,7 @@ cd ~/ || exit
 
 url=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
 curl_url=$(echo "$url" | grep "browser_download_url.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \")
-nameFile=$(echo $curl_url | -d/ -f9)
+nameFile=$(echo "$curl_url" | cut -d/ -f9)
 
 wget $curl_url -q --show-progress 2>&1 |
 sed -nru '/[0-9]{1,3}%/ {s/.*[^0-9]([0-9]{1,3}%).*/\1/;p}' | xargs -L 1 |

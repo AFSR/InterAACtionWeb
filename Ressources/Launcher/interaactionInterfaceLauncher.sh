@@ -64,7 +64,7 @@ echo "$sceneStatus" ;
 	fi
 sleep 0.5
 echo "80" ;
-echo "playerStatus" ; 
+echo "$playerStatus" ;
 	INTERAACTIONPLAYER_DIRECTORY=$(ls ~/dist | grep "InterAACtionPlayer" | head -n 1)
 	if [ ! "$INTERAACTIONPLAYER_DIRECTORY" = "" ]; then
 	  INTERAACTIONPLAYER_PATH="$HOME/dist/${INTERAACTIONPLAYER_DIRECTORY}"

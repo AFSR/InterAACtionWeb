@@ -10,13 +10,13 @@ if [ ! -d "/usr/share/plymouth/themes" ]; then
 	exit 1;
 fi
 
-# coping theme in /usr/share/plymouth/themes/
+# copying theme in /usr/share/plymouth/themes/
 cp -r `dirname $0`/splashScreenBox /usr/share/plymouth/themes/ ;
 if [ $? -gt 0 ]; then
 	exit 1;
 fi
 
-# adding vortex-ubuntu in the list of aviable themes
+# adding splashScreenBox in the list of available themes
 update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/splashScreenBox/splashScreenBox.plymouth 100  &> /dev/null ;
 if [ $? -gt 0 ]; then
 	exit 1;

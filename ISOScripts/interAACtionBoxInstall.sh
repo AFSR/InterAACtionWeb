@@ -169,9 +169,9 @@ chmod a+x *
 sh ./checkFiles.sh
 
 # /********************************************************************************/
-# /* Part10 : Remove unecessary file
+# /* Part10 : Remove unnecessary file
 
 cd ~
 rm -R *
 
-echo "${vert}Remove unecessary files ... Done${neutre}"
+echo "${vert}Remove unnecessary files ... Done${neutre}"
