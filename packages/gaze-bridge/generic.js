@@ -22,7 +22,14 @@
   window.__afsrGazeBridgeLoaded = true;
 
   var DWELL_MS = 1000;
-  var SMOOTHING = 0.35; // exponential smoothing on gaze coords
+  var SMOOTHING = 0.25; // lower = more inertia; was 0.35
+  var JUMP_PX = 400; // gaze samples farther than this from the last
+                    // smoothed point are treated as a WebGazer glitch
+                    // and ignored for SUPPRESS_AFTER_JUMP_MS.
+  var SUPPRESS_AFTER_JUMP_MS = 200;
+  var CENTER_LOCK_MS = 1500; // if the gaze sits near screen centre for
+                             // this long, surface a "recalibrate" hint.
+  var CENTER_LOCK_RADIUS_PX = 80;
   var CLICKABLE_SELECTOR =
     'button, a[href], input:not([type="hidden"]):not([disabled]), ' +
     'select:not([disabled]), textarea:not([disabled]), ' +
@@ -40,6 +47,9 @@
     smoothedY: null,
     currentTarget: null,
     dwellStart: 0,
+    suppressUntil: 0,
+    centerLockedSince: 0,
+    warnedCenterLock: false,
   };
 
   var ui = null;
@@ -67,6 +77,34 @@
       if (state.enabled) disable(); else enable();
     });
 
+    var home = document.createElement("a");
+    home.href = "/";
+    home.textContent = "← Portail";
+    home.setAttribute("aria-label", "Retour au portail InterAACtion Web");
+    home.style.cssText = [
+      "position:fixed", "bottom:16px", "left:16px", "z-index:2147483000",
+      "padding:0.55rem 1rem", "border-radius:999px",
+      "border:2px solid rgba(255,255,255,0.3)",
+      "background:rgba(11,13,18,0.85)", "color:#fff",
+      "font:600 14px/1 system-ui, sans-serif",
+      "text-decoration:none",
+      "box-shadow:0 4px 12px rgba(0,0,0,0.3)",
+    ].join(";");
+
+    var hint = document.createElement("div");
+    hint.setAttribute("role", "status");
+    hint.setAttribute("aria-live", "polite");
+    hint.style.cssText = [
+      "position:fixed", "top:64px", "right:16px", "z-index:2147483000",
+      "padding:0.5rem 0.85rem", "border-radius:var(--radius,8px)",
+      "border:1px solid rgba(255,191,71,0.6)",
+      "background:rgba(90,60,0,0.9)", "color:#ffe7a8",
+      "font:500 13px/1.3 system-ui, sans-serif",
+      "max-width:240px",
+      "display:none",
+      "box-shadow:0 4px 12px rgba(0,0,0,0.35)",
+    ].join(";");
+
     var cursor = document.createElement("div");
     cursor.setAttribute("aria-hidden", "true");
     cursor.style.cssText = [
@@ -92,9 +130,11 @@
     cursor.appendChild(ring);
 
     document.body.appendChild(toggle);
+    document.body.appendChild(home);
+    document.body.appendChild(hint);
     document.body.appendChild(cursor);
 
-    return { toggle: toggle, cursor: cursor, ring: ring };
+    return { toggle: toggle, home: home, hint: hint, cursor: cursor, ring: ring };
   }
 
   function setToggleLabel() {
@@ -134,7 +174,22 @@
   }
 
   function onGaze(p) {
-    // Light smoothing so dwell doesn't lose the target on every jitter.
+    var now = performance.now();
+
+    // Glitch filter: drop samples that teleport far from the last
+    // smoothed position. WebGazer occasionally snaps the prediction
+    // back to screen centre when the face detector stutters; those
+    // frames should not reset the dwell target.
+    if (state.smoothedX !== null) {
+      var dx = p.x - state.smoothedX;
+      var dy = p.y - state.smoothedY;
+      if (dx * dx + dy * dy > JUMP_PX * JUMP_PX) {
+        state.suppressUntil = now + SUPPRESS_AFTER_JUMP_MS;
+        return;
+      }
+    }
+    if (now < state.suppressUntil) return;
+
     if (state.smoothedX === null) {
       state.smoothedX = p.x;
       state.smoothedY = p.y;
@@ -144,6 +199,30 @@
     }
     var x = state.smoothedX;
     var y = state.smoothedY;
+
+    // Center-lock detection: if the gaze is stuck near the viewport
+    // centre for CENTER_LOCK_MS, surface a recalibration hint.
+    var cx = window.innerWidth / 2;
+    var cy = window.innerHeight / 2;
+    var nearCentre =
+      (x - cx) * (x - cx) + (y - cy) * (y - cy) <
+      CENTER_LOCK_RADIUS_PX * CENTER_LOCK_RADIUS_PX;
+    if (nearCentre) {
+      if (!state.centerLockedSince) state.centerLockedSince = now;
+      if (!state.warnedCenterLock && now - state.centerLockedSince > CENTER_LOCK_MS) {
+        state.warnedCenterLock = true;
+        ui.hint.innerHTML =
+          'Le regard semble bloqué au centre. ' +
+          '<a style="color:#ffe7a8;text-decoration:underline" href="/calibration/">Recalibrer</a>';
+        ui.hint.style.display = "block";
+      }
+    } else {
+      state.centerLockedSince = 0;
+      if (state.warnedCenterLock) {
+        state.warnedCenterLock = false;
+        ui.hint.style.display = "none";
+      }
+    }
 
     ui.cursor.style.left = x + "px";
     ui.cursor.style.top = y + "px";
