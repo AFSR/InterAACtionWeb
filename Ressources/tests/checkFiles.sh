@@ -20,7 +20,7 @@ if [ -d /opt/google/chrome/extensions ];
 then
   cd /opt/google/chrome/extensions
   fileCors=$(find . -name "lhobafahddgcelffkeicbaginigeejlf.json" | head -n 1 | cut -d/ -f2)
-  if [ -z "$fileCors" ]:
+  if [ -z "$fileCors" ];
   then
     nbError=$(( $nbError + 1 ))
     echo "${rouge}CORS not installed !${neutre}"
