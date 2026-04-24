@@ -45,9 +45,23 @@ jobs:
           # Sanity check — fail loudly if any remain on
           ! grep -E '"serviceWorker":\s*true' angular.json
 
+      - name: Patch unpublished ngx-xml-to-json dependency
+        working-directory: upstream
+        run: |
+          set -euo pipefail
+          # Upstream pins ngx-xml-to-json@^1.0.1, but 1.0.1 was unpublished
+          # from the npm registry by its author. Only 1.0.5 is still
+          # reachable; its runtime API (.xmlToJson) is unchanged, only its
+          # Angular peer dep moved to 14. We pin 1.0.5, drop the lockfile
+          # (the old resolution is useless now), and let npm install
+          # --force ignore the peer-dep mismatch.
+          jq '.dependencies."ngx-xml-to-json" = "1.0.5"' package.json > package.json.new
+          mv package.json.new package.json
+          rm -f package-lock.json
+
       - name: Install dependencies
         working-directory: upstream
-        run: npm ci --legacy-peer-deps
+        run: npm install --legacy-peer-deps --force --no-audit --no-fund
 
       - name: Build AugCom (production, base-href /augcom/)
         working-directory: upstream
