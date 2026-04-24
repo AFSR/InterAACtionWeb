@@ -1,21 +1,29 @@
 # Applications
 
-This directory collects one integration point per bundled AAC app. For now
-each subdirectory is just a README that points at the upstream project; the
-actual build integration (submodule, npm workspace, CI-built artifact, or
-forked self-hosted copy) will be decided app-by-app as we wire them into
-`portal/`.
+This directory holds one subdirectory per AAC app. Each one contains a
+`BUILD.md` describing how that app's build workflow runs and, once a
+build has been committed, a `dist/` with the static artefacts served
+under `/<app>/` on Vercel.
 
-| App                  | Path                    | Upstream                                                                          |
-| -------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| AugCom               | [`augcom/`](./augcom/)     | [AFSR/AugCom-AFSR](https://github.com/AFSR/AugCom-AFSR)                           |
-| InterAACtionPlayer   | [`player/`](./player/)     | [AFSR/InterAACtionPlayer](https://github.com/AFSR/InterAACtionPlayer)             |
-| InterAACtionScene    | [`scene/`](./scene/)       | [AFSR/InterAACtionScene](https://github.com/AFSR/InterAACtionScene)               |
-| InterAACtionGaze     | [`gaze/`](./gaze/)         | [AFSR/InterAACtionGaze](https://github.com/AFSR/InterAACtionGaze)                 |
-| GazePlay (web build) | [`gazeplay/`](./gazeplay/) | [GazePlay/GazePlay-web](https://github.com/GazePlay/GazePlay-web)                 |
+| App                | Path                        | Upstream                                                                       |
+| ------------------ | --------------------------- | ------------------------------------------------------------------------------ |
+| AugCom             | [`augcom/`](./augcom/)      | [AFSR/AugCom-AFSR](https://github.com/AFSR/AugCom-AFSR)                        |
+| InterAACtionPlayer | [`player/`](./player/)      | [AFSR/InterAACtionPlayer-AFSR](https://github.com/AFSR/InterAACtionPlayer-AFSR) |
+| InterAACtionScene  | [`scene/`](./scene/)        | [AFSR/InterAACtionScene-AFSR](https://github.com/AFSR/InterAACtionScene-AFSR)  |
+| GazePlay (web)     | [`gazeplay/`](./gazeplay/)  | New Angular reimplementation in this repo (see `gazeplay/BUILD.md`)            |
+
+InterAACtionGaze is intentionally not in this list: its web counterpart
+is the `/calibration/` flow in `portal/calibration/`, which drives
+WebGazer on top of `@afsr/gaze-client`.
 
 ## Hosting policy
 
-All five apps will be forked under the AFSR organization and their release
-artifacts hosted on `interaactionweb.afsr.fr` alongside the portal, so the
-suite works without third-party availability assumptions.
+Every app is built by a GitHub Actions workflow (`.github/workflows/
+build-<name>.yml`), dispatched manually with a pinned upstream SHA. The
+workflow opens a PR on `bot/<name>-<sha>` with `apps/<name>/dist/`
+populated and the gaze bridge injected into `index.html`. Merging the
+PR redeploys Vercel, and the portal's "Lancer" CTA points at
+`/<name>/`.
+
+Nothing is hosted from a third-party CDN — the suite must work on
+patchy connections once cached by the service worker.

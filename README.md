@@ -5,9 +5,10 @@
 The original InterAACtionBox is an integrated Ubuntu-based device for
 Alternative and Augmented Communication (AAC). This repository carries the
 same mission to the web: running the same set of AAC apps (AugCom,
-InterAACtionPlayer, InterAACtionScene, InterAACtionGaze, GazePlay) in a
-browser, without requiring a dedicated OS install or an eye-tracker for
-basic use.
+InterAACtionPlayer, InterAACtionScene, GazePlay) in a browser, with a
+webcam-based gaze calibration flow replacing the desktop Tobii-only
+InterAACtionGaze tool, and without requiring a dedicated OS install or an
+eye-tracker for basic use.
 
 Target deployment: <https://interaactionweb.afsr.fr>.
 
@@ -31,13 +32,15 @@ clone; ISO-specific files are being removed incrementally.
 ## Layout (target)
 
 ```
-portal/       Static landing page and product tutorial (PWA)
-apps/         Per-app integration points (one README per app for now)
+portal/       Static landing page, PWA shell, /calibration/ flow
+apps/         Per-app integration points (committed dist per app)
   augcom/     AugCom web app
   player/     InterAACtionPlayer
   scene/      InterAACtionScene
-  gaze/       InterAACtionGaze
-  gazeplay/   GazePlay-web
+  gazeplay/   GazePlay (ground-up Angular reimplementation)
+packages/
+  gaze-client/  Unified gaze API (Tobii companion → WebGazer fallback)
+  gaze-bridge/  Generic gaze-to-click adapter injected into apps
 companion/    Optional native bridge for Tobii eye-trackers
 ```
 
