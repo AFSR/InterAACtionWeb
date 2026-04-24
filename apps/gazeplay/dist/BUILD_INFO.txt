@@ -1,0 +1,4 @@
+Built in-repo from source under apps/gazeplay/src/
+Commit:   539910f75221840efe22729271e928ca4526d128
+Built at: 2026-04-24T23:56:40Z
+Workflow: Build GazePlay (run 24917222836)
