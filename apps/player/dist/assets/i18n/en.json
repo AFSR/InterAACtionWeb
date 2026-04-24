@@ -1,0 +1,303 @@
+{
+  "notifier": {
+    "settings": "Settings have changed !",
+    "editOn": "Edit mode ON !",
+    "editOff": "Edit mode OFF !",
+    "addVideo": "Video add to playlist !",
+    "deleteVideo": "Video delete to playlist !",
+    "addSong": "Music add to playlist !",
+    "deleteSong": "Music delete to playlist !",
+    "exportPlaylist": "Export Playlist done !",
+    "addPlaylist": " add to the Playlist !",
+    "savePlaylist": "The Playlist has been saved !",
+    "importPlaylist": "Import Playlist done !",
+    "prefabricatedPlaylist": "Prefabricated Playlist has been added !",
+    "addAll": "All musics are added in the Playlist !",
+    "deleteAll": "All musics are deleted from the Playlist !",
+    "loadPlaylist": "Playlist loaded !",
+    "deletePlaylist": "Playlist deleted !",
+    "deleteUser": "User deleted !",
+    "logoutSpotify": "Logout of Spotify done !",
+    "logoutDeezer": "Logout of Deezer done !",
+    "newPlaylist": "New playlist created !"
+  },
+  "playlist": {
+    "title": "InterAACtion Player",
+    "delete": "Delete",
+    "saveBtn": "Save Playlist",
+    "exportBtn": "Export Playlist",
+    "importBtn": "Import File",
+    "editBtn": "Edit mode",
+    "settingsBtn": "Settings",
+    "userBtn": "Account Login",
+    "deleteBtn": "Delete Playlist",
+    "loadBtn": "Load a Playlist",
+    "logoutBtn": "Logout",
+    "playlist": "Playlist",
+    "up": "Up",
+    "down": "Down",
+    "music": "Music",
+    "video": "Video",
+    "new" : "New playlist",
+    "logInSpotify" : "Connected to Spotify",
+    "logOutSpotify" : "Disconnected of Spotify",
+    "logInDeezer" : "Connected to Deezer",
+    "logOutDeezer" : "Disconnected of Deezer"
+  },
+  "settingsPlaylist": {
+    "dwellTime": "DwellTime",
+    "dwellTimeForm": "DwellTime shape",
+    "circleForm": "Circle shape",
+    "settings": "Settings",
+    "themes": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "languages": "Languages",
+    "duration": "Dwell Time duration",
+    "cancel": "Cancel",
+    "save": "Save",
+    "english-language": "English",
+    "french-language": "French",
+    "spinnerInside": "Inside",
+    "spinnerOutside": "Outside",
+    "alertMessage": "Disable Alert message",
+    "diskProgress": "Disk",
+    "circleProgress": "Circle",
+    "or": "or",
+    "enable": "Enable",
+    "disable": "Disable",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back to playlist"
+  },
+  "savePlaylist": {
+    "title": "Save Playlist ?",
+    "titleFile": "Name Playlist",
+    "defaultTitleFile": "Choose your name =D ! ",
+    "errorNameAlreadyUse": "Name already use ! ",
+    "errorNameEmpty": "Name needed for save !",
+    "errorPlaylistEmpty": "Empty playlist !",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "loadPlaylist": {
+    "title" : "Load Playlist ?",
+    "playlist" : "List of Playlist :",
+    "cancel": "Cancel",
+    "load": "Load",
+    "errorMessage": "No box check !",
+    "deleteBtn": "Eraser",
+    "empty": "Empty"
+  },
+  "exportFile": {
+    "title": "Export Playlist ?",
+    "titleFile": "Title File",
+    "defaultTitleFile": "By default title = Playlist",
+    "errorWrongName": "Name cannot contain a '.'",
+    "yes": "Yes",
+    "no": "No",
+    "empty": "Playlist is empty !"
+  },
+  "deletePlaylist": {
+    "title": "Delete Playlist",
+    "text": "Do you want to delete this Playlist ?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "deleteUser": {
+    "title": "Delete User",
+    "text": "Do you want to delete this User ?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "modifyUser": {
+    "title": "Modify User",
+    "name": "New name",
+    "nameEmpty": "Name is empty !",
+    "image": "New image",
+    "importImg": "Import",
+    "chooseImg": "Choose",
+    "imgEmpty": "Image is empty !",
+    "cancel": "Cancel",
+    "submit": "Modify"
+  },
+  "account": {
+    "title": "Accounts",
+    "spotify": "Spotify account",
+    "loginSpotify": "Login Spotify",
+    "logoutSpotify": "Logout Spotify",
+    "deezer": "Deezer account",
+    "loginDeezer": "Login Deezer",
+    "logoutDeezer": "Logout Deezer",
+    "close": "Close"
+  },
+  "importFilePlaylist": {
+    "title": "Add local file to Playlist",
+    "type": "Type of file",
+    "song": "Music",
+    "video": "Video",
+    "titleSong": "Title of music",
+    "titleVideo": "Title of video",
+    "errorEmptyTitle": "Need title !",
+    "artistSong": "Artist of music",
+    "artistVideo": "Artist of video",
+    "file": "File",
+    "errorEmptyFile": "Need file !",
+    "errorWrongFile": "Wrong type file !",
+    "errorFileAlreadyInPlaylist": "File already in Playlist !",
+    "add": "Add",
+    "cancel": "Cancel",
+    "newPlaylist": "new Playlist",
+    "mergePlaylist": "merge Playlist",
+    "options": "Options",
+    "authorizedSong": "* only .mpeg & .wav are authorized !",
+    "authorizedVideo": "* only .mp4 & .webm are authorized !",
+    "authorizedFile": "* only .AACPPlaylist is authorized !",
+    "or": "or",
+    "import": "Import file",
+    "acceptedFile": "File well received"
+  },
+  "error": {
+    "errorTitle": "Internet connection error !",
+    "positiveTitle": "Internet connection successful !",
+    "errorMessage": "It seems that you are no longer connected to internet !",
+    "positiveMessage": "You are well connected to internet !",
+    "exitApp": "Exit interAACtion Player",
+    "checkConnexion": "Check internet connexion",
+    "goPlaylist": "Go to playlist",
+    "goOfflinePlaylist": "Go to playlist in offline"
+  },
+  "prefabricatedPlaylist": {
+    "title": "Prefabricated Playlist",
+    "choice": "List of prefabricated Playlist",
+    "cancel": "Cancel",
+    "add": "Add"
+  },
+  "alert": {
+    "titleMerge": "Watch Out, merge Playlist incoming !",
+    "titleDelete": "Watch Out, delete Playlist incoming !",
+    "titleReplace": "Watch Out, replace Playlist incoming !",
+    "titleItemDelete": "Watch Out, delete Item incoming !",
+    "titleNewPlaylist": "Watch Out, start a new playlist incoming !",
+    "contentMerge": "Are you sure, you want to merge the current Playlist with the one you gave us ?",
+    "contentDelete": "Are you sure, you want to delete the current Playlist ?",
+    "contentReplace": "Are you sure, you want to replace the current Playlist with the one you gave us ?",
+    "contentItemDelete": "Are you sure, you want to delete this item of the Playlist ?",
+    "contentNewPlaylist": "Are you sure, you want to start a new playlist ?",
+    "no" : "No",
+    "yes": "Yes",
+    "doNotShowAgain": " Do Not Show Again !"
+  },
+  "chooseType": {
+    "title": "Choose a type",
+    "prefabricated": "Prefabricated Playlist"
+  },
+  "chooseImage":{
+    "title": "Choose an image",
+    "crab": "Choose Crab",
+    "squirrel": "Choose Squirrel",
+    "hedgehog": "Choose Hedgehog",
+    "owl": "Choose Owl",
+    "rabbit": "Choose Rabbit",
+    "astonished": "Choose Astonished",
+    "octopus": "Choose Octopus",
+    "fox": "Choose Fox",
+    "turtle": "Choose Turtle"
+  },
+  "user": {
+    "title": "User Page",
+    "defaultUser": "Default User",
+    "addUser": "Add New User",
+    "importUser": "Import User",
+    "delete": "Delete",
+    "modify": "Modify",
+    "export": "Export",
+    "french": "French",
+    "english": "English",
+    "sun": "Light theme",
+    "moon": "Dark theme",
+    "editBtn": "Edit mode",
+    "logoutBtn": "Logout"
+  },
+  "userForm": {
+    "title": "New User",
+    "name": "User's name",
+    "nameEmpty": "Name is empty !",
+    "image": "User's image",
+    "importImg": "Import",
+    "chooseImg": "Choose",
+    "imgEmpty": "Image is empty !",
+    "cancel": "Cancel",
+    "submit": "Create",
+    "or": "or"
+  },
+  "importUser": {
+    "title": "Import account",
+    "file": "File",
+    "import": "File user",
+    "authorizedExtension": "* only .AACPUser is authorized !",
+    "acceptedFile": "File well received !",
+    "errorWrongFile": "Error, bad file !",
+    "errorEmptyFile": "Error, no file !",
+    "errorFileAlreadyInUserList" : "Error, account already present !",
+    "cancel": "Cancel",
+    "add": "Add"
+  },
+  "youtubeSearchContainer": {
+    "noVideo": "No video found !"
+  },
+  "youtubeSearchList": {
+    "add": "Add to Playlist",
+    "delete": "Delete to Playlist"
+  },
+  "youtubeSearchInput": {
+    "back": "Back to Playlist",
+    "input": " Search for a video ... "
+  },
+  "spotifyNavbar": {
+    "home": "Home",
+    "search": "Search",
+    "playlist": "Playlist"
+  },
+  "spotifyHome": {
+    "title": "New Releases"
+  },
+  "spotifyArtist": {
+    "followers": "Followers",
+    "back": "Back to search",
+    "albums": "Albums"
+  },
+  "spotifySearch": {
+    "back": "Back to Home",
+    "placeholder": " Search artist or track... ",
+    "artists": "Artists",
+    "tracks": "Musics"
+  },
+  "spotifyAlbum": {
+    "back": "Back to artist",
+    "add": "Add to Playlist",
+    "delete": "Delete to Playlist",
+    "btnAddAll": "Add all musics",
+    "btnDeleteAll": "Delete all musics"
+  },
+  "deezerSearch": {
+    "back": "Back to Playlist",
+    "input": " Search for a music ... "
+  },
+  "deezerNavbar": {
+    "home": "Home",
+    "playlist": "Playlist"
+  },
+  "deezerArtist": {
+    "followers": "Followers",
+    "back": "Back to search",
+    "albums": "Albums"
+  },
+  "deezerAlbum": {
+    "back": "Back to artist",
+    "add": "Add to Playlist",
+    "delete": "Delete to Playlist",
+    "btnAddAll": "Add all musics",
+    "btnDeleteAll": "Delete all musics"
+  }
+}
