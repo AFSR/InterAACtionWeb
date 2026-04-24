@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  htmlhint:
+    name: HTML lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.4.0
+        with:
+          node-version: '20'
+      - name: Install HTMLHint
+        run: npm install --no-save htmlhint@1.1.4
+      - name: Lint portal HTML
+        run: npx htmlhint "portal/**/*.html"
+
+  pa11y:
+    name: Accessibility (pa11y-ci)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.4.0
+        with:
+          node-version: '20'
+      - name: Install pa11y-ci and a static server
+        run: npm install --no-save pa11y-ci@3.1.0 http-server@14.1.1
+      - name: Serve portal
+        run: npx http-server portal -p 8080 -s &
+      - name: Wait for server
+        run: npx -y wait-on@7.2.0 http://127.0.0.1:8080
+      - name: Run pa11y-ci
+        run: npx pa11y-ci http://127.0.0.1:8080/index.html
+
+  shellcheck:
+    name: Shell lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - name: Run ShellCheck
+        run: |
+          set -e
+          mapfile -t files < <(git ls-files '*.sh')
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No shell scripts to check."
+            exit 0
+          fi
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends shellcheck
+          shellcheck "${files[@]}"
