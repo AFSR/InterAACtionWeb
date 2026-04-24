@@ -1,0 +1,59 @@
+name: Build GazePlay
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: apps/gazeplay
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Setup Node 20
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.4.0
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build GazePlay (Vite)
+        run: npm run build
+
+      - name: Write BUILD_INFO
+        run: |
+          set -euo pipefail
+          cat > dist/BUILD_INFO.txt <<EOF
+          Built in-repo from source under apps/gazeplay/src/
+          Commit:   ${{ github.sha }}
+          Built at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          Workflow: ${{ github.workflow }} (run ${{ github.run_id }})
+          EOF
+
+      - name: Inject gaze bridge into GazePlay index.html
+        working-directory: .
+        run: python3 scripts/patches/inject_gaze_bridge.py apps/gazeplay/dist
+
+      - name: Open a pull request with the new build
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        with:
+          branch: bot/gazeplay-${{ github.sha }}
+          commit-message: |
+            chore(gazeplay): rebuild from ${{ github.sha }}
+          title: "chore(gazeplay): rebuild from ${{ github.sha }}"
+          body: |
+            Automated Vite build of the in-repo GazePlay source tree.
+
+            - Source: `apps/gazeplay/src/` at `${{ github.sha }}`
+            - Gaze bridge injected into index.html
+            - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          add-paths: |
+            apps/gazeplay/dist

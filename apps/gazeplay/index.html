@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GazePlay — jeux sérieux pilotables au regard, réimplémentation web de GazePlay.">
+  <meta name="theme-color" content="#0b0d12">
+  <title>GazePlay — InterAACtion Web</title>
+  <!-- The gaze client and bridge are injected at build time by
+       scripts/patches/inject_gaze_bridge.py so we have a single source
+       of truth. They are intentionally absent from this source file,
+       which means `vite dev` runs without gaze: register mouse events
+       through DwellEngine's pointer fallback instead. -->
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

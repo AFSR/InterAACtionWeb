@@ -1,0 +1,184 @@
+:root {
+  --bg: #0b0d12;
+  --fg: #f2f3f7;
+  --muted: #b0b6c4;
+  --accent: #74a9ec;
+  --border: #2a2d36;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+a { color: var(--accent); }
+
+/* --- Hub ---------------------------------------------------------- */
+
+.hub {
+  height: 100%;
+  overflow: auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.hub-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 0.25rem;
+  align-items: center;
+}
+.hub-header h1 { margin: 0; font-size: clamp(1.75rem, 3vw + 1rem, 2.75rem); grid-column: 1; }
+.hub-header p { margin: 0; color: var(--muted); grid-column: 1; }
+.hub-header .back {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+}
+
+.game-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.game-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: left;
+  transition: border-color 150ms, background 150ms, transform 150ms;
+}
+.game-tile h2 { margin: 0; font-size: 1.2rem; }
+.game-tile p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.game-tile.hover, .game-tile:focus-visible, .game-tile:hover {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(116,169,236,0.08);
+  transform: translateY(-2px);
+}
+.game-emoji { font-size: 3rem; line-height: 1; }
+
+/* --- In-game stage ------------------------------------------------ */
+
+.game-stage {
+  position: relative;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, #1a1f2d 0%, #0b0d12 80%);
+}
+
+.game-root {
+  position: absolute;
+  inset: 0;
+}
+
+.game-hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  z-index: 10;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.game-playfield {
+  position: absolute;
+  inset: 72px 16px 16px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.game-exit {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 20;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(11,13,18,0.85);
+  color: var(--fg);
+  transition: border-color 150ms, background 150ms;
+}
+.game-exit.hover, .game-exit:focus-visible, .game-exit:hover {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(116,169,236,0.12);
+}
+
+.game-result {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+.game-result h2 { margin: 0 0 0.5rem; font-size: 2rem; }
+.game-result p { color: var(--muted); }
+
+/* --- Cream Pies --------------------------------------------------- */
+
+.cp-target {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, #ffe082 30%, #ff9800 70%, #e65100 100%);
+  box-shadow: 0 0 0 6px rgba(0,0,0,0.25);
+  transform: translate(-50%,-50%);
+  transition: transform 150ms, box-shadow 150ms, opacity 300ms;
+}
+.cp-target.hover {
+  transform: translate(-50%,-50%) scale(1.12);
+  box-shadow: 0 0 0 12px rgba(255, 191, 71, 0.35);
+}
+.cp-target.splat {
+  transform: translate(-50%,-50%) scale(1.6);
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%, #fff 0%, #fff 40%, transparent 60%);
+}
+
+/* --- Colored Bubbles --------------------------------------------- */
+
+.bb-bubble {
+  position: fixed;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.35), 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 200ms, opacity 280ms;
+  will-change: left, top;
+}
+.bb-bubble.pop {
+  transform: translate(-50%, -50%) scale(1.8);
+  opacity: 0;
+}
