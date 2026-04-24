@@ -6,7 +6,7 @@ neutre='\e[0;m'
 vert='\e[0;32m'
 
 # /********************************************************************************************************/
-# /* Part1 : Internet Connection, remove unecessary applications and installation of important applications */
+# /* Part1 : Internet Connection, remove unnecessary applications and installation of important applications */
 
 mkdir /etc/skel/log
 
@@ -16,7 +16,7 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "${vert}Internet configuration ... Done${neutre}"
 
 apt-get -y purge firefox 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
-echo "${vert}Delete unecessary file ... Done${neutre}"
+echo "${vert}Delete unnecessary file ... Done${neutre}"
 
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ focal-security main restricted

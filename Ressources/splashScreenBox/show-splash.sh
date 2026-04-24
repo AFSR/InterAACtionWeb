@@ -8,15 +8,15 @@ fi
 
 
 
-# starting plymouth deamon to show splashscreen
-echo -n "starting plymounthd   ..........................................   ";
+# starting plymouth daemon to show splashscreen
+echo -n "starting plymouthd   ..........................................   ";
 plymouthd ;
 if [ $? -gt 0 ]; then
-	echo -e "\nan error occoured while starting plymounthd" ;
+	echo -e "\nan error occurred while starting plymouthd" ;
 	echo "quitting plymouthd..."
 	plymouth --quit ;
 	if [ $? -gt 0 ]; then
-		echo "an error occoured stopping plymouthd" ;
+		echo "an error occurred stopping plymouthd" ;
 		echo "plymouthd might be still running in background"
 		exit 1;
 	fi
@@ -36,7 +36,7 @@ echo "[done]" ;
 echo -n "quitting plymouthd   ...........................................   ";
 plymouth --quit ;
 if [ $? -gt 0 ]; then
-	echo -e "\nan error occoured stopping plymouthd, retring" ;
+	echo -e "\nan error occurred stopping plymouthd, retrying" ;
 	n=0 ;
 	while [ $? -gt 0 -a $n -le 20 ]; do
 		plymouth --quit ;
