@@ -45,6 +45,9 @@ jobs:
           # Sanity check — fail loudly if any remain on
           ! grep -E '"serviceWorker":\s*true' angular.json
 
+      - name: Inline xmlToJson helper (ngx-xml-to-json is unusable)
+        run: python3 scripts/patches/augcom_inline_xml_to_json.py upstream
+
       - name: Patch unpublished ngx-xml-to-json dependency
         working-directory: upstream
         run: |
