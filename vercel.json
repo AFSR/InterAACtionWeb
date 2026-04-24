@@ -1,15 +1,8 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/",                        "destination": "/portal/index.html" },
-    { "source": "/service-worker.js",       "destination": "/portal/service-worker.js" },
-    { "source": "/manifest.webmanifest",    "destination": "/portal/manifest.webmanifest" },
-    { "source": "/assets/:path*",           "destination": "/portal/assets/:path*" },
-    { "source": "/augcom",                  "destination": "/apps/augcom/dist/index.html" },
-    { "source": "/augcom/",                 "destination": "/apps/augcom/dist/index.html" },
-    { "source": "/augcom/:path*",           "destination": "/apps/augcom/dist/:path*" }
-  ],
+  "framework": null,
+  "buildCommand": "bash scripts/build.sh",
+  "outputDirectory": "dist",
+  "installCommand": "echo skip",
   "headers": [
     {
       "source": "/service-worker.js",

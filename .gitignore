@@ -26,3 +26,6 @@ __pycache__/
 Ressources/.msmtprc
 *.env
 .env.local
+
+# Vercel build output
+/dist/
