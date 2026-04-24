@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calibration du suivi du regard par webcam pour la suite InterAACtion Web.">
+  <meta name="theme-color" content="#1856a7">
+  <title>Calibration du regard — InterAACtion Web</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="calibration.css">
+  <link rel="icon" type="image/png" href="../assets/icons/interAACtionBox.png">
+</head>
+<body class="calibration-body">
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <header class="site">
+    <a class="brand" href="../">
+      <img src="../assets/icons/interAACtionBox.png" alt="" aria-hidden="true" width="40" height="40">
+      <span>InterAACtion Web</span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="../">Accueil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="intro" class="stage" aria-labelledby="intro-title">
+      <div class="inner">
+        <h1 id="intro-title">Calibrer le suivi du regard</h1>
+        <p>Cette page apprend à votre ordinateur où vous regardez en utilisant la <strong>caméra de votre appareil</strong>. Aucune image n'est envoyée sur Internet&nbsp;: tout se fait localement dans votre navigateur.</p>
+        <p>Si vous disposez d'un eye-tracker Tobii et que l'application compagnon est installée, la calibration n'est pas nécessaire — elle est gérée par le matériel.</p>
+
+        <div class="status-bar" role="status" aria-live="polite" id="statusBar">Prêt.</div>
+
+        <div class="cta-row">
+          <button class="cta" type="button" id="startBtn">Activer la caméra et commencer</button>
+          <a class="cta cta-secondary" href="../">Retour au portail</a>
+        </div>
+
+        <details>
+          <summary>Que fait la calibration, plus précisément&nbsp;?</summary>
+          <p>La calibration affiche neuf points à l'écran. Fixez chaque point du regard pendant deux secondes&nbsp;: l'ordinateur en profite pour associer vos mouvements oculaires à des positions précises sur l'écran.</p>
+          <p>La précision typique après calibration est de 3° à 5° d'angle visuel, soit environ 50 à 100 pixels à 60 cm de distance. C'est suffisant pour piloter la plupart des applications de CAA, mais pas pour de la navigation fine.</p>
+          <p>Si vous voulez arrêter en cours de route, appuyez sur la touche <kbd>Échap</kbd>.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="calibrating" class="stage hidden" aria-labelledby="calibrating-title">
+      <h1 id="calibrating-title" class="visually-hidden">Calibration en cours</h1>
+      <p class="calibration-counter" aria-live="polite" id="counter">Point&nbsp;<span id="currentPoint">1</span>&nbsp;/&nbsp;<span id="totalPoints">9</span></p>
+      <div class="calibration-grid" id="grid" aria-hidden="true"></div>
+      <button class="cta cta-ghost" type="button" id="abortBtn">Annuler (Échap)</button>
+    </section>
+
+    <section id="result" class="stage hidden" aria-labelledby="result-title">
+      <div class="inner">
+        <h1 id="result-title">Calibration terminée</h1>
+        <p id="resultSummary" class="muted">—</p>
+
+        <div class="probe">
+          <p>Déplacez maintenant votre regard sur l'écran&nbsp;: le cercle bleu devrait vous suivre (avec une précision proportionnelle à votre calibration).</p>
+          <div class="probe-surface" id="probeSurface" aria-hidden="true">
+            <div class="probe-dot" id="probeDot"></div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <button class="cta" type="button" id="restartBtn">Recommencer la calibration</button>
+          <a class="cta cta-secondary" href="../">Retour au portail</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/gaze-client/afsr-gaze.umd.js"></script>
+  <script src="calibration.js"></script>
+</body>
+</html>

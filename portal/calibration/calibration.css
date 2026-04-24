@@ -1,0 +1,157 @@
+.calibration-body .stage { min-height: calc(100vh - 90px); padding: 2rem 1.5rem; }
+.calibration-body .stage.hidden { display: none; }
+.calibration-body .stage .inner { max-width: 720px; margin: 0 auto; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.status-bar {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  color: var(--fg);
+}
+.status-bar.error {
+  background: #fde7e7;
+  border-color: #e89696;
+  color: #6a1b1b;
+}
+
+.cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.25rem 0; }
+.cta-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.cta-ghost {
+  background: transparent;
+  color: var(--fg);
+  border: 1px dashed var(--border);
+}
+
+details { margin-top: 2rem; }
+details summary { cursor: pointer; font-weight: 600; padding: 0.5rem 0; }
+details p { margin-top: 0.75rem; }
+kbd {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+#calibrating.stage {
+  position: relative;
+  padding: 0;
+  min-height: 100vh;
+  background: #0b0d12;
+  color: #e8eaf0;
+  overflow: hidden;
+}
+.calibration-counter {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #e8eaf0;
+  margin: 0;
+  z-index: 2;
+}
+#abortBtn {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: transparent;
+  color: #e8eaf0;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  cursor: pointer;
+  z-index: 2;
+}
+#abortBtn:hover, #abortBtn:focus-visible { background: rgba(255,255,255,0.1); }
+
+.calibration-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.cal-target {
+  position: absolute;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #ffbf47;
+  border: 4px solid #b0800e;
+  box-shadow: 0 0 0 0 rgba(255, 191, 71, 0.5);
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  transition: opacity 0.35s ease, box-shadow 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.cal-target.active {
+  opacity: 1;
+  box-shadow: 0 0 0 16px rgba(255, 191, 71, 0.2);
+}
+.cal-target.active::after {
+  content: "";
+  position: absolute;
+  inset: 50% 50%;
+  width: 0; height: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  animation: dwellRing 2s linear forwards;
+}
+.cal-target.done {
+  opacity: 0.9;
+  background: #4caf50;
+  border-color: #2e7d32;
+}
+@keyframes dwellRing {
+  0%   { width: 0; height: 0; }
+  100% { width: 36px; height: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cal-target.active::after { animation: none; width: 36px; height: 36px; }
+}
+
+.probe {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+.probe-surface {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0b0d12;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+.probe-dot {
+  position: absolute;
+  width: 24px; height: 24px;
+  background: #74a9ec;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(116, 169, 236, 0.6);
+  display: none;
+}
