@@ -1,0 +1,29 @@
+InterAACtion Web
+================
+
+InterAACtion Web is a derivative of AFSR/InterAACtionBox.
+
+Upstream project:
+  https://github.com/AFSR/InterAACtionBox
+  Copyright (c) Association Française du Syndrome de Rett (AFSR)
+                and the InterAACtionBox contributors.
+
+This repository was seeded via a mirror clone on 2026-04-24, so the commit
+history from upstream is preserved, including attribution of all original
+contributors. Two paths were stripped from the historical objects before
+publication:
+
+  - Libs/                       (bundled Ubuntu/Tobii/TeamViewer .deb packages
+                                 irrelevant to a web build; removed to keep
+                                 the repository a reasonable size)
+  - Ressources/google-chrome/   (a pre-seeded Chrome profile that contained
+                                 residual session credentials; removed for
+                                 security reasons)
+
+No commit authorship, message, or ordering was altered.
+
+License
+-------
+
+This project inherits the license of its upstream, GPL-3.0. See the LICENSE
+file at the root of the repository.
