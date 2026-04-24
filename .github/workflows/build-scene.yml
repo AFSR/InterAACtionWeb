@@ -1,12 +1,12 @@
-name: Build Player
+name: Build Scene
 
 on:
   workflow_dispatch:
     inputs:
       sha:
-        description: "InterAACtionPlayer-AFSR commit SHA to build"
+        description: "InterAACtionScene-AFSR commit SHA to build"
         required: true
-        default: "c7dbdf5bff43e64595c66db9f9212d1391977c57"
+        default: "5780df46d14c7399b8d986a47ad3f51c85e2ede1"
 
 permissions:
   contents: write
@@ -19,16 +19,16 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - name: Setup Node 16 (Angular 11 toolchain)
+      - name: Setup Node 14 (Angular 9 toolchain)
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.4.0
         with:
-          node-version: "16"
+          node-version: "14"
 
-      - name: Clone InterAACtionPlayer-AFSR at the requested SHA
+      - name: Clone InterAACtionScene-AFSR at the requested SHA
         run: |
           set -euo pipefail
           SHA="${{ github.event.inputs.sha }}"
-          git clone https://github.com/AFSR/InterAACtionPlayer-AFSR.git upstream
+          git clone https://github.com/AFSR/InterAACtionScene-AFSR.git upstream
           cd upstream
           git checkout "$SHA"
           git log -1 --pretty="%H %s"
@@ -46,9 +46,9 @@ jobs:
         working-directory: upstream
         run: npm ci --legacy-peer-deps --no-audit --no-fund
 
-      - name: Build Player (production, base-href /player/)
+      - name: Build Scene (production, base-href /scene/)
         working-directory: upstream
-        run: npx ng build --prod --base-href /player/ --output-path dist
+        run: npx ng build --prod --base-href /scene/ --output-path dist
 
       - name: Strip leftover ngsw artefacts from dist
         working-directory: upstream
@@ -56,36 +56,36 @@ jobs:
           set -euo pipefail
           rm -f dist/ngsw.json dist/ngsw-worker.js dist/safety-worker.js dist/worker-basic.min.js
 
-      - name: Replace apps/player/dist in the host repo
+      - name: Replace apps/scene/dist in the host repo
         run: |
           set -euo pipefail
-          rm -rf apps/player/dist
-          mkdir -p apps/player
-          cp -r upstream/dist apps/player/dist
-          cat > apps/player/dist/BUILD_INFO.txt <<EOF
-          Built from: https://github.com/AFSR/InterAACtionPlayer
+          rm -rf apps/scene/dist
+          mkdir -p apps/scene
+          cp -r upstream/dist apps/scene/dist
+          cat > apps/scene/dist/BUILD_INFO.txt <<EOF
+          Built from: https://github.com/AFSR/InterAACtionScene-AFSR
           SHA:        ${{ github.event.inputs.sha }}
           Built at:   $(date -u +"%Y-%m-%dT%H:%M:%SZ")
           Workflow:   ${{ github.workflow }} (run ${{ github.run_id }})
           EOF
 
-      - name: Inject gaze bridge into Player index.html
-        run: python3 scripts/patches/inject_gaze_bridge.py apps/player/dist
+      - name: Inject gaze bridge into Scene index.html
+        run: python3 scripts/patches/inject_gaze_bridge.py apps/scene/dist
 
       - name: Open a pull request with the new build
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
         with:
-          branch: bot/player-${{ github.event.inputs.sha }}
+          branch: bot/scene-${{ github.event.inputs.sha }}
           commit-message: |
-            chore(player): build from ${{ github.event.inputs.sha }}
-          title: "chore(player): build from ${{ github.event.inputs.sha }}"
+            chore(scene): build from ${{ github.event.inputs.sha }}
+          title: "chore(scene): build from ${{ github.event.inputs.sha }}"
           body: |
-            Automated build of [AFSR/InterAACtionPlayer-AFSR](https://github.com/AFSR/InterAACtionPlayer-AFSR)
+            Automated build of [AFSR/InterAACtionScene-AFSR](https://github.com/AFSR/InterAACtionScene-AFSR)
             pinned at `${{ github.event.inputs.sha }}`.
 
-            - Angular 11 `--prod`, `--base-href /player/`
+            - Angular 9 `--prod`, `--base-href /scene/`
             - Service worker disabled (portal owns SW scope `/`)
             - Gaze bridge injected
             - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           add-paths: |
-            apps/player/dist
+            apps/scene/dist
