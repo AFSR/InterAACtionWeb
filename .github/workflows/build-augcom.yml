@@ -1,0 +1,91 @@
+name: Build AugCom
+
+on:
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "AugCom-AFSR commit SHA to build"
+        required: true
+        default: "47128f21502eddd0a1c708ebc02fe9b5752e8de2"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Setup Node 14 (required by Angular 9)
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.4.0
+        with:
+          node-version: "14"
+
+      - name: Clone AugCom-AFSR at the requested SHA
+        run: |
+          set -euo pipefail
+          SHA="${{ github.event.inputs.sha }}"
+          git clone https://github.com/AFSR/AugCom-AFSR.git upstream
+          cd upstream
+          git checkout "$SHA"
+          git log -1 --pretty="%H %s"
+
+      - name: Disable Angular service worker (portal owns the SW)
+        working-directory: upstream
+        run: |
+          set -euo pipefail
+          # Patch angular.json: set any serviceWorker: true to false in every
+          # build configuration. jq keeps us safe from hand-edited JSON.
+          jq '(.. | objects | select(has("serviceWorker")) | .serviceWorker) |= false' \
+            angular.json > angular.json.new
+          mv angular.json.new angular.json
+          # Sanity check — fail loudly if any remain on
+          ! grep -E '"serviceWorker":\s*true' angular.json
+
+      - name: Install dependencies
+        working-directory: upstream
+        run: npm ci --legacy-peer-deps
+
+      - name: Build AugCom (production, base-href /augcom/)
+        working-directory: upstream
+        run: npx ng build --prod --base-href /augcom/ --output-path dist
+
+      - name: Strip leftover ngsw artefacts from dist
+        working-directory: upstream
+        run: |
+          set -euo pipefail
+          rm -f dist/ngsw.json dist/ngsw-worker.js dist/safety-worker.js dist/worker-basic.min.js
+
+      - name: Replace apps/augcom/dist in the host repo
+        run: |
+          set -euo pipefail
+          rm -rf apps/augcom/dist
+          mkdir -p apps/augcom
+          cp -r upstream/dist apps/augcom/dist
+          # Write the build provenance so humans know what is inside
+          cat > apps/augcom/dist/BUILD_INFO.txt <<EOF
+          Built from: https://github.com/AFSR/AugCom-AFSR
+          SHA:        ${{ github.event.inputs.sha }}
+          Built at:   $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          Workflow:   ${{ github.workflow }} (run ${{ github.run_id }})
+          EOF
+
+      - name: Open a pull request with the new build
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        with:
+          branch: bot/augcom-${{ github.event.inputs.sha }}
+          commit-message: |
+            chore(augcom): build from ${{ github.event.inputs.sha }}
+          title: "chore(augcom): build from ${{ github.event.inputs.sha }}"
+          body: |
+            Automated build of [AFSR/AugCom-AFSR](https://github.com/AFSR/AugCom-AFSR)
+            pinned at `${{ github.event.inputs.sha }}`.
+
+            - Angular `--prod`, `--base-href /augcom/`
+            - Service worker disabled (portal owns SW scope `/`)
+            - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          add-paths: |
+            apps/augcom/dist
