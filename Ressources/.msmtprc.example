@@ -1,0 +1,27 @@
+# Template for the msmtp configuration shipped with the ISO.
+#
+# This file is committed to the repository as a TEMPLATE.
+# Before building an ISO, copy it to `.msmtprc` in this directory and
+# replace the placeholders below with real values. The real `.msmtprc`
+# is in .gitignore and must never be committed.
+#
+#   cp Ressources/.msmtprc.example Ressources/.msmtprc
+#   # then edit Ressources/.msmtprc to set `from`, `user` and `password`
+#
+# During ISO build, ISOScripts/interAACtionBoxInstall.sh copies
+# Ressources/.msmtprc to /etc/skel/.msmtprc and chmods it 600.
+
+defaults
+auth		on
+tls		on
+tls_starttls	on
+
+# Outlook account
+account	outlook
+host		smtp-mail.outlook.com
+port		587
+from		REPLACE_WITH_EMAIL_ADDRESS
+user		REPLACE_WITH_EMAIL_ADDRESS
+password	REPLACE_WITH_APP_PASSWORD
+
+account default : outlook

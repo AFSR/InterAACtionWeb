@@ -23,7 +23,14 @@ sh ~/ISOScripts/augcomInstall.sh
 cd /etc/skel
 
 cp -R ~/Ressources/.email /etc/skel/
-cp ~/Ressources/.msmtprc /etc/skel/
+if [ -f ~/Ressources/.msmtprc ]; then
+	cp ~/Ressources/.msmtprc /etc/skel/
+else
+	echo "WARNING: Ressources/.msmtprc not found, falling back to template."
+	echo "         The ISO will ship with placeholder SMTP credentials and"
+	echo "         email-sending features will NOT work until they are set."
+	cp ~/Ressources/.msmtprc.example /etc/skel/.msmtprc
+fi
 chmod 600 /etc/skel/.msmtprc
 
 echo "${vert}Email settings ... Done${neutre}"
