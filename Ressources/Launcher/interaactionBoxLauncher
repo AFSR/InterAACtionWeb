@@ -12,7 +12,7 @@ nextButton="Next"
 if [ "$actualLanguage" = "fr_FR.UTF-8" ]; then
 	title="Finalisation de l'installation"
 	text1="Nous allons finaliser l'installation de l'interAACtionBox !"
-	text2="Veuillez branché votre commande oculaire !"
+	text2="Veuillez brancher votre commande oculaire !"
 	text3="Nous allons commencer la calibration de votre commande oculaire !"
 	nextButton="Suivant"
 fi
