@@ -30,9 +30,15 @@
     currentPoint: document.getElementById("currentPoint"),
     totalPoints: document.getElementById("totalPoints"),
     resultSummary: document.getElementById("resultSummary"),
-    probeSurface: document.getElementById("probeSurface"),
     probeDot: document.getElementById("probeDot"),
   };
+
+  // WebGazer's TFJS+MediaPipe pipeline breaks on Safari today (throws
+  // "t is not a function" from a minified TFJS callback). Detect and
+  // explain rather than present a cryptic error.
+  var isSafari =
+    /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
+    !/CriOS|FxiOS|EdgiOS/i.test(navigator.userAgent);
 
   var GRID = [
     { r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 },
@@ -127,16 +133,10 @@
   }
 
   function onGazeDuringProbe(p) {
-    var rect = ui.probeSurface.getBoundingClientRect();
-    var relX = p.x - rect.left;
-    var relY = p.y - rect.top;
-    if (relX < 0 || relY < 0 || relX > rect.width || relY > rect.height) {
-      ui.probeDot.style.display = "none";
-      return;
-    }
+    // Dot is position:fixed, so viewport-relative gaze coords map 1:1.
     ui.probeDot.style.display = "block";
-    ui.probeDot.style.left = relX + "px";
-    ui.probeDot.style.top = relY + "px";
+    ui.probeDot.style.left = p.x + "px";
+    ui.probeDot.style.top = p.y + "px";
   }
 
   function onStatus(s) {
@@ -153,6 +153,14 @@
   }
 
   async function start() {
+    if (isSafari) {
+      setStatus(
+        "Safari ne supporte pas encore le suivi par webcam pour cette application. " +
+          "Utilisez Chrome, Edge ou Firefox en attendant.",
+        true,
+      );
+      return;
+    }
     ui.startBtn.disabled = true;
     setStatus("Initialisation…");
     try {
@@ -184,7 +192,6 @@
       ui.resultSummary.textContent =
         "Eye-tracker Tobii détecté via l'application compagnon. " +
         "La calibration matérielle est gérée en dehors de cette page.";
-      ui.probeSurface.style.display = "none";
       setCalibrated("tobii");
       return;
     }
@@ -211,6 +218,7 @@
       try { state.session.stop(); } catch (_) { /* ignore */ }
       state.session = null;
     }
+    ui.probeDot.style.display = "none";
     show(ui.intro);
     ui.startBtn.disabled = false;
     setStatus("Calibration annulée.");
@@ -231,6 +239,7 @@
       try { state.session.stop(); } catch (_) { /* ignore */ }
       state.session = null;
     }
+    ui.probeDot.style.display = "none";
     show(ui.intro);
     ui.startBtn.disabled = false;
     setStatus("Prêt.");

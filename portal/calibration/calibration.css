@@ -136,22 +136,18 @@ kbd {
   border-radius: var(--radius);
   background: var(--bg-alt);
 }
-.probe-surface {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #0b0d12;
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-top: 0.75rem;
-}
 .probe-dot {
-  position: absolute;
-  width: 24px; height: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
   background: #74a9ec;
+  border: 2px solid #ffffff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  box-shadow: 0 0 8px rgba(116, 169, 236, 0.6);
+  box-shadow: 0 0 0 2px rgba(11, 13, 18, 0.4), 0 0 12px rgba(116, 169, 236, 0.8);
   display: none;
+  z-index: 10000;
 }
