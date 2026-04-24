@@ -10,9 +10,24 @@ vert='\e[0;32m'
 
 mkdir /etc/skel/log
 
-rm -r /etc/resolv.conf
-touch /etc/resolv.conf
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
+# Ensure DNS resolution works inside Cubic's chroot. Cubic ships a
+# symlink to systemd-resolved's stub, but the stub isn't running in
+# the chroot, so name resolution must be bootstrapped. We only fill
+# /etc/resolv.conf when it is missing or empty, and we prefer the
+# loopback stub (127.0.0.53) used by systemd-resolved, falling back
+# to common public resolvers if it is not available at runtime. This
+# avoids silently overriding the host's DNS policy, which is important
+# for a device destined for medical/educational environments where
+# operators may run their own resolver.
+if [ ! -s /etc/resolv.conf ]; then
+	{
+		echo "# Generated during ISO build (see install.sh)."
+		echo "# On first boot, systemd-resolved will manage this file."
+		echo "nameserver 127.0.0.53"
+		echo "nameserver 1.1.1.1"
+		echo "nameserver 9.9.9.9"
+	} > /etc/resolv.conf
+fi
 echo "${vert}Internet configuration ... Done${neutre}"
 
 apt-get -y purge firefox 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
