@@ -1,0 +1,21 @@
+{
+  "name": "@afsr/gaze-client",
+  "version": "0.1.0",
+  "description": "Unified gaze-tracking façade for the InterAACtion web suite. Prefers a Tobii eye-tracker via the Tauri companion; falls back to WebGazer.js webcam tracking.",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "main": "dist/afsr-gaze.umd.js",
+  "module": "dist/afsr-gaze.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "vendor/"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0"
+  }
+}

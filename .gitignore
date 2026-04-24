@@ -29,3 +29,6 @@ Ressources/.msmtprc
 
 # Vercel build output
 /dist/
+
+# npm
+node_modules/

@@ -25,6 +25,15 @@ for app_dist in apps/*/dist; do
   cp -r "$app_dist"/. "$OUT/$app/"
 done
 
+# Shared gaze-tracking client (companion + WebGazer fallback).
+# Served at /gaze-client/; apps and the portal pull it from there.
+if [ -d packages/gaze-client/dist ] && [ -d packages/gaze-client/vendor ]; then
+  echo "Mounting gaze-client at /gaze-client/"
+  mkdir -p "$OUT/gaze-client/vendor"
+  cp -r packages/gaze-client/dist/. "$OUT/gaze-client/"
+  cp -r packages/gaze-client/vendor/. "$OUT/gaze-client/vendor/"
+fi
+
 echo "Build output:"
 du -sh "$OUT"
 find "$OUT" -maxdepth 2 -type d | sort
