@@ -34,6 +34,14 @@ if [ -d packages/gaze-client/dist ] && [ -d packages/gaze-client/vendor ]; then
   cp -r packages/gaze-client/vendor/. "$OUT/gaze-client/vendor/"
 fi
 
+# Gaze-to-click adapter served at /gaze-client/gaze-bridge.js, alongside
+# the client itself. Apps inject this script to become pilotable by gaze.
+if [ -f packages/gaze-bridge/generic.js ]; then
+  echo "Mounting gaze-bridge at /gaze-client/gaze-bridge.js"
+  mkdir -p "$OUT/gaze-client"
+  cp packages/gaze-bridge/generic.js "$OUT/gaze-client/gaze-bridge.js"
+fi
+
 echo "Build output:"
 du -sh "$OUT"
 find "$OUT" -maxdepth 2 -type d | sort
