@@ -33,18 +33,21 @@ echo "${vert}Internet configuration ... Done${neutre}"
 apt-get -y purge firefox 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/purgeApp.log
 echo "${vert}Delete unnecessary file ... Done${neutre}"
 
-echo "deb http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu/ focal-security main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
+echo "deb https://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+deb https://security.ubuntu.com/ubuntu/ focal-security main restricted
+deb https://archive.ubuntu.com/ubuntu/ focal-updates main restricted
 " > /etc/apt/sources.list
 
 apt-get update 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install build-essential 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install curl 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install yad 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install msmtp msmtp-mta 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install bsd-mailx 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install grub-efi-amd64-signed 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install \
+	build-essential \
+	curl \
+	yad \
+	msmtp msmtp-mta \
+	bsd-mailx \
+	grub-efi-amd64-signed \
+	jq \
+	2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 echo "${vert}Install necessary file ... Done${neutre}"
 
 # /********************************************************************************************************/
