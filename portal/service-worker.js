@@ -1,12 +1,16 @@
-// InterAACtion Web — minimal PWA service worker.
+// InterAACtion Web — PWA service worker.
 //
-// Strategy: cache-first for same-origin static assets, network-first
-// for navigation (HTML) so content updates reach users on next load.
-// No runtime caching of third-party origins.
+// Strategy:
+//   - Navigations (HTML): network-first, cached for offline fallback.
+//   - Same-origin GET assets: stale-while-revalidate — serve from cache
+//     immediately, refresh in the background. Prevents the "stuck on old
+//     JS" footgun after a deploy.
+//   - Cross-origin requests: pass through, never cached.
 //
-// Bump CACHE_VERSION when portal/ assets change to force re-fetch.
+// Bump CACHE_VERSION when the precache list itself changes; new cache
+// name forces the old one to be deleted on activate.
 
-const CACHE_VERSION = 'iaw-portal-v1';
+const CACHE_VERSION = 'iaw-portal-v2';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -53,16 +57,19 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // stale-while-revalidate for every other same-origin GET
   event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req).then((res) => {
-        if (res.ok && res.type === 'basic') {
-          const copy = res.clone();
-          caches.open(CACHE_VERSION).then((c) => c.put(req, copy));
-        }
-        return res;
-      });
+    caches.open(CACHE_VERSION).then(async (cache) => {
+      const cached = await cache.match(req);
+      const networkFetch = fetch(req)
+        .then((res) => {
+          if (res && res.ok && res.type === 'basic') {
+            cache.put(req, res.clone());
+          }
+          return res;
+        })
+        .catch(() => cached);
+      return cached || networkFetch;
     })
   );
 });
