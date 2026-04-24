@@ -12,11 +12,11 @@ fi
 
 cd ~/ || exit
 
-url=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
-curl_url=$(echo "$url" | grep "browser_download_url.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \")
-nameFile=$(echo "$curl_url" | cut -d/ -f9)
+url=$(curl -fsSL https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
+curl_url=$(echo "$url" | jq -r '.assets[] | select(.name | test("InterAACtionBox_Interface-linux")) | .browser_download_url' | head -n 1)
+nameFile=$(basename "$curl_url")
 
-wget $curl_url -q --show-progress 2>&1 |
+wget "$curl_url" -q --show-progress 2>&1 |
 sed -nru '/[0-9]{1,3}%/ {s/.*[^0-9]([0-9]{1,3}%).*/\1/;p}' | xargs -L 1 |
 zenity --progress \
 	--title="$title" \
@@ -31,17 +31,17 @@ else
 	interfaceName=$(find $HOME/* -name "InterAACtionBox_Interface-linux")
   rm -r "$interfaceName"
 
-  LATEST_RELEASE_INFO=$(curl -s https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
+  LATEST_RELEASE_INFO=$(curl -fsSL https://api.github.com/repos/InteraactionGroup/InterAACtionBox_Interface/releases/latest)
 
-  NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | grep "browser_download_url.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \")
+  NEW_VERSION_LINK=$(echo "$LATEST_RELEASE_INFO" | jq -r '.assets[] | select(.name | test("InterAACtionBox_Interface-linux")) | .browser_download_url' | head -n 1)
 
-  NEW_VERSION=$( echo "${NEW_VERSION_LINK}" | cut -d/ -f9)
+  NEW_VERSION=$(basename "$NEW_VERSION_LINK")
 
-  NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | grep "name.*InterAACtionBox_Interface-linux*" | cut -d: -f2,3 | tr -d \" | head -n 1 | tr -d \,)
+  NEW_VERSION_NAME=$(echo "$LATEST_RELEASE_INFO" | jq -r '.name')
 
   cd ~/ || exit
 
-  tar -zxvf "${NEW_VERSION}"
+  tar -zxf "${NEW_VERSION}"
 
   rm -r "${NEW_VERSION}"
 

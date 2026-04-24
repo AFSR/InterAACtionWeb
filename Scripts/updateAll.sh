@@ -1,3 +1,4 @@
+#!/bin/sh
 cd ~/Update || exit
 sh gazeplayUpdate.sh
 

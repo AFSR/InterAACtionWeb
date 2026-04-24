@@ -1,3 +1,4 @@
+#!/bin/sh
 neutre='\e[0;m'
 vert='\e[0;32m'
 rouge='\e[0;31m'
