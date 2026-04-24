@@ -1,4 +1,4 @@
-[or.gnome.shell.extensions.desktop-icons]
+[org.gnome.shell.extensions.desktop-icons]
 icon-size = 'large'
 show-home = false
 show-trash = false
