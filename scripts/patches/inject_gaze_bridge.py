@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """
-Inject the gaze client + generic gaze bridge into AugCom's built
+Inject the gaze client + generic gaze bridge into a built Angular app's
 index.html so the app becomes pilotable at the eye level without
-touching its Angular source.
+touching its source.
 
 The two scripts are inserted at the very end of <head>, so they load
 early but do not block the Angular bootstrap. Both are served under
 /gaze-client/ by the Vercel build step (see scripts/build.sh).
 
+Idempotent — checks for a marker comment before patching, so rebuilds
+that re-run this step do not duplicate the injection.
+
 Usage:
-    python3 scripts/patches/augcom_inject_gaze_bridge.py <augcom_dist_dir>
+    python3 scripts/patches/inject_gaze_bridge.py <app_dist_dir>
 """
 from __future__ import annotations
 import sys

@@ -116,7 +116,7 @@ jobs:
           EOF
 
       - name: Inject gaze bridge into AugCom index.html
-        run: python3 scripts/patches/augcom_inject_gaze_bridge.py apps/augcom/dist
+        run: python3 scripts/patches/inject_gaze_bridge.py apps/augcom/dist
 
       - name: Open a pull request with the new build
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
