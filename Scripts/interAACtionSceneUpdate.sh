@@ -1,3 +1,4 @@
+#!/bin/sh
 sceneName=$(find "$HOME/dist/" -name "*InterAACtionScene-AFSR*")
 rm -r "$sceneName"
 

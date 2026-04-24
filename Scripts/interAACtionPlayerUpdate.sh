@@ -1,3 +1,4 @@
+#!/bin/sh
 playerName=$(find "$HOME/dist/" -name "*InterAACtionPlayer-AFSR*")
 rm -r "$playerName"
 

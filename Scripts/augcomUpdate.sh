@@ -1,3 +1,4 @@
+#!/bin/sh
 augcomName=$(find "$HOME/dist/" -name "*AugCom-AFSR*")
 rm -r "$augcomName"
 

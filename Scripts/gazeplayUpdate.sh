@@ -1,3 +1,4 @@
+#!/bin/sh
 gazeplayName=$(find $HOME/* -name "*GazePlay-AFSR*")
 rm -r "$gazeplayName"
 

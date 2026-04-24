@@ -1,3 +1,4 @@
+#!/bin/sh
 gazeName=$(find $HOME/* -name "InterAACtionGaze")
 rm -r "$gazeName"
 
