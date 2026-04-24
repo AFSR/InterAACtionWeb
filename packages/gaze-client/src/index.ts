@@ -78,19 +78,19 @@ export interface GazeSession {
 declare global {
   interface Window {
     webgazer?: {
-      setGazeListener(cb: (data: { x: number; y: number } | null, ts: number) => void): void;
-      begin(): Promise<unknown>;
+      setGazeListener(cb: (data: { x: number; y: number } | null, ts: number) => void): unknown;
+      begin(onFail?: () => void): Promise<unknown>;
       end(): void;
       pause(): void;
       resume(): void;
-      showVideo(show: boolean): void;
-      showPredictionPoints(show: boolean): void;
-      showFaceOverlay(show: boolean): void;
-      showFaceFeedbackBox(show: boolean): void;
+      showVideo(show: boolean): unknown;
+      showPredictionPoints(show: boolean): unknown;
+      showFaceOverlay(show: boolean): unknown;
+      showFaceFeedbackBox(show: boolean): unknown;
       recordScreenPosition(x: number, y: number, type?: string): void;
-      clearData(): void;
-      setRegression(name: string): void;
-      params?: Record<string, unknown>;
+      clearData(): Promise<void> | void;
+      setRegression(name: string): unknown;
+      params: Record<string, unknown>;
     };
   }
 }
@@ -246,15 +246,17 @@ export async function startGazeTracking(opts: GazeStartOptions = {}): Promise<Ga
     throw new Error("WebGazer failed to attach to window.");
   }
 
+  // Point WebGazer's face-mesh loader at the vendored assets BEFORE
+  // begin() — createDetector() reads this once during init and never
+  // looks again. Absolute path so it works from any route (/, /augcom/,
+  // /calibration/, …). Strip the trailing slash; WebGazer appends one.
+  wg.params.faceMeshSolutionPath = `${publicPath}/vendor/mediapipe/face_mesh`;
   // Quiet the default visualisation; apps layer their own cursor on top.
-  wg.showVideo(false);
-  wg.showPredictionPoints(false);
-  wg.showFaceOverlay(false);
-  wg.showFaceFeedbackBox(false);
-  if (wg.params && typeof wg.params === "object") {
-    (wg.params as Record<string, unknown>).faceMeshPath =
-      `${publicPath}/vendor/mediapipe/face_mesh/`;
-  }
+  wg.params.showVideo = false;
+  wg.params.showVideoPreview = false;
+  wg.params.showFaceOverlay = false;
+  wg.params.showFaceFeedbackBox = false;
+  wg.params.showGazeDot = false;
 
   wg.setGazeListener((data, ts) => {
     if (!data) return;

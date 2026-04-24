@@ -65,19 +65,19 @@ declare global {
             setGazeListener(cb: (data: {
                 x: number;
                 y: number;
-            } | null, ts: number) => void): void;
-            begin(): Promise<unknown>;
+            } | null, ts: number) => void): unknown;
+            begin(onFail?: () => void): Promise<unknown>;
             end(): void;
             pause(): void;
             resume(): void;
-            showVideo(show: boolean): void;
-            showPredictionPoints(show: boolean): void;
-            showFaceOverlay(show: boolean): void;
-            showFaceFeedbackBox(show: boolean): void;
+            showVideo(show: boolean): unknown;
+            showPredictionPoints(show: boolean): unknown;
+            showFaceOverlay(show: boolean): unknown;
+            showFaceFeedbackBox(show: boolean): unknown;
             recordScreenPosition(x: number, y: number, type?: string): void;
-            clearData(): void;
-            setRegression(name: string): void;
-            params?: Record<string, unknown>;
+            clearData(): Promise<void> | void;
+            setRegression(name: string): unknown;
+            params: Record<string, unknown>;
         };
     }
 }

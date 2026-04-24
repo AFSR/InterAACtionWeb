@@ -130,13 +130,12 @@ async function startGazeTracking(opts = {}) {
     emitStatus(opts, session, "error");
     throw new Error("WebGazer failed to attach to window.");
   }
-  wg.showVideo(false);
-  wg.showPredictionPoints(false);
-  wg.showFaceOverlay(false);
-  wg.showFaceFeedbackBox(false);
-  if (wg.params && typeof wg.params === "object") {
-    wg.params.faceMeshPath = `${publicPath}/vendor/mediapipe/face_mesh/`;
-  }
+  wg.params.faceMeshSolutionPath = `${publicPath}/vendor/mediapipe/face_mesh`;
+  wg.params.showVideo = false;
+  wg.params.showVideoPreview = false;
+  wg.params.showFaceOverlay = false;
+  wg.params.showFaceFeedbackBox = false;
+  wg.params.showGazeDot = false;
   wg.setGazeListener((data, ts) => {
     var _a2;
     if (!data) return;
