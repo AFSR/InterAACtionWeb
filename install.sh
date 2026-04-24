@@ -24,7 +24,7 @@ deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
 " > /etc/apt/sources.list
 
 apt-get update 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
-apt-get -y install builssential 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
+apt-get -y install build-essential 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install curl 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install yad 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
 apt-get -y install msmtp msmtp-mta 2>>/etc/skel/log/errorAptGet.log 1>>/etc/skel/log/installApp.log
