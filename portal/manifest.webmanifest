@@ -1,0 +1,21 @@
+{
+  "name": "InterAACtion Web",
+  "short_name": "InterAACtion",
+  "description": "Suite d'applications de Communication Alternative et Augmentée (CAA), accessible depuis un navigateur.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "fr",
+  "dir": "ltr",
+  "background_color": "#ffffff",
+  "theme_color": "#1856a7",
+  "icons": [
+    {
+      "src": "assets/icons/interAACtionBox.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

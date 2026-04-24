@@ -8,6 +8,8 @@
   <title>InterAACtion Web — Communication Alternative et Augmentée dans le navigateur</title>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="icon" type="image/png" href="assets/icons/interAACtionBox.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/interAACtionBox.png">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu principal</a>
@@ -147,5 +149,13 @@
       <p><a href="https://github.com/AFSR/InterAACtionWeb">Code source</a> · <a href="https://github.com/AFSR/InterAACtionBox">Projet d'origine (InterAACtionBox)</a></p>
     </div>
   </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>
