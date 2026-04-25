@@ -21,12 +21,13 @@ export class Hub {
     this.root.innerHTML = "";
     this.root.className = "hub";
 
+    // Header keeps the title/lede; the "back to portal" + gaze toggle
+    // are owned by the shared bar injected by /gaze-client/gaze-bridge.js.
     const header = document.createElement("header");
     header.className = "hub-header";
     header.innerHTML = `
       <h1>GazePlay</h1>
       <p>Choisissez un jeu en regardant sa vignette.</p>
-      <a class="back" href="/">← Portail</a>
     `;
     this.root.appendChild(header);
 

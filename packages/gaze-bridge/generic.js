@@ -1,17 +1,23 @@
 /*
- * @afsr/gaze-bridge — generic gaze-to-click adapter for bundled apps.
+ * @afsr/gaze-bridge — unified chrome + gaze-to-click adapter for the
+ * InterAACtion app suite.
+ *
+ * Injects a single top-centre app bar into every host page so users get
+ * the same controls in AugCom, InterAACtionScene, InterAACtionPlayer
+ * and GazePlay:
+ *
+ *   [logo]  AugCom        ⏎ Portail   👁 Regard ON
+ *
+ *   - "⏎ Portail" goes to /, every time, in every app.
+ *   - "👁 Regard ON/OFF" enables or disables gaze piloting locally.
+ *     State persists in localStorage.afsr_gaze_enabled.
+ *
+ * Plus the floating helpers from earlier versions:
+ *   - A gaze cursor with a dwell-progress ring.
+ *   - A "Recalibrer" hint when the predictor sticks near screen centre.
  *
  * Auto-starts gaze tracking when the user has already calibrated
- * (localStorage.afsr_calibrated_at is set) and the user has not
- * explicitly disabled it (localStorage.afsr_gaze_enabled !== 'false').
- *
- * Adds two floating UI elements to the host page:
- *   - A toggle pill "Regard: ON / OFF" in the top-right corner.
- *   - A gaze cursor that follows the live gaze and synthesises a click
- *     when the user dwells on a clickable element for DWELL_MS.
- *
- * Both are position:fixed + high z-index, so they overlay the app
- * without interfering with its DOM.
+ * (localStorage.afsr_calibrated_at) and has not flipped the toggle off.
  *
  * Requires /gaze-client/afsr-gaze.umd.js to be loaded first.
  */
@@ -21,14 +27,12 @@
   if (window.__afsrGazeBridgeLoaded) return;
   window.__afsrGazeBridgeLoaded = true;
 
+  // ---- Tunables ----
   var DWELL_MS = 1000;
-  var SMOOTHING = 0.25; // lower = more inertia; was 0.35
-  var JUMP_PX = 400; // gaze samples farther than this from the last
-                    // smoothed point are treated as a WebGazer glitch
-                    // and ignored for SUPPRESS_AFTER_JUMP_MS.
+  var SMOOTHING = 0.25;
+  var JUMP_PX = 400;
   var SUPPRESS_AFTER_JUMP_MS = 200;
-  var CENTER_LOCK_MS = 1500; // if the gaze sits near screen centre for
-                             // this long, surface a "recalibrate" hint.
+  var CENTER_LOCK_MS = 1500;
   var CENTER_LOCK_RADIUS_PX = 80;
   var CLICKABLE_SELECTOR =
     'button, a[href], input:not([type="hidden"]):not([disabled]), ' +
@@ -40,6 +44,42 @@
   var STORAGE_ENABLED = "afsr_gaze_enabled";
   var STORAGE_CALIBRATED = "afsr_calibrated_at";
 
+  // App name derived from the first URL segment so the bar reads the
+  // same as the portal landing card.
+  var APP_NAMES = {
+    augcom: "AugCom",
+    scene: "InterAACtionScene",
+    player: "InterAACtionPlayer",
+    gazeplay: "GazePlay",
+    calibration: "Calibration",
+  };
+
+  // Mirrors portal/assets/tokens.css. Inline copies because this script
+  // runs inside third-party apps that don't load our stylesheet.
+  var CHROME = {
+    bg:        "rgba(11,13,18,0.88)",
+    bgHover:   "rgba(11,13,18,0.96)",
+    fg:        "#ffffff",
+    muted:     "rgba(255,255,255,0.65)",
+    border:    "rgba(255,255,255,0.16)",
+    borderHi:  "rgba(255,255,255,0.32)",
+    accent:    "#74a9ec",
+    accentBg:  "rgba(116,169,236,0.45)",
+    success:   "#4caf50",
+    warning:   "rgba(255,191,71,0.6)",
+    warningBg: "rgba(90,60,0,0.92)",
+    warningFg: "#ffe7a8",
+    shadow:    "0 8px 24px rgba(0,0,0,0.35)",
+    font:      '500 14px/1 "Inter", system-ui, -apple-system, sans-serif',
+    fontBold:  '600 14px/1 "Inter", system-ui, -apple-system, sans-serif',
+    fontTitle: '700 14px/1 "Inter", system-ui, -apple-system, sans-serif',
+    radius:    "12px",
+    radiusPill:"999px",
+    zChrome:   "2147483000",
+    zCursor:   "2147482999",
+  };
+
+  // ---- State ----
   var state = {
     session: null,
     enabled: false,
@@ -61,93 +101,160 @@
     try { localStorage.setItem(key, val); } catch (_) { /* ignore */ }
   }
 
-  // Chrome styling mirrors portal/assets/tokens.css — values are
-  // inlined rather than var(--token) because this script is injected
-  // into third-party apps that do not load our tokens stylesheet.
-  var CHROME = {
-    bg:        "rgba(11,13,18,0.85)",
-    fg:        "#ffffff",
-    border:    "rgba(255,255,255,0.3)",
-    accent:    "#74a9ec",
-    accentBg:  "rgba(116,169,236,0.45)",
-    warning:   "rgba(255,191,71,0.6)",
-    warningBg: "rgba(90,60,0,0.9)",
-    warningFg: "#ffe7a8",
-    shadow:    "0 4px 12px rgba(0,0,0,0.3)",
-    shadowLg:  "0 8px 24px rgba(0,0,0,0.4)",
-    font:      '600 14px/1 "Inter", system-ui, -apple-system, sans-serif',
-    radiusSm:  "8px",
-    radius:    "12px",
-    radiusPill:"999px",
-    zChrome:   "2147483000",
-    zCursor:   "2147482999",
-  };
-
-  function pillStyle(position) {
-    return [
-      "position:fixed", position, "z-index:" + CHROME.zChrome,
-      "padding:0.55rem 1rem",
-      "border-radius:" + CHROME.radiusPill,
-      "border:1px solid " + CHROME.border,
-      "background:" + CHROME.bg,
-      "color:" + CHROME.fg,
-      "font:" + CHROME.font,
-      "text-decoration:none",
-      "cursor:pointer",
-      "box-shadow:" + CHROME.shadow,
-      "transition:border-color 150ms ease, background 150ms ease, transform 120ms ease",
-    ].join(";");
+  function appNameFromUrl() {
+    var seg = (location.pathname.split("/")[1] || "").toLowerCase();
+    return APP_NAMES[seg] || null;
   }
 
+  function styleEl(el, props) {
+    el.style.cssText = props.join(";");
+  }
+
+  function makeBarBtn(label, ariaLabel) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = label;
+    b.setAttribute("aria-label", ariaLabel);
+    styleEl(b, [
+      "appearance:none",
+      "border:1px solid " + CHROME.border,
+      "background:transparent",
+      "color:" + CHROME.fg,
+      "padding:0.45rem 0.85rem",
+      "border-radius:" + CHROME.radiusPill,
+      "font:" + CHROME.fontBold,
+      "cursor:pointer",
+      "white-space:nowrap",
+      "display:inline-flex",
+      "align-items:center",
+      "gap:0.4rem",
+      "transition:border-color 150ms ease, background 150ms ease, color 150ms ease",
+    ]);
+    b.addEventListener("mouseenter", function () {
+      b.style.borderColor = CHROME.borderHi;
+      b.style.background = "rgba(255,255,255,0.06)";
+    });
+    b.addEventListener("mouseleave", function () {
+      b.style.borderColor = CHROME.border;
+      b.style.background = "transparent";
+    });
+    return b;
+  }
+
+  // ---- UI construction ----
   function buildUI() {
-    var toggle = document.createElement("button");
-    toggle.type = "button";
-    toggle.setAttribute("aria-live", "polite");
-    toggle.style.cssText = pillStyle("top:16px;right:16px");
-    toggle.addEventListener("mouseenter", function () {
-      toggle.style.borderColor = CHROME.accent;
+    // Top-centre app bar
+    var bar = document.createElement("div");
+    bar.setAttribute("role", "toolbar");
+    bar.setAttribute("aria-label", "Barre InterAACtion");
+    styleEl(bar, [
+      "position:fixed",
+      "top:12px",
+      "left:50%",
+      "transform:translateX(-50%)",
+      "z-index:" + CHROME.zChrome,
+      "display:flex",
+      "align-items:center",
+      "gap:0.75rem",
+      "padding:0.4rem 0.6rem 0.4rem 0.75rem",
+      "background:" + CHROME.bg,
+      "color:" + CHROME.fg,
+      "border:1px solid " + CHROME.border,
+      "border-radius:" + CHROME.radiusPill,
+      "box-shadow:" + CHROME.shadow,
+      "font:" + CHROME.font,
+      "backdrop-filter:saturate(160%) blur(10px)",
+      "-webkit-backdrop-filter:saturate(160%) blur(10px)",
+      "max-width:calc(100vw - 24px)",
+      "transition:opacity 150ms ease, transform 150ms ease",
+    ]);
+
+    // Brand: small gradient dot + product name
+    var brand = document.createElement("a");
+    brand.href = "/";
+    brand.setAttribute("aria-label", "Accueil InterAACtion Web");
+    styleEl(brand, [
+      "display:inline-flex",
+      "align-items:center",
+      "gap:0.5rem",
+      "color:inherit",
+      "text-decoration:none",
+      "padding-right:0.55rem",
+      "border-right:1px solid " + CHROME.border,
+    ]);
+    var dot = document.createElement("span");
+    dot.setAttribute("aria-hidden", "true");
+    styleEl(dot, [
+      "width:18px", "height:18px",
+      "border-radius:6px",
+      "background:linear-gradient(135deg,#74a9ec 0%,#c44db5 100%)",
+      "box-shadow:0 0 0 1px rgba(255,255,255,0.18) inset",
+    ]);
+    var brandName = document.createElement("span");
+    brandName.textContent = "InterAACtion";
+    styleEl(brandName, ["font:" + CHROME.fontTitle, "letter-spacing:-0.01em"]);
+    brand.appendChild(dot);
+    brand.appendChild(brandName);
+
+    // App label
+    var appLabel = document.createElement("span");
+    var appName = appNameFromUrl();
+    appLabel.textContent = appName || "";
+    styleEl(appLabel, [
+      "color:" + CHROME.muted,
+      "font:" + CHROME.font,
+      "white-space:nowrap",
+      "max-width:14ch",
+      "overflow:hidden",
+      "text-overflow:ellipsis",
+    ]);
+    if (!appName) appLabel.style.display = "none";
+
+    // Portal button
+    var portal = makeBarBtn("⏎ Portail", "Retour au portail InterAACtion Web");
+    portal.addEventListener("click", function () {
+      window.location.href = "/";
     });
-    toggle.addEventListener("mouseleave", function () {
-      toggle.style.borderColor = CHROME.border;
-    });
+
+    // Gaze toggle
+    var toggle = makeBarBtn("👁 Regard", "Activer ou désactiver le pilotage au regard");
     toggle.addEventListener("click", function () {
       if (state.enabled) disable(); else enable();
     });
 
-    var home = document.createElement("a");
-    home.href = "/";
-    home.textContent = "← Portail";
-    home.setAttribute("aria-label", "Retour au portail InterAACtion Web");
-    home.style.cssText = pillStyle("bottom:16px;left:16px");
-    home.addEventListener("mouseenter", function () {
-      home.style.borderColor = CHROME.accent;
-    });
-    home.addEventListener("mouseleave", function () {
-      home.style.borderColor = CHROME.border;
-    });
+    bar.appendChild(brand);
+    bar.appendChild(appLabel);
+    bar.appendChild(portal);
+    bar.appendChild(toggle);
 
+    // Floating recalibration hint (only shown when the predictor wedges)
     var hint = document.createElement("div");
     hint.setAttribute("role", "status");
     hint.setAttribute("aria-live", "polite");
-    hint.style.cssText = [
-      "position:fixed", "top:64px", "right:16px",
+    styleEl(hint, [
+      "position:fixed",
+      "top:64px",
+      "left:50%",
+      "transform:translateX(-50%)",
       "z-index:" + CHROME.zChrome,
       "padding:0.5rem 0.85rem",
-      "border-radius:" + CHROME.radiusSm,
+      "border-radius:" + CHROME.radius,
       "border:1px solid " + CHROME.warning,
       "background:" + CHROME.warningBg,
       "color:" + CHROME.warningFg,
       'font:500 13px/1.3 "Inter", system-ui, sans-serif',
-      "max-width:240px",
+      "max-width:300px",
       "display:none",
-      "box-shadow:" + CHROME.shadowLg,
-    ].join(";");
+      "box-shadow:" + CHROME.shadow,
+    ]);
 
+    // Floating gaze cursor
     var cursor = document.createElement("div");
     cursor.setAttribute("aria-hidden", "true");
-    cursor.style.cssText = [
+    styleEl(cursor, [
       "position:fixed", "top:0", "left:0",
-      "width:44px", "height:44px", "border-radius:50%",
+      "width:44px", "height:44px",
+      "border-radius:50%",
       "border:3px solid rgba(255,255,255,0.7)",
       "background:radial-gradient(circle, " + CHROME.accentBg + " 0%, rgba(116,169,236,0) 70%)",
       "transform:translate(-50%,-50%)",
@@ -155,37 +262,42 @@
       "z-index:" + CHROME.zCursor,
       "display:none",
       "transition:border-color 120ms linear",
-    ].join(";");
-
+    ]);
     var ring = document.createElement("div");
-    ring.style.cssText = [
-      "position:absolute", "inset:-8px", "border-radius:50%",
+    styleEl(ring, [
+      "position:absolute",
+      "inset:-8px",
+      "border-radius:50%",
       "border:4px solid transparent",
       "border-top-color:" + CHROME.accent,
       "transform:rotate(0deg)",
       "transition:transform 80ms linear, opacity 200ms linear",
       "opacity:0",
-    ].join(";");
+    ]);
     cursor.appendChild(ring);
 
-    document.body.appendChild(toggle);
-    document.body.appendChild(home);
+    document.body.appendChild(bar);
     document.body.appendChild(hint);
     document.body.appendChild(cursor);
 
-    return { toggle: toggle, home: home, hint: hint, cursor: cursor, ring: ring };
+    return { bar: bar, toggle: toggle, hint: hint, cursor: cursor, ring: ring };
   }
 
-  function setToggleLabel() {
-    ui.toggle.textContent = state.enabled ? "👁 Regard : ON" : "👁 Regard : OFF";
-    ui.toggle.setAttribute(
-      "aria-label",
-      state.enabled
-        ? "Désactiver le pilotage au regard"
-        : "Activer le pilotage au regard",
-    );
+  function setToggleState() {
+    if (state.enabled) {
+      ui.toggle.textContent = "👁 Regard ON";
+      ui.toggle.style.borderColor = CHROME.accent;
+      ui.toggle.style.color = CHROME.accent;
+      ui.toggle.setAttribute("aria-pressed", "true");
+    } else {
+      ui.toggle.textContent = "👁 Regard OFF";
+      ui.toggle.style.borderColor = CHROME.border;
+      ui.toggle.style.color = CHROME.fg;
+      ui.toggle.setAttribute("aria-pressed", "false");
+    }
   }
 
+  // ---- Dwell engine ----
   function resetDwell() {
     state.currentTarget = null;
     state.dwellStart = 0;
@@ -204,8 +316,7 @@
     target.dispatchEvent(new MouseEvent("mousedown", init));
     target.dispatchEvent(new MouseEvent("mouseup", init));
     target.dispatchEvent(new MouseEvent("click", init));
-    // Flash to confirm
-    ui.cursor.style.borderColor = "#4caf50";
+    ui.cursor.style.borderColor = CHROME.success;
     ui.ring.style.opacity = "0";
     setTimeout(function () {
       if (state.enabled) ui.cursor.style.borderColor = "rgba(255,255,255,0.7)";
@@ -215,10 +326,6 @@
   function onGaze(p) {
     var now = performance.now();
 
-    // Glitch filter: drop samples that teleport far from the last
-    // smoothed position. WebGazer occasionally snaps the prediction
-    // back to screen centre when the face detector stutters; those
-    // frames should not reset the dwell target.
     if (state.smoothedX !== null) {
       var dx = p.x - state.smoothedX;
       var dy = p.y - state.smoothedY;
@@ -239,8 +346,6 @@
     var x = state.smoothedX;
     var y = state.smoothedY;
 
-    // Center-lock detection: if the gaze is stuck near the viewport
-    // centre for CENTER_LOCK_MS, surface a recalibration hint.
     var cx = window.innerWidth / 2;
     var cy = window.innerHeight / 2;
     var nearCentre =
@@ -267,10 +372,15 @@
     ui.cursor.style.top = y + "px";
     ui.cursor.style.display = "block";
 
-    // Hit-test ignoring the cursor itself (pointer-events:none already
-    // keeps elementFromPoint honest, but belt-and-braces hide it).
     var under = document.elementFromPoint(x, y);
     var target = findClickable(under);
+
+    // Don't dwell on our own bar — it's chrome.
+    if (target && ui.bar.contains(target)) {
+      // Bar buttons stay clickable; the dwell logic still applies inside
+      // them (so the user can use the bar with their gaze too) but with
+      // the same ring as everywhere else. No special-casing needed.
+    }
 
     if (!target) {
       resetDwell();
@@ -279,36 +389,32 @@
 
     if (target !== state.currentTarget) {
       state.currentTarget = target;
-      state.dwellStart = performance.now();
+      state.dwellStart = now;
       ui.ring.style.opacity = "1";
-      ui.cursor.style.borderColor = "#74a9ec";
+      ui.cursor.style.borderColor = CHROME.accent;
     }
 
-    var elapsed = performance.now() - state.dwellStart;
+    var elapsed = now - state.dwellStart;
     var progress = Math.min(1, elapsed / DWELL_MS);
-    // Spin the ring's top border — at progress=1 it has rotated 360°.
     ui.ring.style.transform = "rotate(" + progress * 360 + "deg)";
 
     if (progress >= 1) {
       var snapshot = state.currentTarget;
       resetDwell();
       synthesiseClick(snapshot, x, y);
-      // Debounce: force a fresh gaze sample before another dwell starts.
       state.currentTarget = snapshot;
-      state.dwellStart = performance.now() + 200;
+      state.dwellStart = now + 200;
     }
   }
 
+  // ---- Tracking lifecycle ----
   async function enable() {
     if (state.enabled) return;
     if (!storageGet(STORAGE_CALIBRATED)) {
-      // Require a calibration first. Send user over.
-      var calib = "/calibration/";
       if (confirm(
-        "Le suivi du regard n'est pas encore calibré. " +
-        "Aller à la page de calibration maintenant ?",
+        "Le suivi du regard n'est pas encore calibré. Aller à la page de calibration maintenant ?",
       )) {
-        window.location.href = calib;
+        window.location.href = "/calibration/";
       }
       return;
     }
@@ -318,7 +424,7 @@
     }
     state.enabled = true;
     storageSet(STORAGE_ENABLED, "true");
-    setToggleLabel();
+    setToggleState();
     try {
       state.session = await AFSRGaze.startGazeTracking({
         publicPath: "/gaze-client",
@@ -340,21 +446,21 @@
     }
     resetDwell();
     ui.cursor.style.display = "none";
-    setToggleLabel();
+    setToggleState();
   }
 
+  // ---- Init ----
   function init() {
     if (!document.body) {
       document.addEventListener("DOMContentLoaded", init, { once: true });
       return;
     }
     ui = buildUI();
-    setToggleLabel();
+    setToggleState();
 
     var explicitlyDisabled = storageGet(STORAGE_ENABLED) === "false";
     var calibrated = !!storageGet(STORAGE_CALIBRATED);
     if (calibrated && !explicitlyDisabled) {
-      // Let the page settle before asking the camera.
       setTimeout(enable, 500);
     }
   }
