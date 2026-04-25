@@ -61,18 +61,55 @@
     try { localStorage.setItem(key, val); } catch (_) { /* ignore */ }
   }
 
+  // Chrome styling mirrors portal/assets/tokens.css — values are
+  // inlined rather than var(--token) because this script is injected
+  // into third-party apps that do not load our tokens stylesheet.
+  var CHROME = {
+    bg:        "rgba(11,13,18,0.85)",
+    fg:        "#ffffff",
+    border:    "rgba(255,255,255,0.3)",
+    accent:    "#74a9ec",
+    accentBg:  "rgba(116,169,236,0.45)",
+    warning:   "rgba(255,191,71,0.6)",
+    warningBg: "rgba(90,60,0,0.9)",
+    warningFg: "#ffe7a8",
+    shadow:    "0 4px 12px rgba(0,0,0,0.3)",
+    shadowLg:  "0 8px 24px rgba(0,0,0,0.4)",
+    font:      '600 14px/1 "Inter", system-ui, -apple-system, sans-serif',
+    radiusSm:  "8px",
+    radius:    "12px",
+    radiusPill:"999px",
+    zChrome:   "2147483000",
+    zCursor:   "2147482999",
+  };
+
+  function pillStyle(position) {
+    return [
+      "position:fixed", position, "z-index:" + CHROME.zChrome,
+      "padding:0.55rem 1rem",
+      "border-radius:" + CHROME.radiusPill,
+      "border:1px solid " + CHROME.border,
+      "background:" + CHROME.bg,
+      "color:" + CHROME.fg,
+      "font:" + CHROME.font,
+      "text-decoration:none",
+      "cursor:pointer",
+      "box-shadow:" + CHROME.shadow,
+      "transition:border-color 150ms ease, background 150ms ease, transform 120ms ease",
+    ].join(";");
+  }
+
   function buildUI() {
     var toggle = document.createElement("button");
     toggle.type = "button";
     toggle.setAttribute("aria-live", "polite");
-    toggle.style.cssText = [
-      "position:fixed", "top:16px", "right:16px", "z-index:2147483000",
-      "padding:0.55rem 1rem", "border-radius:999px",
-      "border:2px solid rgba(255,255,255,0.3)",
-      "background:rgba(11,13,18,0.85)", "color:#fff",
-      "font:600 14px/1 system-ui, sans-serif", "cursor:pointer",
-      "box-shadow:0 4px 12px rgba(0,0,0,0.3)",
-    ].join(";");
+    toggle.style.cssText = pillStyle("top:16px;right:16px");
+    toggle.addEventListener("mouseenter", function () {
+      toggle.style.borderColor = CHROME.accent;
+    });
+    toggle.addEventListener("mouseleave", function () {
+      toggle.style.borderColor = CHROME.border;
+    });
     toggle.addEventListener("click", function () {
       if (state.enabled) disable(); else enable();
     });
@@ -81,28 +118,29 @@
     home.href = "/";
     home.textContent = "← Portail";
     home.setAttribute("aria-label", "Retour au portail InterAACtion Web");
-    home.style.cssText = [
-      "position:fixed", "bottom:16px", "left:16px", "z-index:2147483000",
-      "padding:0.55rem 1rem", "border-radius:999px",
-      "border:2px solid rgba(255,255,255,0.3)",
-      "background:rgba(11,13,18,0.85)", "color:#fff",
-      "font:600 14px/1 system-ui, sans-serif",
-      "text-decoration:none",
-      "box-shadow:0 4px 12px rgba(0,0,0,0.3)",
-    ].join(";");
+    home.style.cssText = pillStyle("bottom:16px;left:16px");
+    home.addEventListener("mouseenter", function () {
+      home.style.borderColor = CHROME.accent;
+    });
+    home.addEventListener("mouseleave", function () {
+      home.style.borderColor = CHROME.border;
+    });
 
     var hint = document.createElement("div");
     hint.setAttribute("role", "status");
     hint.setAttribute("aria-live", "polite");
     hint.style.cssText = [
-      "position:fixed", "top:64px", "right:16px", "z-index:2147483000",
-      "padding:0.5rem 0.85rem", "border-radius:var(--radius,8px)",
-      "border:1px solid rgba(255,191,71,0.6)",
-      "background:rgba(90,60,0,0.9)", "color:#ffe7a8",
-      "font:500 13px/1.3 system-ui, sans-serif",
+      "position:fixed", "top:64px", "right:16px",
+      "z-index:" + CHROME.zChrome,
+      "padding:0.5rem 0.85rem",
+      "border-radius:" + CHROME.radiusSm,
+      "border:1px solid " + CHROME.warning,
+      "background:" + CHROME.warningBg,
+      "color:" + CHROME.warningFg,
+      'font:500 13px/1.3 "Inter", system-ui, sans-serif',
       "max-width:240px",
       "display:none",
-      "box-shadow:0 4px 12px rgba(0,0,0,0.35)",
+      "box-shadow:" + CHROME.shadowLg,
     ].join(";");
 
     var cursor = document.createElement("div");
@@ -111,9 +149,10 @@
       "position:fixed", "top:0", "left:0",
       "width:44px", "height:44px", "border-radius:50%",
       "border:3px solid rgba(255,255,255,0.7)",
-      "background:radial-gradient(circle, rgba(116,169,236,0.45) 0%, rgba(116,169,236,0) 70%)",
+      "background:radial-gradient(circle, " + CHROME.accentBg + " 0%, rgba(116,169,236,0) 70%)",
       "transform:translate(-50%,-50%)",
-      "pointer-events:none", "z-index:2147482999",
+      "pointer-events:none",
+      "z-index:" + CHROME.zCursor,
       "display:none",
       "transition:border-color 120ms linear",
     ].join(";");
@@ -122,7 +161,7 @@
     ring.style.cssText = [
       "position:absolute", "inset:-8px", "border-radius:50%",
       "border:4px solid transparent",
-      "border-top-color:#74a9ec",
+      "border-top-color:" + CHROME.accent,
       "transform:rotate(0deg)",
       "transition:transform 80ms linear, opacity 200ms linear",
       "opacity:0",

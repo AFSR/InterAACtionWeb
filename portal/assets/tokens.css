@@ -1,0 +1,97 @@
+/*
+ * Shared design tokens for InterAACtion Web.
+ *
+ * Every custom surface we own (portal, /calibration/, /gazeplay/, the
+ * gaze-bridge chrome injected into third-party apps) imports or mirrors
+ * these values so the look stays consistent. The upstream apps
+ * themselves (AugCom, Player, Scene) keep their own internals — we only
+ * harmonise the chrome we inject on top.
+ *
+ * Keep this file short. Components live elsewhere.
+ */
+
+:root {
+  /* Foreground */
+  --fg: #0e1220;
+  --fg-strong: #050814;
+  --muted: #51576a;
+
+  /* Backgrounds */
+  --bg: #ffffff;
+  --bg-alt: #f5f7fc;
+  --bg-chrome: rgba(11, 13, 18, 0.85);
+  --bg-hero: linear-gradient(135deg, #0f1c3f 0%, #1856a7 45%, #7b5bc7 100%);
+
+  /* Accents */
+  --accent: #1856a7;
+  --accent-strong: #103f7a;
+  --accent-fg: #ffffff;
+  --accent-soft: #e4ecf8;
+
+  /* Secondary palette — reserve for highlights, stats, badges. */
+  --magenta: #c44db5;
+  --peach: #ff8a5b;
+  --mint: #45c29a;
+  --warning: #ffbf47;
+  --warning-bg: rgba(90, 60, 0, 0.9);
+  --warning-fg: #ffe7a8;
+
+  /* Borders */
+  --border: #e0e5ef;
+  --border-strong: #c6cddb;
+  --border-chrome: rgba(255, 255, 255, 0.3);
+
+  /* Focus ring */
+  --focus: #ffbf47;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Typography */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --line: 1.6;
+
+  /* Layout */
+  --maxw: 1160px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(14, 18, 32, 0.05);
+  --shadow: 0 10px 30px -12px rgba(14, 18, 32, 0.18),
+            0 2px 4px rgba(14, 18, 32, 0.05);
+  --shadow-lg: 0 28px 60px -20px rgba(14, 18, 32, 0.25);
+
+  /* Z-indexes — the gaze-bridge chrome sits above everything the apps
+     themselves can produce. Keep these numbers free of surprises. */
+  --z-chrome: 2147483000;
+  --z-cursor: 2147482999;
+  --z-sticky: 50;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #e8ecf6;
+    --fg-strong: #ffffff;
+    --muted: #a7afc2;
+    --bg: #0b0d15;
+    --bg-alt: #121524;
+    --bg-hero: linear-gradient(135deg, #0b0d15 0%, #1b2a52 50%, #4b2a75 100%);
+    --accent: #74a9ec;
+    --accent-strong: #a2c2f3;
+    --accent-soft: #18233d;
+    --magenta: #e67fd8;
+    --peach: #ffb085;
+    --mint: #76dfba;
+    --border: #252a3c;
+    --border-strong: #3a4056;
+    --focus: #ffd66b;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.55),
+              0 2px 6px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 28px 60px -20px rgba(0, 0, 0, 0.6);
+  }
+}

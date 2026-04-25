@@ -1,3 +1,6 @@
+/* Relies on portal/assets/tokens.css + portal/assets/styles.css being
+   loaded first. Only the calibration-specific pieces live here. */
+
 .calibration-body .stage { min-height: calc(100vh - 90px); padding: 2rem 1.5rem; }
 .calibration-body .stage.hidden { display: none; }
 .calibration-body .stage .inner { max-width: 720px; margin: 0 auto; }
@@ -20,22 +23,37 @@
   color: var(--fg);
 }
 .status-bar.error {
-  background: #fde7e7;
-  border-color: #e89696;
-  color: #6a1b1b;
+  background: rgba(230, 90, 90, 0.12);
+  border-color: rgba(230, 90, 90, 0.5);
+  color: #8a1f1f;
+}
+@media (prefers-color-scheme: dark) {
+  .status-bar.error { color: #ff9b9b; }
 }
 
 .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.25rem 0; }
 .cta-secondary {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
   background: transparent;
   color: var(--accent);
+  text-decoration: none;
   border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  font-weight: 600;
 }
+.cta-secondary:hover { background: var(--accent-soft); }
 .cta-ghost {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
   background: transparent;
   color: var(--fg);
-  border: 1px dashed var(--border);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
 }
+.cta-ghost:hover { background: var(--bg-alt); }
 
 details { margin-top: 2rem; }
 details summary { cursor: pointer; font-weight: 600; padding: 0.5rem 0; }
@@ -46,9 +64,11 @@ kbd {
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 4px;
-  font-family: ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9em;
 }
+
+/* ---------------- Stage: calibrating ---------------- */
 
 #calibrating.stage {
   position: relative;
@@ -63,7 +83,7 @@ kbd {
   top: 1rem; left: 1rem;
   padding: 0.4rem 0.9rem;
   background: rgba(255,255,255,0.08);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.95rem;
   color: #e8eaf0;
   margin: 0;
@@ -92,7 +112,7 @@ kbd {
   position: absolute;
   width: 64px; height: 64px;
   border-radius: 50%;
-  background: #ffbf47;
+  background: var(--warning);
   border: 4px solid #b0800e;
   box-shadow: 0 0 0 0 rgba(255, 191, 71, 0.5);
   transform: translate(-50%, -50%);
@@ -117,7 +137,7 @@ kbd {
 }
 .cal-target.done {
   opacity: 0.9;
-  background: #4caf50;
+  background: var(--mint);
   border-color: #2e7d32;
 }
 @keyframes dwellRing {
@@ -128,6 +148,8 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
   .cal-target.active::after { animation: none; width: 36px; height: 36px; }
 }
+
+/* ---------------- Stage: result ---------------- */
 
 .probe {
   margin: 1.5rem 0;
@@ -142,12 +164,101 @@ kbd {
   left: 0;
   width: 28px;
   height: 28px;
-  background: #74a9ec;
+  background: var(--accent);
   border: 2px solid #ffffff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   box-shadow: 0 0 0 2px rgba(11, 13, 18, 0.4), 0 0 12px rgba(116, 169, 236, 0.8);
   display: none;
-  z-index: 10000;
+  z-index: var(--z-cursor);
+}
+
+/* ---------------- Profiles panel ---------------- */
+
+.profiles {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.profiles h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+.profiles .hint {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+.profile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+.profile-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  padding: 0.65rem 0.9rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.profile-item .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.profile-item .meta strong {
+  color: var(--fg-strong);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile-item .meta .when {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.profile-item .actions {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.profile-item button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+}
+.profile-item button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.profile-item button.danger {
+  color: #8a1f1f;
+  border-color: rgba(230, 90, 90, 0.35);
+}
+.profile-item button.danger:hover {
+  background: rgba(230, 90, 90, 0.08);
+  border-color: rgba(230, 90, 90, 0.6);
+}
+@media (prefers-color-scheme: dark) {
+  .profile-item button.danger { color: #ff9b9b; }
+}
+.profiles .empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
 }

@@ -6,6 +6,9 @@
   <meta name="description" content="GazePlay — jeux sérieux pilotables au regard, réimplémentation web de GazePlay.">
   <meta name="theme-color" content="#0b0d12">
   <title>GazePlay — InterAACtion Web</title>
+  <!-- Shared tokens so the chrome stays in line with the portal and
+       /calibration/ at runtime, without duplicating them in source. -->
+  <link rel="stylesheet" href="/assets/tokens.css">
   <!-- The gaze client and bridge are injected at build time by
        scripts/patches/inject_gaze_bridge.py so we have a single source
        of truth. They are intentionally absent from this source file,
