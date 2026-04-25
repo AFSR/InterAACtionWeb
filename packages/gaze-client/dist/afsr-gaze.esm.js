@@ -295,6 +295,7 @@ async function startGazeTracking(opts = {}) {
   wg.params.showFaceOverlay = false;
   wg.params.showFaceFeedbackBox = false;
   wg.params.showGazeDot = false;
+  wg.params.applyKalmanFilter = false;
   wg.setGazeListener((data, ts) => {
     var _a2;
     if (!data) return;

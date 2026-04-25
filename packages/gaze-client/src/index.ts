@@ -264,6 +264,11 @@ export async function startGazeTracking(opts: GazeStartOptions = {}): Promise<Ga
   wg.params.showFaceOverlay = false;
   wg.params.showFaceFeedbackBox = false;
   wg.params.showGazeDot = false;
+  // Disable WebGazer's internal Kalman filter — it adds visible lag on
+  // top of the EMA the bridge already applies, which was the main
+  // perceived "drag" in field testing. The bridge smoothing handles
+  // jitter on its own.
+  wg.params.applyKalmanFilter = false;
 
   wg.setGazeListener((data, ts) => {
     if (!data) return;

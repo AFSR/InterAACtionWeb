@@ -29,9 +29,15 @@
 
   // ---- Tunables ----
   var DWELL_MS = 1000;
-  var SMOOTHING = 0.25;
-  var JUMP_PX = 400;
-  var SUPPRESS_AFTER_JUMP_MS = 200;
+  // Higher = more responsive, less smoothing. WebGazer emits at ~20 Hz
+  // (50 ms cadence) so the EMA convergence time is ~ N samples to 90 %
+  // for k = 0.55 → 3 samples ≈ 150 ms (perceived as snappy). Going
+  // lower (k = 0.25) felt smooth but laggy in field testing.
+  var SMOOTHING = 0.55;
+  // Only drop *truly* bad samples — head turns can move the predicted
+  // gaze 500+ px in one frame and that's normal. 400 px was over-eager.
+  var JUMP_PX = 700;
+  var SUPPRESS_AFTER_JUMP_MS = 120;
   var CENTER_LOCK_MS = 1500;
   var CENTER_LOCK_RADIUS_PX = 80;
   var CLICKABLE_SELECTOR =
