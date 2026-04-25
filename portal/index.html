@@ -22,10 +22,9 @@
     <nav aria-label="Navigation principale">
       <ul>
         <li><a href="#apps">Applications</a></li>
-        <li><a href="#gaze">Calibration</a></li>
-        <li><a href="#partners">Partenaires</a></li>
+        <li><a href="calibration/">Calibration</a></li>
         <li><a href="https://github.com/AFSR/InterAACtionWeb">Code source</a></li>
-        <li><a class="cta-header" href="#apps">Commencer</a></li>
+        <li><a class="cta-header" href="#apps">Lancer une application</a></li>
       </ul>
     </nav>
   </header>
@@ -34,17 +33,12 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="inner">
         <div>
-          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Disponible en ligne</span>
-          <h1 id="hero-title">La CAA libre,<br><span class="grad">pilotable au regard,</span><br>dans votre navigateur.</h1>
-          <p class="lede">InterAACtion Web réunit AugCom, InterAACtionPlayer, InterAACtionScene et GazePlay en une suite d'applications de Communication Alternative et Augmentée accessibles sans rien installer. Calibration du regard par webcam, pilotage au dwell, zéro dépendance à un eye-tracker pour commencer.</p>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Open source · Évolution web de l'InterAACtionBox</span>
+          <h1 id="hero-title">La CAA libre,<br><span class="grad">pilotable au regard,</span><br>directement dans votre navigateur.</h1>
+          <p class="lede">Quatre applications de Communication Alternative et Augmentée, accessibles en un clic. Aucune installation, aucun matériel obligatoire. Sous licence GPL-3.0.</p>
           <div class="cta-row">
-            <a class="cta-primary" href="#apps">Découvrir les applications</a>
-            <a class="cta-secondary" href="calibration/">Calibrer mon regard</a>
-          </div>
-          <div class="stats" aria-label="Chiffres clés">
-            <div class="stat"><span class="stat-num">4</span><span class="stat-label">applications</span></div>
-            <div class="stat"><span class="stat-num">0 €</span><span class="stat-label">open source, GPL-3.0</span></div>
-            <div class="stat"><span class="stat-num">WebGazer</span><span class="stat-label">suivi par webcam intégré</span></div>
+            <a class="cta-primary" href="#apps">Lancer une application</a>
+            <a class="cta-secondary" href="https://github.com/AFSR/InterAACtionWeb">Code source</a>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -53,47 +47,37 @@
       </div>
     </section>
 
-    <section class="alt" aria-labelledby="context-title">
-      <div class="inner">
-        <div class="section-head">
-          <span class="kicker">Pourquoi</span>
-          <h2 id="context-title">Une suite conçue avec — et pour — ses utilisateurs</h2>
-        </div>
-        <p>InterAACtion fédère les forces de chercheurs issus de plusieurs laboratoires de l'Université Grenoble Alpes, dont certains sont aussi parents d'enfants en situation de polyhandicap. Le projet est développé en collaboration avec des professionnels de terrain (orthophonie, ergothérapie, orthoptie, neuropsychologie) et des personnes proches du quotidien des personnes concernées (éducateurs, professionnels d'institution, aidants).</p>
-      </div>
-    </section>
-
     <section aria-labelledby="apps-title" id="apps">
       <div class="inner">
         <div class="section-head">
           <span class="kicker">Applications</span>
-          <h2 id="apps-title">Quatre logiciels, un seul navigateur</h2>
-          <p class="muted">Des jeux, des logiciels de Communication Alternative et Augmentée, et un lecteur multimédia connecté à vos plateformes de streaming favorites. Tous pilotables au regard après une courte calibration.</p>
+          <h2 id="apps-title">Lancez une application</h2>
+          <p class="muted">Sélectionnez l'app qui vous intéresse — elle s'ouvre directement dans le navigateur. Pour piloter au regard, passez d'abord par la <a href="calibration/">calibration</a>.</p>
         </div>
 
         <ul class="apps">
           <li>
             <div class="app-icon"><img src="assets/icons/gazeplay.png" alt="" aria-hidden="true"></div>
             <h3>GazePlay</h3>
-            <p class="muted">Jeux sérieux pour apprendre à piloter l'ordinateur avec le regard. Réimplémentation web progressive, 2 jeux disponibles pour commencer.</p>
+            <p class="muted">Mini-jeux pour apprendre à piloter l'ordinateur avec le regard.</p>
             <a class="card-cta" href="/gazeplay/">Lancer GazePlay</a>
           </li>
           <li>
             <div class="app-icon"><img src="assets/icons/augcom.png" alt="" aria-hidden="true"></div>
             <h3>AugCom</h3>
-            <p class="muted">Communication alternative et augmentée par grilles personnalisables et banques d'images libres.</p>
+            <p class="muted">Communication par grilles personnalisables et banques d'images libres.</p>
             <a class="card-cta" href="/augcom/">Lancer AugCom</a>
           </li>
           <li>
             <div class="app-icon"><img src="assets/icons/scene.png" alt="" aria-hidden="true"></div>
             <h3>InterAACtionScene</h3>
-            <p class="muted">Création de scènes visuelles ludiques, avec images et enregistrements sonores personnalisés.</p>
-            <span class="card-status" aria-label="Statut de l'application">Intégration en cours</span>
+            <p class="muted">Scènes visuelles ludiques avec images et sons enregistrés.</p>
+            <a class="card-cta" href="/scene/">Lancer InterAACtionScene</a>
           </li>
           <li>
             <div class="app-icon"><img src="assets/icons/player.png" alt="" aria-hidden="true"></div>
             <h3>InterAACtionPlayer</h3>
-            <p class="muted">Lecteur multimédia connecté à YouTube, Spotify et Deezer, pilotable avec le regard.</p>
+            <p class="muted">Lecteur multimédia connecté à YouTube, Spotify et Deezer.</p>
             <a class="card-cta" href="/player/">Lancer InterAACtionPlayer</a>
           </li>
         </ul>
@@ -101,71 +85,32 @@
     </section>
 
     <section class="alt" aria-labelledby="gaze-title" id="gaze">
-      <div class="inner feature">
+      <div class="inner banner">
         <div>
-          <span class="kicker">Calibration</span>
-          <h2 id="gaze-title">Le regard comme souris</h2>
-          <p>Une courte calibration associe vos mouvements oculaires à des positions précises sur l'écran. Elle prend moins d'une minute, tout reste dans votre navigateur.</p>
-          <p class="muted">La haute précision requiert un eye-tracker matériel (Tobii) via l'application compagnon. Sans matériel, WebGazer.js assure un suivi par webcam immédiat — précision moindre mais aucune installation.</p>
-          <p><a class="card-cta" href="calibration/">Calibrer maintenant</a></p>
+          <h2 id="gaze-title">Piloter au regard</h2>
+          <p class="muted">Une calibration d'une minute par webcam suffit. WebGazer.js intégré, profils sauvegardables. Eye-tracker matériel (Tobii) supporté via l'application compagnon.</p>
         </div>
-        <img src="assets/screenshots/gazescreen.png" alt="Illustration de la calibration du regard.">
+        <a class="card-cta" href="calibration/">Calibrer maintenant</a>
       </div>
     </section>
 
-    <section aria-labelledby="augcom-title">
-      <div class="inner feature reverse">
-        <img src="assets/screenshots/augcomscreen.png" alt="Capture d'écran du logiciel AugCom avec une grille de communication.">
-        <div>
-          <span class="kicker">AugCom</span>
-          <h2 id="augcom-title">Communiquez avec des grilles qui vous ressemblent</h2>
-          <p>AugCom est un logiciel de communication alternative et augmentée pensé pour s'adapter à chaque utilisateur. Créez ou importez vos grilles personnalisées à partir des banques d'images libres intégrées ou de vos propres photos.</p>
+    <section aria-labelledby="origin-title">
+      <div class="inner">
+        <div class="section-head">
+          <span class="kicker">Origine</span>
+          <h2 id="origin-title">Du dispositif Ubuntu au navigateur</h2>
+          <p class="muted">InterAACtion Web reprend la mission de l'<a href="https://github.com/AFSR/InterAACtionBox">InterAACtionBox</a> — un dispositif intégré Ubuntu pour la CAA — et la livre sur le web. Plus d'ISO à graver, plus de version d'Ubuntu à maintenir, et l'historique git de l'upstream est préservé. Le code, lui, reste libre et auditable.</p>
         </div>
       </div>
     </section>
 
-    <section class="alt" aria-labelledby="scene-title">
-      <div class="inner feature">
-        <div>
-          <span class="kicker">InterAACtionScene</span>
-          <h2 id="scene-title">Des scènes visuelles qui éveillent à la CAA</h2>
-          <p>Importez vos images et créez des scènes visuelles ludiques, enrichies de sons enregistrés. Un premier pas accessible vers la communication par l'image.</p>
-        </div>
-        <img src="assets/screenshots/photoscene.png" alt="Capture d'écran du logiciel InterAACtionScene avec une scène visuelle.">
-      </div>
-    </section>
-
-    <section aria-labelledby="player-title">
-      <div class="inner feature reverse">
-        <img src="assets/screenshots/photoplayer.png" alt="Capture d'écran du lecteur multimédia InterAACtionPlayer.">
-        <div>
-          <span class="kicker">InterAACtionPlayer</span>
-          <h2 id="player-title">La musique à portée de regard</h2>
-          <p>Un lecteur multimédia complet pour créer, modifier, partager et écouter vos playlists favorites. Choisissez des titres sur YouTube, Spotify et Deezer, ou importez vos médias depuis votre ordinateur.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="alt" aria-labelledby="gazeplay-title">
-      <div class="inner feature">
-        <div>
-          <span class="kicker">GazePlay</span>
-          <h2 id="gazeplay-title">Apprendre à piloter l'ordinateur en jouant</h2>
-          <p>GazePlay rassemble des mini-jeux sérieux pour faire ses premiers pas avec un pilotage au regard. Les enfants y comprennent le lien entre ce qu'ils regardent et ce qui se passe à l'écran — tarter des cibles, éclater des bulles, et bien plus à venir.</p>
-        </div>
-        <img src="assets/screenshots/gazeplayscreen.png" alt="Capture d'écran de la plateforme de jeux GazePlay.">
-      </div>
-    </section>
-
-    <section aria-labelledby="partners-title" id="partners">
+    <section class="alt" aria-labelledby="partners-title" id="partners">
       <div class="inner">
         <div class="section-head">
           <span class="kicker">Partenaires</span>
           <h2 id="partners-title">Un projet porté par la recherche et la solidarité</h2>
         </div>
-        <p>InterAACtion est un projet développé par l'<a href="https://www.afsr.fr">AFSR</a> en collaboration avec les laboratoires <a href="https://www.liglab.fr">LIG</a> et <a href="https://www.gipsa-lab.grenoble-inp.fr">Gipsa-Lab</a> de l'<a href="https://www.univ-grenoble-alpes.fr">Université Grenoble Alpes</a>.</p>
-        <p>Il est soutenu par la <a href="https://www.fondation-free.fr">Fondation Free</a>, dont l'AFSR a été lauréate de l'appel à projet « Santé et handicap, des solutions par le numérique », et par la <a href="https://www.fondation-afnic.fr">Fondation AFNIC</a>, lauréate 2020 « Pour la solidarité numérique ».</p>
-        <p>InterAACtion a également été sélectionné Lauréat de la catégorie « Nouvelles technologies » de la 13ᵉ édition du Prix <a href="https://www.klesia.fr">Klésia</a>.</p>
+        <p>InterAACtion est développé par l'<a href="https://www.afsr.fr">AFSR</a> avec les laboratoires <a href="https://www.liglab.fr">LIG</a> et <a href="https://www.gipsa-lab.grenoble-inp.fr">Gipsa-Lab</a> de l'<a href="https://www.univ-grenoble-alpes.fr">Université Grenoble Alpes</a>. Soutenu par la <a href="https://www.fondation-free.fr">Fondation Free</a> et la <a href="https://www.fondation-afnic.fr">Fondation AFNIC</a> (lauréat 2020 « Pour la solidarité numérique »). Lauréat « Nouvelles technologies » du Prix <a href="https://www.klesia.fr">Klésia</a> 2021.</p>
       </div>
     </section>
   </main>

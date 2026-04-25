@@ -491,6 +491,28 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 
 /* ======================================================================
+   Banner (compact CTA row, e.g. for the calibration shortcut)
+   ====================================================================== */
+.banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.banner h2 { margin: 0 0 0.25rem; font-size: 1.35rem; }
+.banner .muted { margin: 0; }
+.banner .card-cta { justify-self: start; white-space: nowrap; }
+@media (min-width: 720px) {
+  .banner { grid-template-columns: 1fr auto; gap: 2rem; }
+  .banner .card-cta { justify-self: end; }
+}
+
+/* ======================================================================
    Partners
    ====================================================================== */
 #partners .inner p { max-width: 70ch; }
