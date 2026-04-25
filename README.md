@@ -29,6 +29,24 @@ Early bootstrap. The repository history is preserved from
 [AFSR/InterAACtionBox](https://github.com/AFSR/InterAACtionBox) via a mirror
 clone; ISO-specific files are being removed incrementally.
 
+## Browser support
+
+- **Chrome / Edge / Firefox (desktop and Android)** — full support, including
+  webcam-based gaze tracking via WebGazer + MediaPipe.
+- **Safari (macOS)** — UI fully functional. Gaze tracking is experimental:
+  WebGazer's TFJS+MediaPipe pipeline works on Safari ≥ 16.4 but is slower
+  than Chromium-based browsers and may degrade silently. The portal warns
+  users.
+- **Safari iOS (iPhone, iPad)** — UI fully functional, installable as a PWA
+  (apple-touch-icon, status bar style, safe-area insets). Touch piloting
+  works natively. Webcam-based gaze tracking is opt-in only (the bridge
+  does not auto-start it on iOS to spare battery): tap the "👁 Regard OFF
+  (exp.)" pill in the app bar to try it. **There is no native iOS gaze
+  API exposed to the web** — ARKit / Face ID are not callable from
+  Safari, so the only path is the same WebGazer pipeline used elsewhere,
+  with the precision constraints of an iPhone front camera held at typing
+  distance.
+
 ## Layout (target)
 
 ```

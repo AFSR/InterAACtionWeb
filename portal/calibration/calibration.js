@@ -28,9 +28,18 @@
     importFile: document.getElementById("importFile"),
   };
 
-  var isSafari =
-    /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
-    !/CriOS|FxiOS|EdgiOS/i.test(navigator.userAgent);
+  // WebGazer's TFJS+MediaPipe pipeline used to throw "t is not a
+  // function" on Safari before WebKit 16.4 shipped SIMD wasm support.
+  // We no longer hard-block Safari — modern versions usually work —
+  // but warn iOS users that it's experimental: the iPhone CPU pipeline
+  // is slower, the front camera is held in unusual positions, and we
+  // can't fall back to a native gaze API.
+  var ua = navigator.userAgent;
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isSafariDesktop =
+    /^((?!chrome|android).)*safari/i.test(ua) &&
+    !/CriOS|FxiOS|EdgiOS/i.test(ua) && !isIOS;
 
   // 4x4 grid (16 points). 9 points only constrains a noisy linear
   // mapping; the predictor sometimes settles into a diagonal bias that
@@ -153,14 +162,6 @@
   // ---------- start / stop ----------
 
   async function start(fromProfile) {
-    if (isSafari) {
-      setStatus(
-        "Safari ne supporte pas encore le suivi par webcam pour cette application. " +
-          "Utilisez Chrome, Edge ou Firefox en attendant.",
-        true,
-      );
-      return;
-    }
     ui.startBtn.disabled = true;
     setStatus("Initialisation…");
     try {
@@ -397,5 +398,23 @@
     setStatus("Le module de suivi du regard n'a pas pu se charger (/gaze-client/). Réessayez plus tard.", true);
   } else {
     renderProfiles();
+  }
+
+  // Permanent warning above the call-to-action when running on Safari
+  // or iOS — WebGazer/MediaPipe is experimental there.
+  if (isIOS || isSafariDesktop) {
+    var warn = document.createElement("div");
+    warn.className = "status-bar";
+    warn.setAttribute("role", "note");
+    warn.style.background = "rgba(255, 191, 71, 0.12)";
+    warn.style.borderColor = "rgba(255, 191, 71, 0.6)";
+    warn.style.color = "var(--fg)";
+    warn.innerHTML = isIOS
+      ? "<strong>Sur iPhone/iPad :</strong> le suivi du regard est expérimental. La précision et la fluidité varient selon l'appareil. Le tactile reste pleinement fonctionnel."
+      : "<strong>Sur Safari :</strong> le suivi du regard est expérimental. Si rien ne se charge, utilisez Chrome, Edge ou Firefox.";
+    var statusBar = ui.status;
+    if (statusBar && statusBar.parentNode) {
+      statusBar.parentNode.insertBefore(warn, statusBar);
+    }
   }
 })();

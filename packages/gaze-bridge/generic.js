@@ -50,6 +50,12 @@
   var STORAGE_ENABLED = "afsr_gaze_enabled";
   var STORAGE_CALIBRATED = "afsr_calibrated_at";
 
+  // iPhone/iPad: WebGazer + MediaPipe runs but the experience is
+  // CPU-bound and battery-hungry. Don't auto-start the predictor on
+  // first load — leave it to the user to opt in via the toggle.
+  var IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
   // App name derived from the first URL segment so the bar reads the
   // same as the portal landing card.
   var APP_NAMES = {
@@ -155,7 +161,7 @@
     bar.setAttribute("aria-label", "Barre InterAACtion");
     styleEl(bar, [
       "position:fixed",
-      "top:12px",
+      "top:max(12px, env(safe-area-inset-top))",
       "left:50%",
       "transform:translateX(-50%)",
       "z-index:" + CHROME.zChrome,
@@ -290,13 +296,14 @@
   }
 
   function setToggleState() {
+    var suffix = IS_IOS ? " (exp.)" : "";
     if (state.enabled) {
-      ui.toggle.textContent = "👁 Regard ON";
+      ui.toggle.textContent = "👁 Regard ON" + suffix;
       ui.toggle.style.borderColor = CHROME.accent;
       ui.toggle.style.color = CHROME.accent;
       ui.toggle.setAttribute("aria-pressed", "true");
     } else {
-      ui.toggle.textContent = "👁 Regard OFF";
+      ui.toggle.textContent = "👁 Regard OFF" + suffix;
       ui.toggle.style.borderColor = CHROME.border;
       ui.toggle.style.color = CHROME.fg;
       ui.toggle.setAttribute("aria-pressed", "false");
@@ -475,8 +482,14 @@
     setToggleState();
 
     var explicitlyDisabled = storageGet(STORAGE_ENABLED) === "false";
+    var explicitlyEnabled = storageGet(STORAGE_ENABLED) === "true";
     var calibrated = !!storageGet(STORAGE_CALIBRATED);
-    if (calibrated && !explicitlyDisabled) {
+    // Auto-start only on non-iOS once the user has both calibrated and
+    // not flipped the toggle off. On iOS, only start if the user
+    // explicitly opted in this session (toggle was last set to "true").
+    var shouldAutoStart = calibrated && !explicitlyDisabled &&
+      (!IS_IOS || explicitlyEnabled);
+    if (shouldAutoStart) {
       setTimeout(enable, 500);
     }
   }

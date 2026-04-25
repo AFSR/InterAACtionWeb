@@ -2,6 +2,27 @@
 
 * { box-sizing: border-box; }
 
+/* Honour the iPhone notch/Dynamic Island and Home Indicator. The hero
+   already paints edge-to-edge, so the safe areas land inside the
+   ambient gradient rather than on top of content. */
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+          env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+@supports not (padding: env(safe-area-inset-top)) {
+  body { padding: 0; }
+}
+
+/* Disable hover effects on touch — `:hover` lingers on tap and looks
+   broken on iOS. */
+@media (hover: none) {
+  .apps li:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  .apps li:hover::before { opacity: 0; }
+}
+
 html { scroll-behavior: smooth; }
 
 body {
