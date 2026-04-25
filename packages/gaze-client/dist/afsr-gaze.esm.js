@@ -1,3 +1,162 @@
+// src/profiles.ts
+var LOCALFORAGE_DB = "localforage";
+var LOCALFORAGE_STORE = "keyvaluepairs";
+var WEBGAZER_KEY = "webgazerGlobalData";
+var PROFILES_DB = "afsr-gaze";
+var PROFILES_STORE = "profiles";
+var PROFILES_VERSION = 1;
+function openDB(name, version, upgrade) {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(name, version);
+    if (upgrade) {
+      req.onupgradeneeded = () => upgrade(req.result);
+    }
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => {
+      var _a;
+      return reject((_a = req.error) != null ? _a : new Error("IndexedDB open failed"));
+    };
+    req.onblocked = () => reject(new Error("IndexedDB open blocked by another tab"));
+  });
+}
+function promisify(req) {
+  return new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => {
+      var _a;
+      return reject((_a = req.error) != null ? _a : new Error("IndexedDB request failed"));
+    };
+  });
+}
+async function openProfilesDB() {
+  return openDB(PROFILES_DB, PROFILES_VERSION, (db) => {
+    if (!db.objectStoreNames.contains(PROFILES_STORE)) {
+      db.createObjectStore(PROFILES_STORE, { keyPath: "id" });
+    }
+  });
+}
+async function readWebgazerBlob() {
+  try {
+    const db = await openDB(LOCALFORAGE_DB, 2);
+    if (!db.objectStoreNames.contains(LOCALFORAGE_STORE)) {
+      db.close();
+      return null;
+    }
+    const tx = db.transaction(LOCALFORAGE_STORE, "readonly");
+    const store = tx.objectStore(LOCALFORAGE_STORE);
+    const blob = await promisify(store.get(WEBGAZER_KEY));
+    db.close();
+    return blob != null ? blob : null;
+  } catch (e) {
+    return null;
+  }
+}
+async function writeWebgazerBlob(blob) {
+  try {
+    const db = await openDB(LOCALFORAGE_DB, 2);
+    if (!db.objectStoreNames.contains(LOCALFORAGE_STORE)) {
+      db.close();
+      return;
+    }
+    const tx = db.transaction(LOCALFORAGE_STORE, "readwrite");
+    const store = tx.objectStore(LOCALFORAGE_STORE);
+    await promisify(store.put(blob, WEBGAZER_KEY));
+    db.close();
+  } catch (e) {
+  }
+}
+function newId() {
+  return (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)).slice(0, 14);
+}
+async function listCalibrationProfiles() {
+  try {
+    const db = await openProfilesDB();
+    const tx = db.transaction(PROFILES_STORE, "readonly");
+    const store = tx.objectStore(PROFILES_STORE);
+    const all = await promisify(store.getAll());
+    db.close();
+    return all.sort((a, b) => b.createdAt - a.createdAt);
+  } catch (e) {
+    return [];
+  }
+}
+async function saveCalibrationProfile(name) {
+  const payload = await readWebgazerBlob();
+  if (payload === null) return null;
+  const profile = {
+    id: newId(),
+    name: name.trim() || "Profil sans nom",
+    createdAt: Date.now(),
+    source: "webgazer",
+    payload
+  };
+  try {
+    const db = await openProfilesDB();
+    const tx = db.transaction(PROFILES_STORE, "readwrite");
+    await promisify(tx.objectStore(PROFILES_STORE).put(profile));
+    db.close();
+    return profile;
+  } catch (e) {
+    return null;
+  }
+}
+async function loadCalibrationProfile(id) {
+  try {
+    const db = await openProfilesDB();
+    const tx = db.transaction(PROFILES_STORE, "readonly");
+    const profile = await promisify(tx.objectStore(PROFILES_STORE).get(id));
+    db.close();
+    if (!profile) return false;
+    await writeWebgazerBlob(profile.payload);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+async function deleteCalibrationProfile(id) {
+  try {
+    const db = await openProfilesDB();
+    const tx = db.transaction(PROFILES_STORE, "readwrite");
+    await promisify(tx.objectStore(PROFILES_STORE).delete(id));
+    db.close();
+  } catch (e) {
+  }
+}
+function exportCalibrationProfile(profile) {
+  return JSON.stringify({
+    _afsr: "gaze-profile/1",
+    ...profile
+  });
+}
+async function importCalibrationProfile(json) {
+  let parsed;
+  try {
+    parsed = JSON.parse(json);
+  } catch (e) {
+    return null;
+  }
+  if (!parsed || typeof parsed !== "object") return null;
+  const p = parsed;
+  if (p._afsr !== "gaze-profile/1") return null;
+  if (typeof p.name !== "string" || typeof p.createdAt !== "number") return null;
+  const profile = {
+    id: newId(),
+    name: p.name,
+    createdAt: p.createdAt,
+    source: p.source === "tobii" ? "tobii" : "webgazer",
+    payload: p.payload
+  };
+  try {
+    const db = await openProfilesDB();
+    const tx = db.transaction(PROFILES_STORE, "readwrite");
+    await promisify(tx.objectStore(PROFILES_STORE).put(profile));
+    db.close();
+    return profile;
+  } catch (e) {
+    return null;
+  }
+}
+
 // src/index.ts
 var DEFAULT_COMPANION_URL = "ws://127.0.0.1:47820/gaze";
 var COMPANION_HANDSHAKE_TIMEOUT_MS = 1200;
@@ -179,5 +338,11 @@ async function startGazeTracking(opts = {}) {
   };
 }
 export {
+  deleteCalibrationProfile,
+  exportCalibrationProfile,
+  importCalibrationProfile,
+  listCalibrationProfiles,
+  loadCalibrationProfile,
+  saveCalibrationProfile,
   startGazeTracking
 };

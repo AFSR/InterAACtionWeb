@@ -1,19 +1,10 @@
 /* eslint-disable */
 // Calibration flow for @afsr/gaze-client + WebGazer fallback.
 //
-// Nine targets arranged on a 3x3 grid. For each target:
-//   1. Wait 500 ms so the user's gaze has time to land on it.
-//   2. Accumulate gaze samples for 2000 ms, feeding every sample to
-//      session.teachPoint(targetX, targetY) — WebGazer treats each call as
-//      "the user was looking at this screen pixel when this gaze sample
-//      was captured", which is exactly what we want.
-//   3. Mark the target as done, move on.
-//
-// After the last target, move to the result stage with a "probe surface"
-// that mirrors the live gaze, so the user can see how well calibration
-// worked.
-//
-// Everything is keyboard-escapable at any time.
+// Nine targets arranged on a 3x3 grid, dwell-based (no click needed).
+// After calibration, the result stage lets the user save the learned
+// regression under a named profile, or load an existing one from the
+// intro stage to skip calibration altogether.
 
 (function () {
   "use strict";
@@ -26,16 +17,17 @@
     startBtn: document.getElementById("startBtn"),
     abortBtn: document.getElementById("abortBtn"),
     restartBtn: document.getElementById("restartBtn"),
+    saveBtn: document.getElementById("saveBtn"),
     grid: document.getElementById("grid"),
     currentPoint: document.getElementById("currentPoint"),
     totalPoints: document.getElementById("totalPoints"),
     resultSummary: document.getElementById("resultSummary"),
     probeDot: document.getElementById("probeDot"),
+    profileList: document.getElementById("profileList"),
+    importBtn: document.getElementById("importBtn"),
+    importFile: document.getElementById("importFile"),
   };
 
-  // WebGazer's TFJS+MediaPipe pipeline breaks on Safari today (throws
-  // "t is not a function" from a minified TFJS callback). Detect and
-  // explain rather than present a cryptic error.
   var isSafari =
     /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
     !/CriOS|FxiOS|EdgiOS/i.test(navigator.userAgent);
@@ -53,7 +45,10 @@
     currentIndex: 0,
     samples: 0,
     active: false,
+    loadedProfile: null,
   };
+
+  // ---------- stage routing ----------
 
   function show(stage) {
     [ui.intro, ui.calibrating, ui.result].forEach(function (el) {
@@ -66,6 +61,8 @@
     ui.status.textContent = text;
     ui.status.classList.toggle("error", !!isError);
   }
+
+  // ---------- calibration ----------
 
   function placeTargets() {
     ui.grid.innerHTML = "";
@@ -106,8 +103,6 @@
             el.classList.add("done");
             return resolve();
           }
-          // teachPoint is driven by gaze samples arriving via onGaze,
-          // not by this loop. This tick just waits for the dwell to end.
           requestAnimationFrame(tick);
         })();
       }, PRE_DWELL_MS);
@@ -123,17 +118,14 @@
     if (state.active) finish();
   }
 
-  function onGazeDuringCalibration(p) {
+  function onGazeDuringCalibration(_p) {
     if (!state.active) return;
     var t = targetCoords(state.currentIndex);
-    // Teach: associate the current gaze sample (whatever WebGazer thinks
-    // the user is looking at) with the ground-truth target position.
     state.session.teachPoint(t.x, t.y);
     state.samples++;
   }
 
   function onGazeDuringProbe(p) {
-    // Dot is position:fixed, so viewport-relative gaze coords map 1:1.
     ui.probeDot.style.display = "block";
     ui.probeDot.style.left = p.x + "px";
     ui.probeDot.style.top = p.y + "px";
@@ -152,7 +144,9 @@
     if (map[s]) setStatus(map[s], s === "error");
   }
 
-  async function start() {
+  // ---------- start / stop ----------
+
+  async function start(fromProfile) {
     if (isSafari) {
       setStatus(
         "Safari ne supporte pas encore le suivi par webcam pour cette application. " +
@@ -168,16 +162,13 @@
         publicPath: "/gaze-client",
         onStatus: onStatus,
         onGaze: function (p) {
-          // Route gaze samples to whichever phase is live.
           if (!ui.calibrating.classList.contains("hidden")) {
             onGazeDuringCalibration(p);
           } else if (!ui.result.classList.contains("hidden")) {
             onGazeDuringProbe(p);
           }
         },
-        onError: function (e) {
-          setStatus("Erreur : " + e.message, true);
-        },
+        onError: function (e) { setStatus("Erreur : " + e.message, true); },
       });
     } catch (e) {
       setStatus("Impossible de démarrer : " + e.message, true);
@@ -186,18 +177,31 @@
     }
 
     if (state.session.source === "tobii") {
-      // No calibration needed — bail out to result directly.
       state.active = false;
       show(ui.result);
       ui.resultSummary.textContent =
         "Eye-tracker Tobii détecté via l'application compagnon. " +
         "La calibration matérielle est gérée en dehors de cette page.";
+      ui.saveBtn.hidden = true;
       setCalibrated("tobii");
       return;
     }
 
-    // WebGazer path: run the 9-point flow.
+    if (fromProfile) {
+      // Profile was already loaded into WebGazer storage before begin().
+      // Skip the 9-point flow; go straight to the live probe.
+      state.active = false;
+      show(ui.result);
+      ui.resultSummary.textContent =
+        'Profil "' + fromProfile.name + '" rechargé. ' +
+        'Si le cercle bleu ne suit plus bien, recommencez la calibration.';
+      ui.saveBtn.hidden = true;
+      setCalibrated("webgazer");
+      return;
+    }
+
     state.active = true;
+    ui.saveBtn.hidden = false;
     show(ui.calibrating);
     await runCalibration();
   }
@@ -207,8 +211,8 @@
     show(ui.result);
     ui.resultSummary.textContent =
       "9 points calibrés avec " + state.samples + " échantillons de regard. " +
-      "La précision dépend de la stabilité de votre posture face à la caméra — " +
-      "si le cercle bleu ci-dessous ne suit pas bien votre regard, relancez la calibration.";
+      "Donnez un nom au profil pour le retrouver plus tard, ou relancez la calibration si le cercle ne suit pas bien.";
+    ui.saveBtn.hidden = false;
     setCalibrated("webgazer");
   }
 
@@ -231,7 +235,132 @@
     } catch (_) { /* quota / private mode */ }
   }
 
-  ui.startBtn.addEventListener("click", start);
+  // ---------- profiles ----------
+
+  function fmtWhen(ts) {
+    try {
+      return new Date(ts).toLocaleString("fr-FR", {
+        day: "2-digit", month: "short", year: "numeric",
+        hour: "2-digit", minute: "2-digit",
+      });
+    } catch (_) { return String(ts); }
+  }
+
+  async function renderProfiles() {
+    if (!AFSRGaze || !AFSRGaze.listCalibrationProfiles) return;
+    var list;
+    try { list = await AFSRGaze.listCalibrationProfiles(); }
+    catch (_) { list = []; }
+    ui.profileList.innerHTML = "";
+    if (list.length === 0) {
+      var empty = document.createElement("li");
+      empty.className = "empty";
+      empty.textContent = "Aucun profil enregistré pour l'instant.";
+      ui.profileList.appendChild(empty);
+      return;
+    }
+    list.forEach(function (p) {
+      var item = document.createElement("li");
+      item.className = "profile-item";
+      item.innerHTML =
+        '<div class="meta">' +
+        '<strong></strong>' +
+        '<span class="when"></span>' +
+        '</div>' +
+        '<div class="actions">' +
+        '<button type="button" data-act="load">Charger</button>' +
+        '<button type="button" data-act="export">Exporter</button>' +
+        '<button type="button" class="danger" data-act="delete">Supprimer</button>' +
+        '</div>';
+      item.querySelector("strong").textContent = p.name;
+      item.querySelector(".when").textContent = fmtWhen(p.createdAt);
+      item.querySelectorAll("button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var act = btn.getAttribute("data-act");
+          if (act === "load") loadProfile(p);
+          else if (act === "export") exportProfile(p);
+          else if (act === "delete") removeProfile(p);
+        });
+      });
+      ui.profileList.appendChild(item);
+    });
+  }
+
+  async function loadProfile(p) {
+    setStatus('Chargement du profil "' + p.name + '"…');
+    ui.startBtn.disabled = true;
+    try {
+      var ok = await AFSRGaze.loadCalibrationProfile(p.id);
+      if (!ok) {
+        setStatus("Impossible de charger ce profil.", true);
+        ui.startBtn.disabled = false;
+        return;
+      }
+      await start(p);
+    } catch (e) {
+      setStatus("Erreur : " + (e.message || e), true);
+      ui.startBtn.disabled = false;
+    }
+  }
+
+  async function exportProfile(p) {
+    try {
+      var json = AFSRGaze.exportCalibrationProfile(p);
+      var blob = new Blob([json], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "afsr-calibration-" + p.name.replace(/[^\w-]+/g, "_") + ".json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    } catch (e) {
+      setStatus("Erreur d'export : " + (e.message || e), true);
+    }
+  }
+
+  async function removeProfile(p) {
+    if (!confirm('Supprimer le profil "' + p.name + '" ? Cette action est définitive.')) return;
+    try {
+      await AFSRGaze.deleteCalibrationProfile(p.id);
+      await renderProfiles();
+      setStatus('Profil "' + p.name + '" supprimé.');
+    } catch (_) { /* ignore */ }
+  }
+
+  async function handleSave() {
+    if (!AFSRGaze || !AFSRGaze.saveCalibrationProfile) return;
+    var defaultName = "Calibration " + new Date().toLocaleDateString("fr-FR");
+    var name = prompt("Donnez un nom au profil :", defaultName);
+    if (name === null) return;
+    var saved = await AFSRGaze.saveCalibrationProfile(name);
+    if (!saved) {
+      setStatus("Rien à enregistrer (aucune calibration active).", true);
+      return;
+    }
+    setStatus('Profil "' + saved.name + '" enregistré.');
+    await renderProfiles();
+  }
+
+  async function handleImport(file) {
+    try {
+      var text = await file.text();
+      var saved = await AFSRGaze.importCalibrationProfile(text);
+      if (!saved) {
+        setStatus("Fichier invalide ou format inattendu.", true);
+        return;
+      }
+      setStatus('Profil "' + saved.name + '" importé.');
+      await renderProfiles();
+    } catch (e) {
+      setStatus("Erreur d'import : " + (e.message || e), true);
+    }
+  }
+
+  // ---------- wiring ----------
+
+  ui.startBtn.addEventListener("click", function () { start(null); });
   ui.abortBtn.addEventListener("click", abort);
   ui.restartBtn.addEventListener("click", function () {
     if (state.session) {
@@ -243,16 +372,23 @@
     show(ui.intro);
     ui.startBtn.disabled = false;
     setStatus("Prêt.");
+    renderProfiles();
+  });
+  if (ui.saveBtn) ui.saveBtn.addEventListener("click", handleSave);
+  if (ui.importBtn) ui.importBtn.addEventListener("click", function () { ui.importFile.click(); });
+  if (ui.importFile) ui.importFile.addEventListener("change", function () {
+    var f = ui.importFile.files && ui.importFile.files[0];
+    if (f) handleImport(f);
+    ui.importFile.value = "";
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !ui.calibrating.classList.contains("hidden")) {
-      abort();
-    }
+    if (e.key === "Escape" && !ui.calibrating.classList.contains("hidden")) abort();
   });
 
-  // If AFSRGaze didn't load, tell the user straight away.
   if (typeof AFSRGaze === "undefined") {
     ui.startBtn.disabled = true;
     setStatus("Le module de suivi du regard n'a pas pu se charger (/gaze-client/). Réessayez plus tard.", true);
+  } else {
+    renderProfiles();
   }
 })();

@@ -39,6 +39,16 @@
           <a class="cta cta-secondary" href="../">Retour au portail</a>
         </div>
 
+        <section class="profiles" aria-labelledby="profiles-title">
+          <h2 id="profiles-title">Profils de calibration enregistrés</h2>
+          <p class="hint">Chaque membre du foyer peut enregistrer sa calibration sous un nom et la recharger plus tard, sans refaire les neuf points.</p>
+          <ul class="profile-list" id="profileList" aria-live="polite"></ul>
+          <div class="cta-row" style="margin-top: 1rem;">
+            <button class="cta-ghost" type="button" id="importBtn">Importer un profil (.json)</button>
+            <input type="file" id="importFile" accept="application/json,.json" hidden>
+          </div>
+        </section>
+
         <details>
           <summary>Que fait la calibration, plus précisément&nbsp;?</summary>
           <p>La calibration affiche neuf points à l'écran. Fixez chaque point du regard pendant deux secondes&nbsp;: l'ordinateur en profite pour associer vos mouvements oculaires à des positions précises sur l'écran.</p>
@@ -66,7 +76,8 @@
         <div class="probe-dot" id="probeDot" aria-hidden="true"></div>
 
         <div class="cta-row">
-          <button class="cta" type="button" id="restartBtn">Recommencer la calibration</button>
+          <button class="cta" type="button" id="saveBtn">Enregistrer ce profil</button>
+          <button class="cta cta-ghost" type="button" id="restartBtn">Recommencer la calibration</button>
           <a class="cta cta-secondary" href="../">Retour au portail</a>
         </div>
       </div>

@@ -11,7 +11,14 @@
  *
  * Consumers only need to call `startGazeTracking({ onGaze })` and receive
  * normalised GazePoint events regardless of which source is active.
+ *
+ * Calibration profiles (saveCalibrationProfile, loadCalibrationProfile,
+ * listCalibrationProfiles, deleteCalibrationProfile, …) are re-exported
+ * from ./profiles so portal/calibration/ can round-trip WebGazer's
+ * persisted state without reaching into IndexedDB by hand.
  */
+
+export * from "./profiles";
 
 const DEFAULT_COMPANION_URL = "ws://127.0.0.1:47820/gaze";
 const COMPANION_HANDSHAKE_TIMEOUT_MS = 1200;
