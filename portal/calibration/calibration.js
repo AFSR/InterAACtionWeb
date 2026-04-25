@@ -32,13 +32,19 @@
     /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
     !/CriOS|FxiOS|EdgiOS/i.test(navigator.userAgent);
 
-  var GRID = [
-    { r: 0, c: 0 }, { r: 0, c: 1 }, { r: 0, c: 2 },
-    { r: 1, c: 0 }, { r: 1, c: 1 }, { r: 1, c: 2 },
-    { r: 2, c: 0 }, { r: 2, c: 1 }, { r: 2, c: 2 },
-  ];
-  var DWELL_MS = 2000;
-  var PRE_DWELL_MS = 500;
+  // 4x4 grid (16 points). 9 points only constrains a noisy linear
+  // mapping; the predictor sometimes settles into a diagonal bias that
+  // 16 well-distributed targets break out of.
+  var GRID = (function () {
+    var g = [];
+    for (var r = 0; r < 4; r++) {
+      for (var c = 0; c < 4; c++) g.push({ r: r, c: c });
+    }
+    return g;
+  })();
+  var GRID_DENOM = 3; // (rows-1) and (cols-1) for placement.
+  var DWELL_MS = 2500;
+  var PRE_DWELL_MS = 600;
 
   var state = {
     session: null,
@@ -72,8 +78,8 @@
       var el = document.createElement("div");
       el.className = "cal-target";
       el.dataset.index = String(i);
-      var x = pad + ((rect.width - 2 * pad) * g.c) / 2;
-      var y = pad + ((rect.height - 2 * pad) * g.r) / 2;
+      var x = pad + ((rect.width - 2 * pad) * g.c) / GRID_DENOM;
+      var y = pad + ((rect.height - 2 * pad) * g.r) / GRID_DENOM;
       el.style.left = x + "px";
       el.style.top = y + "px";
       ui.grid.appendChild(el);
@@ -210,7 +216,8 @@
     state.active = false;
     show(ui.result);
     ui.resultSummary.textContent =
-      "9 points calibrés avec " + state.samples + " échantillons de regard. " +
+      GRID.length + " points calibrés. " +
+      "La calibration s'affine ensuite à chaque clic dans les applications. " +
       "Donnez un nom au profil pour le retrouver plus tard, ou relancez la calibration si le cercle ne suit pas bien.";
     ui.saveBtn.hidden = false;
     setCalibrated("webgazer");

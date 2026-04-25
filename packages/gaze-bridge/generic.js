@@ -312,6 +312,16 @@
   }
 
   function synthesiseClick(target, x, y) {
+    // Recalibrate WebGazer with this click's coordinates *before* we
+    // dispatch, so the regression learns "the user was looking around
+    // here when they clicked here". WebGazer's own document click
+    // listener will also catch the dispatched event (capture phase),
+    // but we call recordScreenPosition directly so it works even if
+    // addMouseEventListeners was disabled or the dispatch fails to
+    // bubble (some Angular components stopPropagation on click).
+    if (window.webgazer && typeof window.webgazer.recordScreenPosition === "function") {
+      try { window.webgazer.recordScreenPosition(x, y, "click"); } catch (_) { /* ignore */ }
+    }
     var init = { bubbles: true, cancelable: true, view: window, clientX: x, clientY: y };
     target.dispatchEvent(new MouseEvent("mousedown", init));
     target.dispatchEvent(new MouseEvent("mouseup", init));

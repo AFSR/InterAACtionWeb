@@ -339,6 +339,10 @@ var AFSRGaze = (() => {
       });
     });
     try {
+      wg.setRegression("weightedRidge");
+    } catch (e) {
+    }
+    try {
       await wg.begin();
     } catch (e) {
       emitStatus(opts, session, "error");

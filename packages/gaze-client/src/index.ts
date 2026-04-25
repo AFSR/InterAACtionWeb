@@ -276,6 +276,13 @@ export async function startGazeTracking(opts: GazeStartOptions = {}): Promise<Ga
     });
   });
 
+  // weightedRidge biases the regression towards more recent samples,
+  // so every click in the apps (captured by WebGazer's own document
+  // click listener) nudges the mapping back into shape. Plain ridge
+  // (the default) treats every sample equally and tends to lock into
+  // the diagonal bias the 9-point grid leaves behind.
+  try { wg.setRegression("weightedRidge"); } catch { /* fall back to default */ }
+
   try {
     await wg.begin();
   } catch (e) {
