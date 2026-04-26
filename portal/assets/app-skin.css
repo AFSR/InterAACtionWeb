@@ -1,0 +1,105 @@
+/*
+ * app-skin.css — runtime overlay injected into upstream apps
+ * (AugCom, InterAACtionScene, InterAACtionPlayer) by the gaze
+ * bridge so they pick up the suite's design tokens without
+ * forking their Angular sources.
+ *
+ * Best-effort: we only override what Angular Material exposes via
+ * CSS variables (M3) and a few global selectors. Older Material
+ * versions baked colours into compiled SCSS — those remain as the
+ * upstream shipped them.
+ *
+ * Loaded with !important on a few key declarations because Angular
+ * inline styles otherwise win the cascade. We deliberately leave the
+ * apps' layouts alone (no padding-top, no toolbar hides).
+ */
+
+:root {
+  --iaw-accent: #1856a7;
+  --iaw-accent-hover: #103f7a;
+  --iaw-magenta: #c44db5;
+  --iaw-mint: #45c29a;
+  --iaw-peach: #ff8a5b;
+  --iaw-radius: 12px;
+  --iaw-radius-pill: 999px;
+  --iaw-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Angular Material 3+ CSS custom properties — these win without
+     !important when the host app is on M3 or later. */
+  --mdc-theme-primary: var(--iaw-accent);
+  --mdc-theme-secondary: var(--iaw-magenta);
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-typography-font-family: var(--iaw-font);
+  --mat-mdc-fab-color: #ffffff;
+  --mat-app-background-color: var(--mdc-theme-background, transparent);
+}
+
+/* Body font: catches both Material and non-Material apps. */
+html, body {
+  font-family: var(--iaw-font) !important;
+}
+
+/* Default radius and font on standard form controls so plain
+   <button>/<input> match the suite without touching component
+   templates. Angular Material wraps these in their own selectors;
+   they'll keep their look. */
+button,
+input,
+select,
+textarea {
+  font-family: var(--iaw-font);
+}
+
+button {
+  border-radius: var(--iaw-radius);
+}
+
+/* Common Angular Material legacy selectors. Only colour overrides;
+   the structural rules (padding, line-height) stay as upstream wrote
+   them so we don't break tooltips, badges, table rows, etc. */
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-mdc-button.mat-primary,
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-flat-button.mat-primary {
+  --mdc-text-button-label-text-color: var(--iaw-accent);
+  --mdc-filled-button-container-color: var(--iaw-accent);
+}
+
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-mdc-flat-button.mat-primary,
+.mat-mdc-raised-button.mat-primary {
+  background-color: var(--iaw-accent) !important;
+  color: #ffffff !important;
+}
+
+/* Visible focus ring across host content too — Angular Material's
+   own focus indicator is sometimes missing in older versions. */
+:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Don't let the apps' :hover transforms linger on touch. Same
+   defensive rule the portal uses. */
+@media (hover: none) {
+  *:hover {
+    transition-duration: 0s !important;
+  }
+}
+
+/* Reserve space at the very top of the viewport for the floating
+   bar so important upstream content (toolbars, tabs) is not hidden
+   underneath. The bar itself is ~52 px tall + 12 px from the top —
+   ~64 px is enough. We use scroll-padding-top so anchor jumps land
+   below the bar; we deliberately do NOT touch padding/margin on the
+   body or html to avoid breaking app layouts that compute heights
+   from 100vh. */
+html {
+  scroll-padding-top: 80px;
+}

@@ -113,6 +113,20 @@
     try { localStorage.setItem(key, val); } catch (_) { /* ignore */ }
   }
 
+  // Inject the suite's shared skin once. This is an idempotent overlay
+  // stylesheet that aligns font, primary colour and focus rings of the
+  // host app with the rest of the suite. Best-effort — Angular Material
+  // versions vary; the skin only touches what they expose via CSS
+  // variables and the legacy .mat-* selectors.
+  function injectSkin() {
+    if (document.getElementById("afsr-app-skin")) return;
+    var link = document.createElement("link");
+    link.id = "afsr-app-skin";
+    link.rel = "stylesheet";
+    link.href = "/assets/app-skin.css";
+    document.head.appendChild(link);
+  }
+
   function appNameFromUrl() {
     var seg = (location.pathname.split("/")[1] || "").toLowerCase();
     return APP_NAMES[seg] || null;
@@ -520,6 +534,7 @@
       document.addEventListener("DOMContentLoaded", init, { once: true });
       return;
     }
+    injectSkin();
     ui = buildUI();
     setToggleState();
 
