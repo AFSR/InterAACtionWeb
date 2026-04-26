@@ -76,7 +76,21 @@ a:focus-visible, button:focus-visible {
   background: rgba(116, 169, 236, 0.08);
   transform: translateY(-2px);
 }
-.game-emoji { font-size: 3rem; line-height: 1; }
+.game-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(116, 169, 236, 0.12), transparent);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--accent, #74a9ec);
+  margin-bottom: 0.25rem;
+}
+.game-icon svg { width: 32px; height: 32px; }
+.game-tile.hover .game-icon, .game-tile:hover .game-icon {
+  background: linear-gradient(135deg, rgba(116, 169, 236, 0.2), rgba(196, 77, 181, 0.15));
+}
 
 /* --- In-game stage ----------------------------------------------- */
 

@@ -122,11 +122,34 @@
     el.style.cssText = props.join(";");
   }
 
-  function makeBarBtn(label, ariaLabel) {
+  // Reference an icon from the shared sprite at /assets/icons.svg.
+  // We use SVG <use> so the same source of truth (portal/assets/
+  // icons.svg) is shared with the portal and the GazePlay hub.
+  function iconSvg(id, size) {
+    size = size || 18;
+    var ns = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("width", String(size));
+    svg.setAttribute("height", String(size));
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.style.flex = "0 0 auto";
+    var use = document.createElementNS(ns, "use");
+    use.setAttribute("href", "/assets/icons.svg#" + id);
+    svg.appendChild(use);
+    return svg;
+  }
+
+  function makeBarBtn(iconId, label, ariaLabel) {
     var b = document.createElement("button");
     b.type = "button";
-    b.textContent = label;
     b.setAttribute("aria-label", ariaLabel);
+    var icon = iconSvg(iconId, 18);
+    var span = document.createElement("span");
+    span.textContent = label;
+    span.style.cssText = "white-space:nowrap";
+    b.appendChild(icon);
+    b.appendChild(span);
     styleEl(b, [
       "appearance:none",
       "border:1px solid " + CHROME.border,
@@ -194,18 +217,13 @@
       "padding-right:0.55rem",
       "border-right:1px solid " + CHROME.border,
     ]);
-    var dot = document.createElement("span");
-    dot.setAttribute("aria-hidden", "true");
-    styleEl(dot, [
-      "width:18px", "height:18px",
-      "border-radius:6px",
-      "background:linear-gradient(135deg,#74a9ec 0%,#c44db5 100%)",
-      "box-shadow:0 0 0 1px rgba(255,255,255,0.18) inset",
-    ]);
+    // Brand uses the shared logo from /assets/icons.svg so the same
+    // identity is reused on the portal, calibration page and every app.
+    var brandIcon = iconSvg("icon-logo", 22);
     var brandName = document.createElement("span");
     brandName.textContent = "InterAACtion";
     styleEl(brandName, ["font:" + CHROME.fontTitle, "letter-spacing:-0.01em"]);
-    brand.appendChild(dot);
+    brand.appendChild(brandIcon);
     brand.appendChild(brandName);
 
     // App label
@@ -222,20 +240,40 @@
     ]);
     if (!appName) appLabel.style.display = "none";
 
-    // Portal button
-    var portal = makeBarBtn("⏎ Portail", "Retour au portail InterAACtion Web");
-    portal.addEventListener("click", function () {
-      window.location.href = "/";
+    // Calibrate button
+    var calibrate = makeBarBtn(
+      "icon-calibrate",
+      "Calibrer",
+      "Recalibrer le suivi du regard",
+    );
+    calibrate.addEventListener("click", function () {
+      window.location.href = "/calibration/";
     });
 
     // Gaze toggle
-    var toggle = makeBarBtn("👁 Regard", "Activer ou désactiver le pilotage au regard");
+    var toggle = makeBarBtn(
+      "icon-eye",
+      "Regard",
+      "Activer ou désactiver le pilotage au regard",
+    );
     toggle.addEventListener("click", function () {
       if (state.enabled) disable(); else enable();
     });
 
+    // Portal button
+    var portal = makeBarBtn(
+      "icon-home",
+      "Portail",
+      "Retour au portail InterAACtion Web",
+    );
+    portal.addEventListener("click", function () {
+      window.location.href = "/";
+    });
+
     bar.appendChild(brand);
     bar.appendChild(appLabel);
+    bar.appendChild(calibrate);
+    bar.appendChild(toggle);
     bar.appendChild(portal);
     bar.appendChild(toggle);
 
@@ -297,13 +335,17 @@
 
   function setToggleState() {
     var suffix = IS_IOS ? " (exp.)" : "";
+    var labelSpan = ui.toggle.querySelector("span");
+    var useEl = ui.toggle.querySelector("svg use");
     if (state.enabled) {
-      ui.toggle.textContent = "👁 Regard ON" + suffix;
+      if (labelSpan) labelSpan.textContent = "Regard ON" + suffix;
+      if (useEl) useEl.setAttribute("href", "/assets/icons.svg#icon-eye");
       ui.toggle.style.borderColor = CHROME.accent;
       ui.toggle.style.color = CHROME.accent;
       ui.toggle.setAttribute("aria-pressed", "true");
     } else {
-      ui.toggle.textContent = "👁 Regard OFF" + suffix;
+      if (labelSpan) labelSpan.textContent = "Regard OFF" + suffix;
+      if (useEl) useEl.setAttribute("href", "/assets/icons.svg#icon-eye-off");
       ui.toggle.style.borderColor = CHROME.border;
       ui.toggle.style.color = CHROME.fg;
       ui.toggle.setAttribute("aria-pressed", "false");

@@ -88,11 +88,12 @@ header.site .brand {
   text-decoration: none;
   color: var(--fg-strong);
 }
-header.site .brand img {
+header.site .brand-mark {
   width: 36px;
   height: 36px;
   border-radius: 10px;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 header.site nav ul {
@@ -417,11 +418,16 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   background: linear-gradient(135deg, var(--accent-soft), transparent);
   border: 1px solid var(--border);
   margin-bottom: 0.25rem;
+  color: var(--accent);
 }
-.apps img {
-  width: 44px;
-  height: 44px;
+.apps li .app-icon svg {
+  width: 36px;
+  height: 36px;
 }
+.apps li:hover .app-icon {
+  background: linear-gradient(135deg, var(--accent-soft), rgba(196, 77, 181, 0.12));
+}
+
 
 .apps li > *:last-child { margin-top: auto; }
 

@@ -1,0 +1,132 @@
+<!--
+  Shared icon sprite for InterAACtion Web.
+
+  Style: 24×24 viewBox, stroke-based, stroke-width 1.75, round caps and
+  joins, no fill (let currentColor drive the line). Icons are kept
+  simple enough to read at 18 px and crisp at 64 px.
+
+  Usage from HTML:
+    <svg class="icon" aria-hidden="true">
+      <use href="/assets/icons.svg#icon-home"/>
+    </svg>
+
+  License: written from scratch for this project, no third-party SVGs.
+  Released under the same GPL-3.0-or-later as the rest of the suite.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <linearGradient id="iaw-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#74a9ec"/>
+      <stop offset="100%" stop-color="#c44db5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ========== Logo (filled gradient) ========== -->
+  <symbol id="icon-logo" viewBox="0 0 24 24">
+    <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#iaw-grad)"/>
+    <path d="M5 12c2-3 5-4.5 7-4.5s5 1.5 7 4.5c-2 3-5 4.5-7 4.5s-5-1.5-7-4.5z"
+          fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="12" r="2.2" fill="#fff"/>
+  </symbol>
+
+  <!-- ========== Action icons (stroke only) ========== -->
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 11.5L12 4l9 7.5"/>
+    <path d="M5.5 10v10h13V10"/>
+    <path d="M10 20v-5.5h4V20"/>
+  </symbol>
+
+  <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="12" r="5"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12c2.5-4.5 5.5-7 9.5-7s7 2.5 9.5 7c-2.5 4.5-5.5 7-9.5 7s-7-2.5-9.5-7z"/>
+    <circle cx="12" cy="12" r="3.2"/>
+  </symbol>
+
+  <symbol id="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 4l18 16"/>
+    <path d="M10.7 6.1c.4-.07.85-.1 1.3-.1 4 0 7 2.5 9.5 7-.78 1.4-1.66 2.62-2.6 3.62"/>
+    <path d="M6.1 7.4C4.6 8.7 3.4 10.2 2.5 12c2.5 4.5 5.5 7 9.5 7 1.4 0 2.7-.3 3.9-.8"/>
+    <path d="M9.5 9.7a3.2 3.2 0 0 0 4.6 4.6"/>
+  </symbol>
+
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 12H5"/>
+    <path d="M11 19l-7-7 7-7"/>
+  </symbol>
+
+  <symbol id="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3"/>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01A1.65 1.65 0 0 0 9 4.6V4.5a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+  </symbol>
+
+  <!-- ========== App icons (fill primary, currentColor drives) ========== -->
+
+  <!-- AugCom: 3x3 grid with one cell speaking (sound waves) -->
+  <symbol id="icon-app-augcom" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="6" height="6" rx="1.5"/>
+    <rect x="10" y="3" width="6" height="6" rx="1.5"/>
+    <rect x="17" y="3" width="4" height="6" rx="1.5"/>
+    <rect x="3" y="10" width="6" height="6" rx="1.5" fill="currentColor" stroke="none" opacity="0.85"/>
+    <rect x="10" y="10" width="6" height="6" rx="1.5"/>
+    <rect x="17" y="10" width="4" height="6" rx="1.5"/>
+    <rect x="3" y="17" width="6" height="4" rx="1.5"/>
+    <rect x="10" y="17" width="6" height="4" rx="1.5"/>
+    <rect x="17" y="17" width="4" height="4" rx="1.5"/>
+  </symbol>
+
+  <!-- InterAACtionScene: framed image with mountain + sun -->
+  <symbol id="icon-app-scene" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="2.5"/>
+    <circle cx="9" cy="10" r="1.6" fill="currentColor" stroke="none"/>
+    <path d="M3.5 18l5-6 4 4 3-3 5 5"/>
+  </symbol>
+
+  <!-- InterAACtionPlayer: play button with sound waves -->
+  <symbol id="icon-app-player" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10" cy="12" r="8"/>
+    <path d="M8.5 9l4.5 3-4.5 3z" fill="currentColor" stroke="none"/>
+    <path d="M19 10c.7.6 1 1.3 1 2s-.3 1.4-1 2"/>
+    <path d="M21.5 8c1.3 1 2 2.5 2 4s-.7 3-2 4"/>
+  </symbol>
+
+  <!-- GazePlay: eye + smiley game piece -->
+  <symbol id="icon-app-gazeplay" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12c2.5-4 5.5-6 9.5-6s7 2 9.5 6c-2.5 4-5.5 6-9.5 6s-7-2-9.5-6z"/>
+    <circle cx="12" cy="12" r="3.2"/>
+    <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <!-- Calibration helper alias (target with reticle) for the bar -->
+  <symbol id="icon-calibrate" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="2.5" x2="12" y2="6"/>
+    <line x1="12" y1="18" x2="12" y2="21.5"/>
+    <line x1="2.5" y1="12" x2="6" y2="12"/>
+    <line x1="18" y1="12" x2="21.5" y2="12"/>
+    <circle cx="12" cy="12" r="6"/>
+    <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+  </symbol>
+
+  <!-- External link / source code -->
+  <symbol id="icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 4h6v6"/>
+    <path d="M20 4l-9 9"/>
+    <path d="M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"/>
+  </symbol>
+</svg>

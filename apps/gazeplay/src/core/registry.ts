@@ -4,8 +4,12 @@ export interface GameMeta {
   id: string;
   title: string;
   description: string;
-  /** Emoji or short symbol used while real thumbnails are not yet imported. */
-  emoji: string;
+  /**
+   * Inline SVG path data drawn at 24×24 with stroke-linecap/linejoin
+   * round and stroke-width 1.75, matching the icon set in
+   * portal/assets/icons.svg. Strokes inherit currentColor.
+   */
+  iconSvg: string;
   /** Tags for future filtering (e.g. "reflexes", "memory"). */
   tags: string[];
 }

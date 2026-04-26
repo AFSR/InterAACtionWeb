@@ -162,7 +162,11 @@ export const bubblesGame: GameModule = {
     id: "bubbles",
     title: "Bulles colorées",
     description: "Fais éclater les bulles qui montent en les regardant.",
-    emoji: "🫧",
+    // Three rising bubbles
+    iconSvg:
+      '<circle cx="8" cy="16" r="3.5"/>' +
+      '<circle cx="15" cy="11" r="2.5"/>' +
+      '<circle cx="11" cy="6" r="1.8"/>',
     tags: ["reflexes", "enfants"],
   },
   mount: (root, engine, onExit) => gameInstance.mount(root, engine, onExit),

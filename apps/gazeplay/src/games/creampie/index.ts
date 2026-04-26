@@ -126,7 +126,11 @@ export const creamPieGame: GameModule = {
     id: "creampie",
     title: "Tartes à la crème",
     description: "Regarde les cibles pour les viser. Atteins-les toutes en 45 secondes.",
-    emoji: "🥧",
+    // Pie: filled circle with a wedge cut.
+    iconSvg:
+      '<circle cx="12" cy="12" r="9"/>' +
+      '<path d="M12 3v9l8 4"/>' +
+      '<path d="M12 12l-7 5"/>',
     tags: ["reflexes", "debutant"],
   },
   mount: (root, engine, onExit) => gameInstance.mount(root, engine, onExit),

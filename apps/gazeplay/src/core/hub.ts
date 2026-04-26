@@ -56,7 +56,9 @@ export class Hub {
     tile.setAttribute("aria-label", `Lancer le jeu ${g.meta.title}`);
     tile.addEventListener("click", () => this.open(g.meta.id));
     tile.innerHTML = `
-      <div class="game-emoji" aria-hidden="true">${g.meta.emoji}</div>
+      <div class="game-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${g.meta.iconSvg}</svg>
+      </div>
       <h2>${g.meta.title}</h2>
       <p>${g.meta.description}</p>
     `;
