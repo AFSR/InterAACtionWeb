@@ -41,19 +41,21 @@
     /^((?!chrome|android).)*safari/i.test(ua) &&
     !/CriOS|FxiOS|EdgiOS/i.test(ua) && !isIOS;
 
-  // 4x4 grid (16 points). 9 points only constrains a noisy linear
-  // mapping; the predictor sometimes settles into a diagonal bias that
-  // 16 well-distributed targets break out of.
+  // 9 points (3x3). Going to 16 made the session too long without a
+  // proportional precision win — and most of WebGazer's accuracy
+  // comes from continuous click-recalibration during real usage,
+  // not from the cold-start grid. The grid just gives a
+  // not-completely-broken baseline.
   var GRID = (function () {
     var g = [];
-    for (var r = 0; r < 4; r++) {
-      for (var c = 0; c < 4; c++) g.push({ r: r, c: c });
+    for (var r = 0; r < 3; r++) {
+      for (var c = 0; c < 3; c++) g.push({ r: r, c: c });
     }
     return g;
   })();
-  var GRID_DENOM = 3; // (rows-1) and (cols-1) for placement.
-  var DWELL_MS = 2500;
-  var PRE_DWELL_MS = 600;
+  var GRID_DENOM = 2; // (rows-1) and (cols-1) for placement.
+  var DWELL_MS = 1800;
+  var PRE_DWELL_MS = 400;
 
   var state = {
     session: null,
@@ -210,22 +212,49 @@
     state.active = true;
     ui.saveBtn.hidden = false;
     show(ui.calibrating);
+    // Surface WebGazer's own video preview + face-feedback box during
+    // the 9-point session so the user can confirm the camera actually
+    // sees their face. A red box = no detection = calibration is
+    // pointless. The bridge will hide both again once tracking starts
+    // in the apps; here we restore the off state in finish() / abort().
+    if (window.webgazer && window.webgazer.params) {
+      window.webgazer.params.showVideo = true;
+      window.webgazer.params.showFaceFeedbackBox = true;
+      try { window.webgazer.showVideo(true); } catch (_) { /* ignore */ }
+      try { window.webgazer.showFaceFeedbackBox(true); } catch (_) { /* ignore */ }
+    }
     await runCalibration();
+  }
+
+  function hideCalibrationFeedback() {
+    if (!window.webgazer) return;
+    if (window.webgazer.params) {
+      window.webgazer.params.showVideo = false;
+      window.webgazer.params.showFaceFeedbackBox = false;
+    }
+    try { window.webgazer.showVideo(false); } catch (_) { /* ignore */ }
+    try { window.webgazer.showFaceFeedbackBox(false); } catch (_) { /* ignore */ }
   }
 
   function finish() {
     state.active = false;
+    hideCalibrationFeedback();
     show(ui.result);
-    ui.resultSummary.textContent =
-      GRID.length + " points calibrés. " +
-      "La calibration s'affine ensuite à chaque clic dans les applications. " +
-      "Donnez un nom au profil pour le retrouver plus tard, ou relancez la calibration si le cercle ne suit pas bien.";
+    ui.resultSummary.innerHTML =
+      "<strong>Calibration de base terminée</strong> (" + GRID.length + " points). " +
+      "La précision réelle vient ensuite : <strong>chaque clic dans une application " +
+      "affine automatiquement la calibration</strong>. " +
+      "Quelques minutes d'usage normal suffisent pour passer d'un pointage approximatif " +
+      "à un suivi utilisable.<br><br>" +
+      "Si le cercle bleu ci-dessous ne suit pas du tout votre regard, vérifiez l'éclairage " +
+      "et le centrage de votre visage devant la caméra puis recommencez.";
     ui.saveBtn.hidden = false;
     setCalibrated("webgazer");
   }
 
   function abort() {
     state.active = false;
+    hideCalibrationFeedback();
     if (state.session) {
       try { state.session.stop(); } catch (_) { /* ignore */ }
       state.session = null;

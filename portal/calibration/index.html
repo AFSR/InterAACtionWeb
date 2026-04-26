@@ -34,7 +34,8 @@
       <div class="inner">
         <h1 id="intro-title">Calibrer le suivi du regard</h1>
         <p>Cette page apprend à votre ordinateur où vous regardez en utilisant la <strong>caméra de votre appareil</strong>. Aucune image n'est envoyée sur Internet&nbsp;: tout se fait localement dans votre navigateur.</p>
-        <p>Si vous disposez d'un eye-tracker Tobii et que l'application compagnon est installée, la calibration n'est pas nécessaire — elle est gérée par le matériel.</p>
+        <p><strong>Comment ça marche&nbsp;:</strong> 9 points apparaissent à l'écran (~15 secondes au total). Vous fixez chaque point pendant qu'il s'illumine. Une boîte vidéo en bas de l'écran montre ce que voit la caméra&nbsp;— si vous n'apparaissez pas dedans, ajustez votre position avant de continuer.</p>
+        <p class="muted">La précision réelle s'affine ensuite à l'usage&nbsp;: chaque clic dans une application sert d'indication «&nbsp;je regardais ici&nbsp;». Quelques minutes d'usage normal et le pointage devient utilisable. Avec un eye-tracker Tobii et l'application compagnon, cette page n'est pas nécessaire.</p>
 
         <div class="status-bar" role="status" aria-live="polite" id="statusBar">Prêt.</div>
 
@@ -64,7 +65,7 @@
 
     <section id="calibrating" class="stage hidden" aria-labelledby="calibrating-title">
       <h1 id="calibrating-title" class="visually-hidden">Calibration en cours</h1>
-      <p class="calibration-counter" aria-live="polite" id="counter">Point&nbsp;<span id="currentPoint">1</span>&nbsp;/&nbsp;<span id="totalPoints">16</span></p>
+      <p class="calibration-counter" aria-live="polite" id="counter">Point&nbsp;<span id="currentPoint">1</span>&nbsp;/&nbsp;<span id="totalPoints">9</span></p>
       <div class="calibration-grid" id="grid" aria-hidden="true"></div>
       <button class="cta cta-ghost" type="button" id="abortBtn">Annuler (Échap)</button>
     </section>
