@@ -4,14 +4,15 @@
  * bridge so they pick up the suite's design tokens without
  * forking their Angular sources.
  *
+ * Two layers:
+ *   1. Cross-app rules (font, palette, focus, scroll-padding).
+ *   2. Per-app overrides selected by body[data-iaw-app="<slug>"]
+ *      which the bridge sets from the URL.
+ *
  * Best-effort: we only override what Angular Material exposes via
  * CSS variables (M3) and a few global selectors. Older Material
  * versions baked colours into compiled SCSS — those remain as the
  * upstream shipped them.
- *
- * Loaded with !important on a few key declarations because Angular
- * inline styles otherwise win the cascade. We deliberately leave the
- * apps' layouts alone (no padding-top, no toolbar hides).
  */
 
 :root {
@@ -24,29 +25,23 @@
   --iaw-radius-pill: 999px;
   --iaw-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  /* Angular Material 3+ CSS custom properties — these win without
-     !important when the host app is on M3 or later. */
+  /* Angular Material 3+ CSS custom properties */
   --mdc-theme-primary: var(--iaw-accent);
   --mdc-theme-secondary: var(--iaw-magenta);
   --mdc-theme-on-primary: #ffffff;
   --mdc-typography-font-family: var(--iaw-font);
   --mat-mdc-fab-color: #ffffff;
-  --mat-app-background-color: var(--mdc-theme-background, transparent);
 }
 
-/* Body font: catches both Material and non-Material apps. */
+/* ============================================================
+   Cross-app
+   ============================================================ */
+
 html, body {
   font-family: var(--iaw-font) !important;
 }
 
-/* Default radius and font on standard form controls so plain
-   <button>/<input> match the suite without touching component
-   templates. Angular Material wraps these in their own selectors;
-   they'll keep their look. */
-button,
-input,
-select,
-textarea {
+button, input, select, textarea {
   font-family: var(--iaw-font);
 }
 
@@ -54,9 +49,35 @@ button {
   border-radius: var(--iaw-radius);
 }
 
-/* Common Angular Material legacy selectors. Only colour overrides;
-   the structural rules (padding, line-height) stay as upstream wrote
-   them so we don't break tooltips, badges, table rows, etc. */
+/* Visible focus ring everywhere */
+:focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* No lingering hover on touch */
+@media (hover: none) {
+  *:hover {
+    transition-duration: 0s !important;
+  }
+}
+
+/* Scroll padding so anchors don't land under the bar */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Push the content of every bridged app down so the floating
+   bar (top:max(12px, safe-area), ~52px tall) doesn't cover it.
+   Use padding-top with !important to override Angular shells; we
+   accept a 64px offset on apps that hard-code 100vh — the bar
+   matters more than the lost pixels. */
+body[data-iaw-app] {
+  padding-top: 70px !important;
+}
+
+/* Angular Material primary recolour */
 .mat-button.mat-primary,
 .mat-icon-button.mat-primary,
 .mat-stroked-button.mat-primary,
@@ -77,29 +98,59 @@ button {
   color: #ffffff !important;
 }
 
-/* Visible focus ring across host content too — Angular Material's
-   own focus indicator is sometimes missing in older versions. */
-:focus-visible {
-  outline: 3px solid #ffbf47 !important;
-  outline-offset: 3px;
-  border-radius: 4px;
+/* ============================================================
+   Per-app overrides
+   ============================================================ */
+
+/* ---------- InterAACtionPlayer (blue accent like the icon) ---------- */
+body[data-iaw-app="player"] {
+  --iaw-app-accent: var(--iaw-accent);
+}
+/* Recolour the monochrome black SVG/icon images in the toolbar to
+   the suite's primary blue. This is best-effort — it only catches
+   <img> referencing assets and inline SVGs whose stroke is black. */
+body[data-iaw-app="player"] .toolbar img,
+body[data-iaw-app="player"] header img,
+body[data-iaw-app="player"] [class*="icon"] img {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(91%)
+          saturate(1840%) hue-rotate(202deg) brightness(95%) contrast(94%);
+  transition: filter 150ms ease;
+}
+body[data-iaw-app="player"] .toolbar img:hover,
+body[data-iaw-app="player"] header img:hover {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(90%)
+          saturate(2000%) hue-rotate(202deg) brightness(80%) contrast(99%);
 }
 
-/* Don't let the apps' :hover transforms linger on touch. Same
-   defensive rule the portal uses. */
-@media (hover: none) {
-  *:hover {
-    transition-duration: 0s !important;
-  }
+/* ---------- AugCom (drop the standalone french flag, our brand
+                       carries language; keep title centred) ---------- */
+body[data-iaw-app="augcom"] [class*="flag"]:first-of-type {
+  /* leave it visible — language switcher actually matters; just
+     ensure it doesn't overlap the bar */
+  margin-top: 8px;
 }
 
-/* Reserve space at the very top of the viewport for the floating
-   bar so important upstream content (toolbars, tabs) is not hidden
-   underneath. The bar itself is ~52 px tall + 12 px from the top —
-   ~64 px is enough. We use scroll-padding-top so anchor jumps land
-   below the bar; we deliberately do NOT touch padding/margin on the
-   body or html to avoid breaking app layouts that compute heights
-   from 100vh. */
-html {
-  scroll-padding-top: 80px;
+/* ---------- InterAACtionScene (orange/blue/cyan toolbar at top) ---------- */
+body[data-iaw-app="scene"] {
+  /* Scene's toolbar is at top:0 by default and gets overlapped by
+     our bar. The padding-top above already pushes it down 70 px. */
+}
+/* Tone down Scene's accent buttons (vivid orange + blue) so they
+   stop fighting our palette. We only recolour primary action
+   buttons; secondary stay as upstream ships them. */
+body[data-iaw-app="scene"] button[class*="primary"]:not(:disabled),
+body[data-iaw-app="scene"] [class*="play-btn"] {
+  background-color: var(--iaw-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--iaw-accent) !important;
+}
+
+/* ---------- GazePlay (we own this one — no overrides needed) ---------- */
+body[data-iaw-app="gazeplay"] {
+  padding-top: 0 !important; /* GazePlay handles its own top spacing */
+}
+
+/* ---------- Calibration page (own page, no apps overlay needed) ---------- */
+body.calibration-body[data-iaw-app] {
+  padding-top: 0 !important;
 }

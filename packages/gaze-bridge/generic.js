@@ -132,6 +132,10 @@
     return APP_NAMES[seg] || null;
   }
 
+  function appSlugFromUrl() {
+    return (location.pathname.split("/")[1] || "").toLowerCase();
+  }
+
   function styleEl(el, props) {
     el.style.cssText = props.join(";");
   }
@@ -154,22 +158,27 @@
     return svg;
   }
 
-  function makeBarBtn(iconId, label, ariaLabel) {
+  function makeBarBtn(iconId, label, ariaLabel, opts) {
+    opts = opts || {};
     var b = document.createElement("button");
     b.type = "button";
     b.setAttribute("aria-label", ariaLabel);
+    b.title = ariaLabel;
     var icon = iconSvg(iconId, 18);
-    var span = document.createElement("span");
-    span.textContent = label;
-    span.style.cssText = "white-space:nowrap";
     b.appendChild(icon);
-    b.appendChild(span);
+    if (!opts.iconOnly) {
+      var span = document.createElement("span");
+      span.textContent = label;
+      span.style.cssText = "white-space:nowrap";
+      b.appendChild(span);
+    }
+    var paddingX = opts.iconOnly ? "0.5rem" : "0.85rem";
     styleEl(b, [
       "appearance:none",
       "border:1px solid " + CHROME.border,
       "background:transparent",
       "color:" + CHROME.fg,
-      "padding:0.45rem 0.85rem",
+      "padding:0.45rem " + paddingX,
       "border-radius:" + CHROME.radiusPill,
       "font:" + CHROME.fontBold,
       "cursor:pointer",
@@ -254,17 +263,18 @@
     ]);
     if (!appName) appLabel.style.display = "none";
 
-    // Calibrate button
+    // Calibrate button (icon only — title carries the meaning)
     var calibrate = makeBarBtn(
       "icon-calibrate",
       "Calibrer",
       "Recalibrer le suivi du regard",
+      { iconOnly: true },
     );
     calibrate.addEventListener("click", function () {
       window.location.href = "/calibration/";
     });
 
-    // Gaze toggle
+    // Gaze toggle (label stays — state needs to be readable)
     var toggle = makeBarBtn(
       "icon-eye",
       "Regard",
@@ -274,11 +284,12 @@
       if (state.enabled) disable(); else enable();
     });
 
-    // Portal button
+    // Portal button (icon only)
     var portal = makeBarBtn(
       "icon-home",
       "Portail",
       "Retour au portail InterAACtion Web",
+      { iconOnly: true },
     );
     portal.addEventListener("click", function () {
       window.location.href = "/";
@@ -534,6 +545,11 @@
       document.addEventListener("DOMContentLoaded", init, { once: true });
       return;
     }
+    // Tag the body with the URL slug so app-skin.css can apply
+    // per-app rules (push content below the bar, hide doubled
+    // headers, recolour monochrome icons, etc.).
+    var slug = appSlugFromUrl();
+    if (slug) document.body.setAttribute("data-iaw-app", slug);
     injectSkin();
     ui = buildUI();
     setToggleState();
