@@ -227,10 +227,11 @@
       "transition:opacity 150ms ease, transform 150ms ease",
     ]);
 
-    // Brand: small gradient dot + product name
+    // Brand: small gradient dot + product name. Same destination as
+    // the Portal button — lands on the apps grid.
     var brand = document.createElement("a");
-    brand.href = "/";
-    brand.setAttribute("aria-label", "Accueil InterAACtion Web");
+    brand.href = "/#apps";
+    brand.setAttribute("aria-label", "Accueil InterAACtion Web — liste des applications");
     styleEl(brand, [
       "display:inline-flex",
       "align-items:center",
@@ -284,15 +285,16 @@
       if (state.enabled) disable(); else enable();
     });
 
-    // Portal button (icon only)
+    // Portal button (icon only) — lands on the apps grid so the user
+    // can hop straight to another app.
     var portal = makeBarBtn(
       "icon-home",
       "Portail",
-      "Retour au portail InterAACtion Web",
+      "Retour au portail (liste des applications)",
       { iconOnly: true },
     );
     portal.addEventListener("click", function () {
-      window.location.href = "/";
+      window.location.href = "/#apps";
     });
 
     bar.appendChild(brand);
