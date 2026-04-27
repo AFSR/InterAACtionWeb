@@ -29,17 +29,24 @@
 
   // ---- Tunables ----
   var DWELL_MS = 1000;
-  // Higher = more responsive, less smoothing. WebGazer emits at ~20 Hz
-  // (50 ms cadence) so the EMA convergence time is ~ N samples to 90 %
-  // for k = 0.55 → 3 samples ≈ 150 ms (perceived as snappy). Going
-  // lower (k = 0.25) felt smooth but laggy in field testing.
   var SMOOTHING = 0.55;
-  // Only drop *truly* bad samples — head turns can move the predicted
-  // gaze 500+ px in one frame and that's normal. 400 px was over-eager.
   var JUMP_PX = 700;
   var SUPPRESS_AFTER_JUMP_MS = 120;
   var CENTER_LOCK_MS = 1500;
   var CENTER_LOCK_RADIUS_PX = 80;
+
+  // ---- Adaptive correction layer ----
+  // WebGazer's linear ridge regression has systematic, locally-biased
+  // errors (the diagonal drift the maintainer reported). On top of it
+  // we maintain a sliding window of (gaze_predicted, click_truth)
+  // pairs. For every new gaze sample, we apply a Gaussian-kernel
+  // weighted average of the recent local corrections. Net effect: as
+  // the user clicks around the screen, the cursor pulls toward where
+  // they actually look, even where WebGazer stays wrong.
+  var CORRECTION_BUFFER_MAX = 60;        // hard cap on stored points
+  var CORRECTION_KERNEL_PX = 220;        // sigma of the spatial kernel
+  var CORRECTION_AGE_DECAY_S = 90;       // half-life of an observation
+  var CORRECTION_MIN_WEIGHT = 0.4;       // below this, raw prediction wins
   var CLICKABLE_SELECTOR =
     'button, a[href], input:not([type="hidden"]):not([disabled]), ' +
     'select:not([disabled]), textarea:not([disabled]), ' +
@@ -97,11 +104,14 @@
     enabled: false,
     smoothedX: null,
     smoothedY: null,
+    rawX: null,                    // last raw WebGazer sample (uncorrected)
+    rawY: null,
     currentTarget: null,
     dwellStart: 0,
     suppressUntil: 0,
     centerLockedSince: 0,
     warnedCenterLock: false,
+    corrections: [],               // [{px, py, ax, ay, t}]
   };
 
   var ui = null;
@@ -125,6 +135,55 @@
     link.rel = "stylesheet";
     link.href = "/assets/app-skin.css";
     document.head.appendChild(link);
+  }
+
+  /**
+   * Record a (predicted, actual) pair so applyCorrection can learn to
+   * pull future predictions toward where the user actually looked.
+   * actualX/Y come from a click (synthesised dwell click or real
+   * pointer click); px/py are the last raw WebGazer prediction we
+   * had at that moment.
+   */
+  function recordCorrection(px, py, ax, ay) {
+    if (px === null || py === null) return;
+    state.corrections.push({ px: px, py: py, ax: ax, ay: ay, t: performance.now() });
+    if (state.corrections.length > CORRECTION_BUFFER_MAX) {
+      state.corrections.shift();
+    }
+    if (ui && ui.toggle) setToggleState();
+  }
+
+  /**
+   * Spatio-temporal Gaussian kernel correction.
+   *   - Spatial weight: exp(-d^2 / (2 * sigma^2)) on distance to each
+   *     stored prediction point. Far-away corrections don't bleed in.
+   *   - Temporal weight: exp(-age_s / decay) so old observations fade
+   *     out without us having to evict them eagerly.
+   * Returns { x, y } (= raw + weighted average of (actual - predicted)).
+   */
+  function applyCorrection(px, py) {
+    var corr = state.corrections;
+    if (corr.length < 2) return { x: px, y: py };
+    var now = performance.now();
+    var sigmaSq = CORRECTION_KERNEL_PX * CORRECTION_KERNEL_PX;
+    var totalW = 0;
+    var dx = 0;
+    var dy = 0;
+    for (var i = 0; i < corr.length; i++) {
+      var c = corr[i];
+      var ageS = (now - c.t) / 1000;
+      var ageW = Math.exp(-ageS / CORRECTION_AGE_DECAY_S);
+      if (ageW < 0.01) continue;
+      var ddx = px - c.px;
+      var ddy = py - c.py;
+      var spatialW = Math.exp(-(ddx * ddx + ddy * ddy) / (2 * sigmaSq));
+      var w = ageW * spatialW;
+      totalW += w;
+      dx += w * (c.ax - c.px);
+      dy += w * (c.ay - c.py);
+    }
+    if (totalW < CORRECTION_MIN_WEIGHT) return { x: px, y: py };
+    return { x: px + dx / totalW, y: py + dy / totalW };
   }
 
   function appNameFromUrl() {
@@ -365,17 +424,24 @@
     var labelSpan = ui.toggle.querySelector("span");
     var useEl = ui.toggle.querySelector("svg use");
     if (state.enabled) {
-      if (labelSpan) labelSpan.textContent = "Regard ON" + suffix;
+      var n = state.corrections.length;
+      // Surface the correction-buffer size next to the label so the
+      // user knows the system is learning ("Regard ON · 12 clics").
+      var nLabel = n > 0 ? " · " + n + (n >= CORRECTION_BUFFER_MAX ? "+" : "") : "";
+      if (labelSpan) labelSpan.textContent = "Regard ON" + nLabel + suffix;
       if (useEl) useEl.setAttribute("href", "/assets/icons.svg#icon-eye");
       ui.toggle.style.borderColor = CHROME.accent;
       ui.toggle.style.color = CHROME.accent;
       ui.toggle.setAttribute("aria-pressed", "true");
+      ui.toggle.title = "Le suivi du regard apprend de vos clics. " +
+        n + " observations en mémoire — la précision s'améliore au fur et à mesure.";
     } else {
       if (labelSpan) labelSpan.textContent = "Regard OFF" + suffix;
       if (useEl) useEl.setAttribute("href", "/assets/icons.svg#icon-eye-off");
       ui.toggle.style.borderColor = CHROME.border;
       ui.toggle.style.color = CHROME.fg;
       ui.toggle.setAttribute("aria-pressed", "false");
+      ui.toggle.title = "Activer le pilotage au regard";
     }
   }
 
@@ -394,16 +460,17 @@
   }
 
   function synthesiseClick(target, x, y) {
-    // Recalibrate WebGazer with this click's coordinates *before* we
-    // dispatch, so the regression learns "the user was looking around
-    // here when they clicked here". WebGazer's own document click
-    // listener will also catch the dispatched event (capture phase),
-    // but we call recordScreenPosition directly so it works even if
-    // addMouseEventListeners was disabled or the dispatch fails to
-    // bubble (some Angular components stopPropagation on click).
+    // Two recalibration channels for the same click:
+    //   1. WebGazer's own ridge regression — recordScreenPosition
+    //      teaches "user was looking here when they clicked here".
+    //   2. Our adaptive correction layer — store the (raw_pred, click)
+    //      pair so applyCorrection() can pull future predictions in
+    //      this region toward the click site.
     if (window.webgazer && typeof window.webgazer.recordScreenPosition === "function") {
       try { window.webgazer.recordScreenPosition(x, y, "click"); } catch (_) { /* ignore */ }
     }
+    recordCorrection(state.rawX, state.rawY, x, y);
+
     var init = { bubbles: true, cancelable: true, view: window, clientX: x, clientY: y };
     target.dispatchEvent(new MouseEvent("mousedown", init));
     target.dispatchEvent(new MouseEvent("mouseup", init));
@@ -415,25 +482,46 @@
     }, 250);
   }
 
+  // Capture *real* user clicks (mouse, touch tap) too — WebGazer
+  // catches them already for its own regression, but our correction
+  // layer needs to know about them as well. Capture phase + bridge
+  // own clicks excluded.
+  function onUserClick(e) {
+    if (!state.enabled) return;
+    // Don't double-count clicks the bridge synthesised: the toolbar's
+    // hit area is excluded by design (bar buttons are own UI).
+    if (ui && ui.bar && ui.bar.contains(e.target)) return;
+    recordCorrection(state.rawX, state.rawY, e.clientX, e.clientY);
+  }
+
   function onGaze(p) {
     var now = performance.now();
 
-    if (state.smoothedX !== null) {
-      var dx = p.x - state.smoothedX;
-      var dy = p.y - state.smoothedY;
-      if (dx * dx + dy * dy > JUMP_PX * JUMP_PX) {
+    // Glitch filter on the raw stream.
+    if (state.rawX !== null) {
+      var dxr = p.x - state.rawX;
+      var dyr = p.y - state.rawY;
+      if (dxr * dxr + dyr * dyr > JUMP_PX * JUMP_PX) {
         state.suppressUntil = now + SUPPRESS_AFTER_JUMP_MS;
         return;
       }
     }
     if (now < state.suppressUntil) return;
 
+    // Stash the raw WebGazer prediction *before* correction so a
+    // future click can compute (predicted, actual) for learning.
+    state.rawX = p.x;
+    state.rawY = p.y;
+
+    // Apply the adaptive correction layer.
+    var corrected = applyCorrection(p.x, p.y);
+
     if (state.smoothedX === null) {
-      state.smoothedX = p.x;
-      state.smoothedY = p.y;
+      state.smoothedX = corrected.x;
+      state.smoothedY = corrected.y;
     } else {
-      state.smoothedX = state.smoothedX * (1 - SMOOTHING) + p.x * SMOOTHING;
-      state.smoothedY = state.smoothedY * (1 - SMOOTHING) + p.y * SMOOTHING;
+      state.smoothedX = state.smoothedX * (1 - SMOOTHING) + corrected.x * SMOOTHING;
+      state.smoothedY = state.smoothedY * (1 - SMOOTHING) + corrected.y * SMOOTHING;
     }
     var x = state.smoothedX;
     var y = state.smoothedY;
@@ -517,6 +605,7 @@
     state.enabled = true;
     storageSet(STORAGE_ENABLED, "true");
     setToggleState();
+    document.addEventListener("click", onUserClick, true);
     try {
       state.session = await AFSRGaze.startGazeTracking({
         publicPath: "/gaze-client",
@@ -532,6 +621,7 @@
   function disable() {
     state.enabled = false;
     storageSet(STORAGE_ENABLED, "false");
+    document.removeEventListener("click", onUserClick, true);
     if (state.session) {
       try { state.session.stop(); } catch (_) { /* ignore */ }
       state.session = null;
